@@ -1,0 +1,13 @@
+{
+    "displayName": "hospital-gateway",
+    "appName": "hospital-gateway",
+    "description": "Our hospital management app optimizes healthcare administration with streamlined patient registration, appointment scheduling.",
+    "lastModified": "2024-02-12T12:35:42.527Z",
+    "imgSourcePath": "appIcon-1707741340526.jpg",
+    "version": "1.0.0",
+    "appType": "apiOnly",
+    "templateName": "blank",
+    "createDate": "2024-02-12T12:35:40.521Z",
+    "analyticsId": "9fd56e3a-74ad-2547-5bbe-49dedf57f478",
+    "createdStudioVersion": "9.2.1"
+}
