@@ -27,7 +27,9 @@
                     "value": ""
                 },
                 "output": false
-            },
+            }
+        ],
+        "localVariables": [
             {
                 "key": "response",
                 "defaultValue": {
@@ -37,7 +39,6 @@
                 "output": true
             }
         ],
-        "localVariables": [],
         "accept_bh": false,
         "functionName": "department",
         "category": "General",
@@ -59,10 +60,10 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "dataConfiguration",
-        "script": "bh.local.url = `${process.env.API_URL}/department/post`\nbh.local.data = {\n    department: [\n        {\n            id: 0,\n            name: bh.input.department.name,\n            info: bh.input.department.info\n        }\n    ]\n\n}\nconsole.log(bh.local.data)",
+        "script": "bh.local.url = `${process.env.API_URL}/department/post`\nbh.local.data = {\n    id: 0,\n    name: bh.input.department.name,\n    info: bh.input.department.info,\n    status: true\n}\n",
         "functionName": "dataConfiguration",
         "category": "Function",
-        "x": 405,
+        "x": 445,
         "y": 120,
         "wires": [
             [
@@ -95,9 +96,9 @@
             "mapVarType": "bh.local",
             "mapVarValue": "data"
         },
-        "resultMapping": "bh.input.response",
+        "resultMapping": "bh.local.response",
         "resultMappingObj": {
-            "mapVarType": "bh.input",
+            "mapVarType": "bh.local",
             "mapVarValue": "response"
         },
         "headers": {},

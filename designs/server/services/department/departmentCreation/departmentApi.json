@@ -30,6 +30,7 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
+        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -104,29 +105,23 @@
                 "map": true,
                 "valueType": "bh.input",
                 "value": "body"
-            },
-            {
-                "key": "response",
-                "map": true,
-                "valueType": "bh",
-                "value": ""
             }
         ],
         "bhVariables": [],
         "outputMapping": [
             {
-                "mapVarType": "input",
+                "mapVarType": "local",
                 "key": "response",
-                "valueType": "bh",
-                "value": "",
-                "mapVarName": "response"
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
             }
         ],
         "callService": "./departmentService",
         "startName": "department",
         "inputParams": [
-            "bh.input.body",
-            null
+            "bh.input.body"
         ],
         "accept_bh": false,
         "functionName": "toDepartmentApi",
@@ -169,6 +164,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -202,7 +198,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
-        "script": "bh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    message:process.env.SUCCESS_MESSAGE\n}",
+        "script": "console.log(bh.local?.result)\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    message:bh.local?.result?.payload?.data\n}",
         "functionName": "responseData",
         "category": "Function",
         "x": 590,

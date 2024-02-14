@@ -27,7 +27,9 @@
                     "value": ""
                 },
                 "output": false
-            },
+            }
+        ],
+        "localVariables": [
             {
                 "key": "response",
                 "defaultValue": {
@@ -37,7 +39,6 @@
                 "output": true
             }
         ],
-        "localVariables": [],
         "accept_bh": false,
         "functionName": "departmentUpdateService",
         "category": "General",
@@ -81,7 +82,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "dataConfiguration",
-        "script": "bh.local.url = `${process.env.API_URL}/department/put`\nbh.local.data = {\n    department: [\n        {\n            id: bh.input.data.id,\n            name: bh.input.data.name,\n            info: bh.input.data.info\n        }\n    ]\n\n}",
+        "script": "bh.local.url = `${process.env.API_URL}/department/put`\nbh.local.data = {\n    \"department\": {\n            \"id\": bh.input.data.id,\n            \"name\": bh.input.data.name,\n            \"info\": bh.input.data.info,\n            \"status\":bh.input.data.status,\n        }\n}\nconsole.log(bh.local.data)\nconsole.log(bh.local.url)",
         "functionName": "dataConfiguration",
         "category": "Function",
         "x": 560,
@@ -104,7 +105,6 @@
         "nodeType": "flow",
         "name": "updationRequest",
         "method": "put",
-        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
@@ -112,7 +112,6 @@
             "mapVarValue": "url"
         },
         "ret": "json",
-        "retMapping": "",
         "retMappingObj": {},
         "reqBody": "bh.local.data",
         "reqBodyObj": {
@@ -126,16 +125,11 @@
         },
         "headers": {},
         "headersObj": [],
-        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
-        "paramMapping": "",
         "paramMappingObj": {},
-        "authType": "",
         "useAuthTypeMappingObj": {},
-        "useAuthTypeMap": {},
-        "useAuthType": "",
         "useAuthUsername": "",
         "useAuthUsernameMappingObj": "",
         "useAuthPassword": "",
@@ -151,7 +145,6 @@
         "proxy": "",
         "useProxy": false,
         "usetls": false,
-        "cookies": [],
         "cookiesMapObj": {},
         "cookiesList": {},
         "switchStates": {

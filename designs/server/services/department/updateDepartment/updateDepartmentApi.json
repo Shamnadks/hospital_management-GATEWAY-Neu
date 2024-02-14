@@ -30,6 +30,7 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
+        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -58,7 +59,7 @@
         "y": 100,
         "wires": [
             [
-                "sd_kyYOupY6mazhVwJF"
+                "sd_zCCP7aGWxqUpAT2F"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -135,7 +136,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
-        "script": "bh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    message:process.env.SUCCESS_MESSAGE\n}",
+        "script": "bh.local.response = {\n    status:bh.local.result.payload.statusCode,\n    message:bh.local.result?.payload?.data\n}",
         "functionName": "responseData",
         "category": "Function",
         "x": 500,
@@ -143,75 +144,6 @@
         "wires": [
             [
                 "sd_9psPmlTR1EHZVaLT"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "updateDepartmentApi",
-        "generated": true
-    },
-    {
-        "id": "sd_kyYOupY6mazhVwJF",
-        "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "updateDepartment",
-        "outputs": 1,
-        "isValidNode": true,
-        "noerr": 0,
-        "service": {
-            "id": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
-            "type": "tab",
-            "createdDate": "2024-02-13T17:18:31.639Z",
-            "label": "updateDepartmentService",
-            "disabled": false,
-            "info": "",
-            "functionSeq": 0
-        },
-        "flow": {
-            "flowId": "sd_YaV2QgAhVAzcA6Ps",
-            "flowName": "departmentUpdateService"
-        },
-        "inputVariables": [
-            {
-                "key": "data",
-                "map": true,
-                "valueType": "bh.input",
-                "value": "body"
-            },
-            {
-                "key": "response",
-                "map": true,
-                "valueType": "bh",
-                "value": ""
-            }
-        ],
-        "bhVariables": [],
-        "outputMapping": [
-            {
-                "mapVarType": "input",
-                "key": "response",
-                "valueType": "bh.local",
-                "value": "result",
-                "mapVarName": "response",
-                "localVar": "bh.local.result"
-            }
-        ],
-        "callService": "./updateDepartmentService",
-        "startName": "departmentUpdateService",
-        "inputParams": [
-            "bh.input.body",
-            null
-        ],
-        "accept_bh": false,
-        "functionName": "updateDepartment",
-        "category": "General",
-        "x": 325,
-        "y": 100,
-        "wires": [
-            [
-                "sd_U06j3JKG0a5ZqcDC"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -316,6 +248,68 @@
         "x": 724,
         "y": 222.8000030517578,
         "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_zCCP7aGWxqUpAT2F",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+            "type": "tab",
+            "createdDate": "2024-02-13T17:18:31.639Z",
+            "label": "updateDepartmentService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_YaV2QgAhVAzcA6Ps",
+            "flowName": "departmentUpdateService"
+        },
+        "inputVariables": [
+            {
+                "key": "data",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "body"
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
+        "callService": "./updateDepartmentService",
+        "startName": "departmentUpdateService",
+        "inputParams": [
+            "bh.input.body"
+        ],
+        "accept_bh": false,
+        "functionName": "sd_zCCP7aGWxqUpAT2F",
+        "category": "General",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "sd_U06j3JKG0a5ZqcDC"
+            ]
+        ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "updateDepartmentApi",

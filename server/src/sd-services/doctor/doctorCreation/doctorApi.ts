@@ -179,7 +179,7 @@ export class doctorApi {
     try {
       bh.local.response = {
         status: 200,
-        message: 'success',
+        message: bh.local.result,
       };
       console.log('success');
       this.tracerService.sendData(spanInst, bh);

@@ -128,9 +128,9 @@ export class departmentApi {
       let outputVariables =
         await SSD_SERVICE_ID_sd_I6lm3HkHLDly79aNInstance.department(
           spanInst,
-          bh.input.body,
-          undefined
+          bh.input.body
         );
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.responseData(bh, parentSpanInst);
@@ -153,9 +153,10 @@ export class departmentApi {
       parentSpanInst
     );
     try {
+      console.log(bh.local?.result);
       bh.local.response = {
         status: process.env.SUCCESS_STATUS_CODE,
-        message: process.env.SUCCESS_MESSAGE,
+        message: bh.local?.result?.payload?.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.departmentCreationResponse(bh, parentSpanInst);

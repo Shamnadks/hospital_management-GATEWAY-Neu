@@ -59,7 +59,7 @@
         "y": 100,
         "wires": [
             [
-                "sd_KIM0KIc7pcXWT2lu"
+                "sd_Cyv0HHvBfWjSmbYZ"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -75,75 +75,6 @@
         "generateNext": true,
         "serviceName": "filterDepartmentApi",
         "functionName": "sd_VuYC7ggQ8IVBXptd"
-    },
-    {
-        "id": "sd_KIM0KIc7pcXWT2lu",
-        "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "outputs": 1,
-        "isValidNode": true,
-        "noerr": 0,
-        "service": {
-            "id": "SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI",
-            "type": "tab",
-            "createdDate": "2024-02-13T17:41:58.595Z",
-            "label": "filterDepartmentService",
-            "disabled": false,
-            "info": "",
-            "functionSeq": 0
-        },
-        "flow": {
-            "flowId": "sd_qAnKd14advEjb2RM",
-            "flowName": "filterDepartmentService"
-        },
-        "inputVariables": [
-            {
-                "key": "data",
-                "map": true,
-                "valueType": "bh.input",
-                "value": "query"
-            },
-            {
-                "key": "response",
-                "map": true,
-                "valueType": "bh",
-                "value": ""
-            }
-        ],
-        "bhVariables": [],
-        "outputMapping": [
-            {
-                "mapVarType": "input",
-                "key": "response",
-                "valueType": "bh.local",
-                "value": "result",
-                "mapVarName": "response",
-                "localVar": "bh.local.result"
-            }
-        ],
-        "callService": "./filterDepartmentService",
-        "startName": "filterDepartmentService",
-        "inputParams": [
-            "bh.input.query",
-            null
-        ],
-        "accept_bh": false,
-        "functionName": "sd_KIM0KIc7pcXWT2lu",
-        "category": "General",
-        "x": 320,
-        "y": 100,
-        "wires": [
-            [
-                "sd_4kDUz83rjLwRgKMS"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "filterDepartmentApi",
-        "generated": true
     },
     {
         "id": "sd_hkwQ9a362ym3pROe",
@@ -205,14 +136,98 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
-        "script": "console.log('bh.local?.result')\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    message:process.env.SUCCESS_MESSAGE\n}",
+        "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    message:bh.local?.result?.payload.data\n}",
         "functionName": "responseData",
         "category": "Function",
-        "x": 485,
+        "x": 525,
         "y": 100,
         "wires": [
             [
                 "sd_hkwQ9a362ym3pROe"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "filterDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_Cyv0HHvBfWjSmbYZ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log('hi')",
+        "functionName": "sd_Cyv0HHvBfWjSmbYZ",
+        "category": "Function",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "sd_ib3DlC96bbaWGa1W"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "filterDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_ib3DlC96bbaWGa1W",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI",
+            "type": "tab",
+            "createdDate": "2024-02-13T17:41:58.595Z",
+            "label": "filterDepartmentService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_qAnKd14advEjb2RM",
+            "flowName": "filterDepartmentService"
+        },
+        "inputVariables": [
+            {
+                "key": "data",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "query"
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
+        "callService": "./filterDepartmentService",
+        "startName": "filterDepartmentService",
+        "inputParams": [
+            "bh.input.query"
+        ],
+        "accept_bh": false,
+        "functionName": "sd_ib3DlC96bbaWGa1W",
+        "category": "General",
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "sd_4kDUz83rjLwRgKMS"
             ]
         ],
         "__n_excludedFromValidation__": {},

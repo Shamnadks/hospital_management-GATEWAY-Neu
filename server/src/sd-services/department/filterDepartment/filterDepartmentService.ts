@@ -86,7 +86,6 @@ export class filterDepartmentService {
   async filterDepartmentService(
     parentSpanInst,
     data: any = undefined,
-    response: any = undefined,
     ...others
   ) {
     const spanInst = this.tracerService.createSpan(
@@ -96,9 +95,10 @@ export class filterDepartmentService {
     let bh: any = {
       input: {
         data,
-        response,
       },
-      local: {},
+      local: {
+        response: undefined,
+      },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
@@ -108,10 +108,10 @@ export class filterDepartmentService {
       return (
         // formatting output variables
         {
-          input: {
-            response: bh.input.response,
+          input: {},
+          local: {
+            response: bh.local.response,
           },
-          local: {},
         }
       );
     } catch (e) {
@@ -160,11 +160,10 @@ export class filterDepartmentService {
           id: [bh.input?.data?.id],
         };
       } else {
-        bh.input.response = {
-          id: '',
-        };
+        bh.input.response = {};
       }
       console.log(bh.input.response);
+      console.log(bh.local.url);
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.departmentApiCall(bh, parentSpanInst);
@@ -226,33 +225,10 @@ export class filterDepartmentService {
       );
 
       bh.local.response = responseMsg;
-      bh = await this.sd_CHe68h6GHWFcLFWZ(bh, parentSpanInst);
       //appendnew_next_departmentApiCall
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_17O6dqjTNokK51Jh');
-    }
-  }
-
-  async sd_CHe68h6GHWFcLFWZ(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_CHe68h6GHWFcLFWZ',
-      parentSpanInst
-    );
-    try {
-      console.log(bh.local.response);
-      console.log('fcvgybhnujimkl,');
-      this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_CHe68h6GHWFcLFWZ
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_CHe68h6GHWFcLFWZ',
-        spanInst,
-        'sd_CHe68h6GHWFcLFWZ'
-      );
     }
   }
 

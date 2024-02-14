@@ -99,7 +99,7 @@ export class filterDepartmentApi {
             next
           );
           let parentSpanInst = null;
-          bh = await this.sd_KIM0KIc7pcXWT2lu(bh, parentSpanInst);
+          bh = await this.sd_Cyv0HHvBfWjSmbYZ(bh, parentSpanInst);
           //appendnew_next_sd_VuYC7ggQ8IVBXptd
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_VuYC7ggQ8IVBXptd');
@@ -117,9 +117,31 @@ export class filterDepartmentApi {
 
   //appendnew_flow_filterDepartmentApi_start
 
-  async sd_KIM0KIc7pcXWT2lu(bh, parentSpanInst) {
+  async sd_Cyv0HHvBfWjSmbYZ(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_KIM0KIc7pcXWT2lu',
+      'sd_Cyv0HHvBfWjSmbYZ',
+      parentSpanInst
+    );
+    try {
+      console.log('hi');
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_ib3DlC96bbaWGa1W(bh, parentSpanInst);
+      //appendnew_next_sd_Cyv0HHvBfWjSmbYZ
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_Cyv0HHvBfWjSmbYZ',
+        spanInst,
+        'sd_Cyv0HHvBfWjSmbYZ'
+      );
+    }
+  }
+
+  async sd_ib3DlC96bbaWGa1W(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_ib3DlC96bbaWGa1W',
       parentSpanInst
     );
     try {
@@ -128,22 +150,21 @@ export class filterDepartmentApi {
       let outputVariables =
         await SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbIInstance.filterDepartmentService(
           spanInst,
-          bh.input.query,
-          undefined
+          bh.input.query
         );
-      bh.local.result = outputVariables.input.response;
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.responseData(bh, parentSpanInst);
-      //appendnew_next_sd_KIM0KIc7pcXWT2lu
+      //appendnew_next_sd_ib3DlC96bbaWGa1W
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_KIM0KIc7pcXWT2lu',
+        'sd_ib3DlC96bbaWGa1W',
         spanInst,
-        'sd_KIM0KIc7pcXWT2lu'
+        'sd_ib3DlC96bbaWGa1W'
       );
     }
   }
@@ -154,11 +175,11 @@ export class filterDepartmentApi {
       parentSpanInst
     );
     try {
-      console.log('bh.local?.result');
+      console.log(bh.local?.result?.payload);
       console.log('kjkjkjkj');
       bh.local.response = {
         status: process.env.SUCCESS_STATUS_CODE,
-        message: process.env.SUCCESS_MESSAGE,
+        message: bh.local?.result?.payload.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_hkwQ9a362ym3pROe(bh, parentSpanInst);

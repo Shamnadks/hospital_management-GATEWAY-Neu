@@ -99,7 +99,7 @@ export class updateDepartmentApi {
             next
           );
           let parentSpanInst = null;
-          bh = await this.updateDepartment(bh, parentSpanInst);
+          bh = await this.sd_zCCP7aGWxqUpAT2F(bh, parentSpanInst);
           //appendnew_next_sd_vVGKR48i2Du1V8dn
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_vVGKR48i2Du1V8dn');
@@ -117,9 +117,9 @@ export class updateDepartmentApi {
 
   //appendnew_flow_updateDepartmentApi_start
 
-  async updateDepartment(bh, parentSpanInst) {
+  async sd_zCCP7aGWxqUpAT2F(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'updateDepartment',
+      'sd_zCCP7aGWxqUpAT2F',
       parentSpanInst
     );
     try {
@@ -128,22 +128,21 @@ export class updateDepartmentApi {
       let outputVariables =
         await SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13Instance.departmentUpdateService(
           spanInst,
-          bh.input.body,
-          undefined
+          bh.input.body
         );
-      bh.local.result = outputVariables.input.response;
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.responseData(bh, parentSpanInst);
-      //appendnew_next_updateDepartment
+      //appendnew_next_sd_zCCP7aGWxqUpAT2F
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_kyYOupY6mazhVwJF',
+        'sd_zCCP7aGWxqUpAT2F',
         spanInst,
-        'updateDepartment'
+        'sd_zCCP7aGWxqUpAT2F'
       );
     }
   }
@@ -155,8 +154,8 @@ export class updateDepartmentApi {
     );
     try {
       bh.local.response = {
-        status: process.env.SUCCESS_STATUS_CODE,
-        message: process.env.SUCCESS_MESSAGE,
+        status: bh.local.result.payload.statusCode,
+        message: bh.local.result?.payload?.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.updationResponse(bh, parentSpanInst);

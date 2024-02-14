@@ -81,12 +81,7 @@ export class departmentService {
   }
   //   service flows_departmentService
 
-  async department(
-    parentSpanInst,
-    department: any = undefined,
-    response: any = undefined,
-    ...others
-  ) {
+  async department(parentSpanInst, department: any = undefined, ...others) {
     const spanInst = this.tracerService.createSpan(
       'department',
       parentSpanInst
@@ -94,9 +89,10 @@ export class departmentService {
     let bh: any = {
       input: {
         department,
-        response,
       },
-      local: {},
+      local: {
+        response: undefined,
+      },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
@@ -106,10 +102,10 @@ export class departmentService {
       return (
         // formatting output variables
         {
-          input: {
-            response: bh.input.response,
+          input: {},
+          local: {
+            response: bh.local.response,
           },
-          local: {},
         }
       );
     } catch (e) {
@@ -158,15 +154,12 @@ export class departmentService {
     try {
       bh.local.url = `${process.env.API_URL}/department/post`;
       bh.local.data = {
-        department: [
-          {
-            id: 0,
-            name: bh.input.department.name,
-            info: bh.input.department.info,
-          },
-        ],
+        id: 0,
+        name: bh.input.department.name,
+        info: bh.input.department.info,
+        status: true,
       };
-      console.log(bh.local.data);
+
       this.tracerService.sendData(spanInst, bh);
       bh = await this.departmentApiCall(bh, parentSpanInst);
       //appendnew_next_dataConfiguration
@@ -226,7 +219,7 @@ export class departmentService {
         requestOptions.token
       );
 
-      bh.input.response = responseMsg;
+      bh.local.response = responseMsg;
       //appendnew_next_departmentApiCall
       return bh;
     } catch (e) {

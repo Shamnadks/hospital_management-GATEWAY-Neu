@@ -35,7 +35,7 @@
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
             "SUCCESS_STATUS_CODE": "200",
-            "API_URL": "http://localhost:8083",
+            "API_URL": "http://localhost:8083/api",
             "SUCCESS_MESSAGE": "success"
         }
     },
@@ -55,7 +55,7 @@
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
             "SUCCESS_STATUS_CODE": "200",
-            "API_URL": "http://localhost:8083",
+            "API_URL": "http://localhost:8083/api",
             "SUCCESS_MESSAGE": "success"
         }
     }

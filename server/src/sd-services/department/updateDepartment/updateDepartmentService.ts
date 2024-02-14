@@ -86,7 +86,6 @@ export class updateDepartmentService {
   async departmentUpdateService(
     parentSpanInst,
     data: any = undefined,
-    response: any = undefined,
     ...others
   ) {
     const spanInst = this.tracerService.createSpan(
@@ -96,9 +95,10 @@ export class updateDepartmentService {
     let bh: any = {
       input: {
         data,
-        response,
       },
-      local: {},
+      local: {
+        response: undefined,
+      },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
@@ -108,10 +108,10 @@ export class updateDepartmentService {
       return (
         // formatting output variables
         {
-          input: {
-            response: bh.input.response,
+          input: {},
+          local: {
+            response: bh.local.response,
           },
-          local: {},
         }
       );
     } catch (e) {
@@ -162,14 +162,15 @@ export class updateDepartmentService {
     try {
       bh.local.url = `${process.env.API_URL}/department/put`;
       bh.local.data = {
-        department: [
-          {
-            id: bh.input.data.id,
-            name: bh.input.data.name,
-            info: bh.input.data.info,
-          },
-        ],
+        department: {
+          id: bh.input.data.id,
+          name: bh.input.data.name,
+          info: bh.input.data.info,
+          status: bh.input.data.status,
+        },
       };
+      console.log(bh.local.data);
+      console.log(bh.local.url);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.updationRequest(bh, parentSpanInst);
       //appendnew_next_dataConfiguration
@@ -193,7 +194,7 @@ export class updateDepartmentService {
         method: 'put',
         headers: {},
         followRedirects: true,
-        cookies: {},
+        cookies: undefined,
         authType: undefined,
         body: bh.local.data,
         paytoqs: false,

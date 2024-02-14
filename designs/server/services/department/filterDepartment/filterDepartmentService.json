@@ -27,7 +27,9 @@
                     "value": ""
                 },
                 "output": false
-            },
+            }
+        ],
+        "localVariables": [
             {
                 "key": "response",
                 "defaultValue": {
@@ -37,7 +39,6 @@
                 "output": true
             }
         ],
-        "localVariables": [],
         "accept_bh": false,
         "functionName": "filterDepartmentService",
         "category": "General",
@@ -81,7 +82,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.url = `${process.env.API_URL}/departmentfilter/post`\nif (bh.input?.data?.id) {\n    bh.input.response = {\n        id: [bh.input?.data?.id]\n    }\n}else{\n     bh.input.response = {\n        id: \"\"\n    }\n}\nconsole.log(bh.input.response)\n\n",
+        "script": "bh.local.url = `${process.env.API_URL}/departmentfilter/post`\nif (bh.input?.data?.id) {\n    bh.input.response = {\n        id: [bh.input?.data?.id]\n    }\n}else{\n     bh.input.response = {}\n}\nconsole.log(bh.input.response)\nconsole.log(bh.local.url)\n\n",
         "functionName": "sd_oGBTM9rZ2wMMdkN7",
         "category": "Function",
         "x": 460,
@@ -157,28 +158,6 @@
         "functionName": "departmentApiCall",
         "category": "HTTP",
         "x": 585,
-        "y": 100,
-        "wires": [
-            [
-                "sd_CHe68h6GHWFcLFWZ"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "filterDepartmentService",
-        "generated": true
-    },
-    {
-        "id": "sd_CHe68h6GHWFcLFWZ",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "script": "console.log(bh.local.response)\nconsole.log(\"fcvgybhnujimkl,\")",
-        "functionName": "sd_CHe68h6GHWFcLFWZ",
-        "category": "Function",
-        "x": 700,
         "y": 100,
         "wires": [
             []
