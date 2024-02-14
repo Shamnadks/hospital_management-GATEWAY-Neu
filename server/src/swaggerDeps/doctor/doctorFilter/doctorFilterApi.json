@@ -11,6 +11,12 @@
                     "name": "id",
                     "description": "doctorId",
                     "required": false
+                },
+                {
+                    "in": "query",
+                    "name": "department",
+                    "description": "departmentId",
+                    "required": false
                 }
             ],
             "responses": {},

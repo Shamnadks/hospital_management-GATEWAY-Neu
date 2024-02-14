@@ -21,7 +21,7 @@
         "outputs": 1,
         "inputVariables": [
             {
-                "key": "doctorId",
+                "key": "data",
                 "defaultValue": {
                     "type": "any",
                     "value": ""
@@ -90,7 +90,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.url = `${process.env.API_URL}/doctorfilter/post`\nif (bh.input?.doctorId?.id) {\n    bh.local.reqObject = {\n        id: [bh.input?.doctorId?.id]\n    }\n}else{\n     bh.local.reqObject = {}\n}\n// console.log(bh.input.response)\nconsole.log(bh.local.url)\n\n",
+        "script": "bh.local.url = `${process.env.API_URL}/doctorfilter/post`\nif (bh.input?.data?.id) {\n    bh.local.reqObject = {\n        id: [bh.input?.data?.id]\n    }\n}else{\n     bh.local.reqObject = {}\n}\nif(bh.input?.data?.department){\n    bh.local.reqObject['department_id'] = [bh.input.data.department]\n}\nconsole.log(bh.input.reqObject)\nconsole.log(bh.local.url)\n\n",
         "functionName": "sd_pa1sn9J1175WVItq",
         "category": "Function",
         "x": 485,
@@ -113,6 +113,7 @@
         "nodeType": "flow",
         "name": "doctorApiCall",
         "method": "post",
+        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
@@ -120,6 +121,7 @@
             "mapVarValue": "url"
         },
         "ret": "json",
+        "retMapping": "",
         "retMappingObj": {},
         "reqBody": "bh.local.reqObject",
         "reqBodyObj": {
@@ -133,11 +135,16 @@
         },
         "headers": {},
         "headersObj": [],
+        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
+        "paramMapping": "",
         "paramMappingObj": {},
+        "authType": "",
         "useAuthTypeMappingObj": {},
+        "useAuthTypeMap": {},
+        "useAuthType": "",
         "useAuthUsername": "",
         "useAuthUsernameMappingObj": "",
         "useAuthPassword": "",
@@ -153,6 +160,7 @@
         "proxy": "",
         "useProxy": false,
         "usetls": false,
+        "cookies": [],
         "cookiesMapObj": {},
         "cookiesList": {},
         "switchStates": {

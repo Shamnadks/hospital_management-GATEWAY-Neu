@@ -83,7 +83,7 @@ export class doctorFilterService {
 
   async filterDepartmentService(
     parentSpanInst,
-    doctorId: any = undefined,
+    data: any = undefined,
     ...others
   ) {
     const spanInst = this.tracerService.createSpan(
@@ -92,7 +92,7 @@ export class doctorFilterService {
     );
     let bh: any = {
       input: {
-        doctorId,
+        data,
       },
       local: {
         response: undefined,
@@ -154,14 +154,17 @@ export class doctorFilterService {
     );
     try {
       bh.local.url = `${process.env.API_URL}/doctorfilter/post`;
-      if (bh.input?.doctorId?.id) {
+      if (bh.input?.data?.id) {
         bh.local.reqObject = {
-          id: [bh.input?.doctorId?.id],
+          id: [bh.input?.data?.id],
         };
       } else {
         bh.local.reqObject = {};
       }
-      // console.log(bh.input.response)
+      if (bh.input?.data?.department) {
+        bh.local.reqObject['department_id'] = [bh.input.data.department];
+      }
+      console.log(bh.input.reqObject);
       console.log(bh.local.url);
 
       this.tracerService.sendData(spanInst, bh);
@@ -187,7 +190,7 @@ export class doctorFilterService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: undefined,
+        cookies: {},
         authType: undefined,
         body: bh.local.reqObject,
         paytoqs: false,

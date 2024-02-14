@@ -45,6 +45,14 @@
                     "required": false,
                     "rowId": "sd_6AIqXmxFIiRSJRV0",
                     "valid": true
+                },
+                {
+                    "key": "department",
+                    "desc": "departmentId",
+                    "type": "query",
+                    "required": false,
+                    "rowId": "sd_SgcSeGx2vOOjMH3e",
+                    "valid": true
                 }
             ],
             "produces": [],
@@ -73,7 +81,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "doctorFilterApi",
-        "functionName": "sd_gM6LLOgYgYi63NqC"
+        "functionName": "sd_gM6LLOgYgYi63NqC",
+        "generated": false
     },
     {
         "id": "sd_y31yN3xIxL58WvLj",
@@ -101,6 +110,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -196,7 +206,7 @@
         },
         "inputVariables": [
             {
-                "key": "doctorId",
+                "key": "data",
                 "map": true,
                 "valueType": "bh.input",
                 "value": "query"
@@ -229,9 +239,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
+        "generated": true,
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
-        "generated": true
+        "serviceName": "doctorFilterApi"
     },
     {
         "id": "sd_nd4brDuUHhfg27ca",
@@ -258,7 +268,8 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorFilterApi"
+        "serviceName": "doctorFilterApi",
+        "generated": false
     },
     {
         "id": "sd_oH1NfLgBGOIyO7vw",
