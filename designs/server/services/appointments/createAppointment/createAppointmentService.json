@@ -1,0 +1,178 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "type": "tab",
+        "createdDate": "2024-02-14T08:58:10.840Z",
+        "label": "createAppointmentService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "createAppointmentService",
+        "relativeParentPath": "appointments/createAppointment"
+    },
+    {
+        "id": "sd_n7B7BA7ATjPV3SGH",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "appointmentService",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "data",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "appointmentDetails",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            },
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "appointmentService",
+        "category": "General",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "sd_nwjgwjrrw3rp14YA"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "createAppointmentService"
+    },
+    {
+        "id": "sd_lhjqyC3yDKIg0cji",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "dataConfig",
+        "script": "\nbh.local.url = `${process.env.API_URL}/appointment/post`\nbh.local.appointmentDetails = {\n    id:0,\n    name:bh.input?.data?.name,\n    phone_no:bh.input?.data?.phone_no,\n    dob: new Date(bh.input?.data?.dob),\n    place:bh.input?.data?.place,\n    address:bh.input?.data?.address,\n    pin_code:bh.input?.data?.pin_code,\n    email:bh.input?.data?.email,\n    blood_group:bh.input?.data?.blood_group,\n    doctor_id:bh.input?.data?.doctor_id,\n    cash:bh.input?.data?.cash\n}\nconsole.log(bh.local.appointmentDetails)\n",
+        "functionName": "dataConfig",
+        "category": "Function",
+        "x": 425,
+        "y": 120,
+        "wires": [
+            [
+                "sd_uyBTiN53oHe8z0x1"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createAppointmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_uyBTiN53oHe8z0x1",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "appointmenApiCall",
+        "method": "post",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.appointmentDetails",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "appointmentDetails"
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "appointmenApiCall",
+        "category": "HTTP",
+        "x": 540,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createAppointmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_nwjgwjrrw3rp14YA",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "validation",
+        "script": "console.log('validation')",
+        "functionName": "validation",
+        "category": "Function",
+        "x": 305,
+        "y": 120,
+        "wires": [
+            [
+                "sd_lhjqyC3yDKIg0cji"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createAppointmentService",
+        "generated": true
+    }
+]

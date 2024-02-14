@@ -17,7 +17,7 @@
             ],
             "responses": {},
             "tags": [
-                "appointment"
+                "createAppointmentApi"
             ]
         }
     }
