@@ -1,23 +1,21 @@
 {
-    "/appointment/post": {
-        "post": {
+    "/doctor/get": {
+        "get": {
             "summary": "",
             "description": "",
-            "consumes": [
-                "application/json"
-            ],
+            "consumes": [],
             "produces": [],
             "parameters": [
                 {
-                    "in": "body",
-                    "name": "appointmentDetails",
-                    "description": "details",
+                    "in": "query",
+                    "name": "id",
+                    "description": "doctorId",
                     "required": false
                 }
             ],
             "responses": {},
             "tags": [
-                "appointment"
+                "doctorFilterApi"
             ]
         }
     }

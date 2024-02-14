@@ -7,9 +7,9 @@ import * as cookieParser from 'cookie-parser'; //_splitter_
 import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
-import * as SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ from './doctorService'; //_splitter_
+import * as SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8 from './createAppointmentService'; //_splitter_
 //append_imports_end
-export class doctorApi {
+export class createAppointmentApi {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -25,7 +25,7 @@ export class doctorApi {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'doctorApi';
+    this.serviceName = 'createAppointmentApi';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -40,7 +40,7 @@ export class doctorApi {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new doctorApi(
+      instance = new createAppointmentApi(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -69,19 +69,19 @@ export class doctorApi {
   }
 
   async mountTimers() {
-    //appendnew_flow_doctorApi_TimerStart
+    //appendnew_flow_createAppointmentApi_TimerStart
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: doctorApi');
-    //appendnew_flow_doctorApi_MiddlewareStart
+    log.debug('mounting all middlewares for service :: createAppointmentApi');
+    //appendnew_flow_createAppointmentApi_MiddlewareStart
   }
 
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: doctorApi');
+    log.debug('mounting all paths for service :: createAppointmentApi');
 
     this.app['post'](
-      `${this.serviceBasePath}/doctors/post`,
+      `${this.serviceBasePath}/appointment/post`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,
@@ -99,10 +99,10 @@ export class doctorApi {
             next
           );
           let parentSpanInst = null;
-          bh = await this.sd_X8P7bWDdzr1hXTTt(bh, parentSpanInst);
-          //appendnew_next_sd_iBzM9lrAtNqxYyPw
+          bh = await this.sd_XmMdO6lY5WFL2DJ3(bh, parentSpanInst);
+          //appendnew_next_sd_5M3azCNmW5JUTshO
         } catch (e) {
-          return await this.errorHandler(bh, e, 'sd_iBzM9lrAtNqxYyPw');
+          return await this.errorHandler(bh, e, 'sd_5M3azCNmW5JUTshO');
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
@@ -111,101 +111,98 @@ export class doctorApi {
         this.generatedMiddlewares
       )
     );
-    //appendnew_flow_doctorApi_HttpIn
+    //appendnew_flow_createAppointmentApi_HttpIn
   }
-  //   service flows_doctorApi
+  //   service flows_createAppointmentApi
 
-  //appendnew_flow_doctorApi_start
+  //appendnew_flow_createAppointmentApi_start
 
-  async sd_X8P7bWDdzr1hXTTt(bh, parentSpanInst) {
+  async sd_XmMdO6lY5WFL2DJ3(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_X8P7bWDdzr1hXTTt',
+      'sd_XmMdO6lY5WFL2DJ3',
       parentSpanInst
     );
     try {
-      // console.log(bh.input?.body)
-      console.log('start');
+      console.log('HI');
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_kN6JYUt4SAwsrrs0(bh, parentSpanInst);
-      //appendnew_next_sd_X8P7bWDdzr1hXTTt
+      bh = await this.appointmentServiceCall(bh, parentSpanInst);
+      //appendnew_next_sd_XmMdO6lY5WFL2DJ3
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_X8P7bWDdzr1hXTTt',
+        'sd_XmMdO6lY5WFL2DJ3',
         spanInst,
-        'sd_X8P7bWDdzr1hXTTt'
+        'sd_XmMdO6lY5WFL2DJ3'
       );
     }
   }
 
-  async sd_kN6JYUt4SAwsrrs0(bh, parentSpanInst) {
+  async appointmentServiceCall(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_kN6JYUt4SAwsrrs0',
+      'appointmentServiceCall',
       parentSpanInst
     );
     try {
-      const SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQInstance: SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ.doctorService =
-        SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ.doctorService.getInstance();
+      const SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8Instance: SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8.createAppointmentService =
+        SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8.createAppointmentService.getInstance();
       let outputVariables =
-        await SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQInstance.doctorService(
+        await SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8Instance.appointmentService(
           spanInst,
           bh.input.body
         );
       bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_0sgvSAgENBjfs5we(bh, parentSpanInst);
-      //appendnew_next_sd_kN6JYUt4SAwsrrs0
+      bh = await this.dataConfig(bh, parentSpanInst);
+      //appendnew_next_appointmentServiceCall
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_kN6JYUt4SAwsrrs0',
+        'sd_UiEHpKRKypWiLgqY',
         spanInst,
-        'sd_kN6JYUt4SAwsrrs0'
+        'appointmentServiceCall'
       );
     }
   }
 
-  async sd_0sgvSAgENBjfs5we(bh, parentSpanInst) {
+  async dataConfig(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_0sgvSAgENBjfs5we',
+      'dataConfig',
       parentSpanInst
     );
     try {
-      console.log(bh.local);
+      console.log(bh.input.body);
+      bh.local.statusCode = process.env.SUCCESS_STATUS_CODE;
       bh.local.response = {
-        status: bh.local.result?.statusCode,
-        message: bh.local.result?.payload?.data,
+        status: 200,
+        response: bh.local?.result?.payload?.data,
       };
-      console.log('success');
       this.tracerService.sendData(spanInst, bh);
-      await this.sd_UyEo41l81UOcNYrx(bh, parentSpanInst);
-      //appendnew_next_sd_0sgvSAgENBjfs5we
+      await this.appointmentApiCall(bh, parentSpanInst);
+      //appendnew_next_dataConfig
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_0sgvSAgENBjfs5we',
+        'sd_eocoa37MJR5UXYFq',
         spanInst,
-        'sd_0sgvSAgENBjfs5we'
+        'dataConfig'
       );
     }
   }
 
-  async sd_UyEo41l81UOcNYrx(bh, parentSpanInst) {
+  async appointmentApiCall(bh, parentSpanInst) {
     try {
-      bh.web.res
-        .status(bh.local.response.status)
-        .send(bh.local.response.message);
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_UyEo41l81UOcNYrx');
+      return await this.errorHandler(bh, e, 'sd_Ul7yeFoxZxSNVmMw');
     }
   }
 
@@ -225,7 +222,7 @@ export class doctorApi {
       return await this.errorHandler(
         bh,
         e,
-        'sd_lMo9ShgDINOO2M31',
+        'sd_1eMcUpnzHwdCinOP',
         spanInst,
         'errorInfo'
       );
@@ -238,7 +235,7 @@ export class doctorApi {
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_RTJ4uN7GD1yH3ctt');
+      return await this.errorHandler(bh, e, 'sd_tnZP3aXhRnccU7RS');
     }
   }
 
@@ -272,7 +269,7 @@ export class doctorApi {
     }
   }
   async exceptionHandling(bh, parentSpanInst) {
-    const catchConnectedNodes = ['sd_lMo9ShgDINOO2M31', 'sd_RTJ4uN7GD1yH3ctt'];
+    const catchConnectedNodes = ['sd_1eMcUpnzHwdCinOP', 'sd_tnZP3aXhRnccU7RS'];
     if (catchConnectedNodes.includes(bh.errorSource)) {
       return false;
     }
@@ -280,5 +277,5 @@ export class doctorApi {
     //appendnew_next_exceptionHandling
     return true;
   }
-  //appendnew_flow_doctorApi_Catch
+  //appendnew_flow_createAppointmentApi_Catch
 }

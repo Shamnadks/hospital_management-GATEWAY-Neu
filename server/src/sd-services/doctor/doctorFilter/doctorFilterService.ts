@@ -7,7 +7,7 @@ import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
 //append_imports_end
-export class doctorService {
+export class doctorFilterService {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -23,7 +23,7 @@ export class doctorService {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'doctorService';
+    this.serviceName = 'doctorFilterService';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -38,7 +38,7 @@ export class doctorService {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new doctorService(
+      instance = new doctorFilterService(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -67,38 +67,43 @@ export class doctorService {
   }
 
   async mountTimers() {
-    //appendnew_flow_doctorService_TimerStart
+    //appendnew_flow_doctorFilterService_TimerStart
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: doctorService');
-    //appendnew_flow_doctorService_MiddlewareStart
+    log.debug('mounting all middlewares for service :: doctorFilterService');
+    //appendnew_flow_doctorFilterService_MiddlewareStart
   }
 
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: doctorService');
-    //appendnew_flow_doctorService_HttpIn
+    log.debug('mounting all paths for service :: doctorFilterService');
+    //appendnew_flow_doctorFilterService_HttpIn
   }
-  //   service flows_doctorService
+  //   service flows_doctorFilterService
 
-  async doctorService(parentSpanInst, doctor: any = undefined, ...others) {
+  async filterDepartmentService(
+    parentSpanInst,
+    doctorId: any = undefined,
+    ...others
+  ) {
     const spanInst = this.tracerService.createSpan(
-      'doctorService',
+      'filterDepartmentService',
       parentSpanInst
     );
     let bh: any = {
       input: {
-        doctor,
+        doctorId,
       },
       local: {
         response: undefined,
+        reqObject: undefined,
       },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.validation(bh, parentSpanInst);
-      //appendnew_next_doctorService
+      //appendnew_next_filterDepartmentService
       return (
         // formatting output variables
         {
@@ -112,13 +117,13 @@ export class doctorService {
       return await this.errorHandler(
         bh,
         e,
-        'sd_R0xUVWx8v7iuEpcb',
+        'sd_8XQWSWiqqGoNJ8vx',
         spanInst,
-        'doctorService'
+        'filterDepartmentService'
       );
     }
   }
-  //appendnew_flow_doctorService_start
+  //appendnew_flow_doctorFilterService_start
 
   async validation(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
@@ -126,76 +131,55 @@ export class doctorService {
       parentSpanInst
     );
     try {
-      let data = bh.input.doctor;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      console.log(data);
-      if (!data?.name?.trim()) throw new Error('Invalid name');
-      if (!data?.email?.trim()) throw new Error('Invalid email');
-      if (!emailRegex.test(data?.email)) throw new Error('Invalid email');
-      // if(!data.phone_no.trim()) throw new Error('Invalid phone number')
-      if (typeof data['phone_no'] !== 'number')
-        throw new Error('Invalid phone number');
-      if (!data.address?.trim()) throw new Error('Invalid address');
-      // if(typeof data?.dob !== 'number') throw new Error('Invalid age')
-      if (typeof data['department_id'] !== 'number')
-        throw new Error('Invalid department');
-      if (typeof data?.salary !== 'number') throw new Error('Invalid salary');
-      if (typeof data['token_limit'] !== 'number')
-        throw new Error('Invalid token number');
+      console.log(bh.input);
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.dataConfiguration(bh, parentSpanInst);
+      bh = await this.sd_pa1sn9J1175WVItq(bh, parentSpanInst);
       //appendnew_next_validation
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_elkfQpFfvo1IQs1K',
+        'sd_3DELk0wc9vaYU4CT',
         spanInst,
         'validation'
       );
     }
   }
 
-  async dataConfiguration(bh, parentSpanInst) {
+  async sd_pa1sn9J1175WVItq(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'dataConfiguration',
+      'sd_pa1sn9J1175WVItq',
       parentSpanInst
     );
     try {
-      // bh.local.url = `${process.env.API_URL}/department/put`
-      let data = bh.input?.doctor;
-      bh.local.url = `${process.env.API_URL}/doctors/post`;
-      bh.local.data = {
-        id: 0,
-        name: data?.name,
-        phone_no: data?.phone_no,
-        email: data?.email,
-        address: data?.email,
-        dob: data?.dob,
-        department_id: data?.department_id,
-        education: data?.education,
-        salary: data?.salary,
-        token_limit: data?.token_limit,
-        status: 'Available',
-      };
-      console.log(bh.local.data);
+      bh.local.url = `${process.env.API_URL}/doctorfilter/post`;
+      if (bh.input?.doctorId?.id) {
+        bh.local.reqObject = {
+          id: [bh.input?.doctorId?.id],
+        };
+      } else {
+        bh.local.reqObject = {};
+      }
+      // console.log(bh.input.response)
+      console.log(bh.local.url);
+
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.departmentApiCall(bh, parentSpanInst);
-      //appendnew_next_dataConfiguration
+      bh = await this.doctorApiCall(bh, parentSpanInst);
+      //appendnew_next_sd_pa1sn9J1175WVItq
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_Q7JPk88Is00Mx2Wh',
+        'sd_pa1sn9J1175WVItq',
         spanInst,
-        'dataConfiguration'
+        'sd_pa1sn9J1175WVItq'
       );
     }
   }
 
-  async departmentApiCall(bh, parentSpanInst) {
+  async doctorApiCall(bh, parentSpanInst) {
     try {
       let requestOptions: any = {
         url: bh.local.url,
@@ -205,7 +189,7 @@ export class doctorService {
         followRedirects: true,
         cookies: undefined,
         authType: undefined,
-        body: bh.local.data,
+        body: bh.local.reqObject,
         paytoqs: false,
         proxyConfig: undefined,
         tlsConfig: undefined,
@@ -240,10 +224,10 @@ export class doctorService {
       );
 
       bh.local.response = responseMsg;
-      //appendnew_next_departmentApiCall
+      //appendnew_next_doctorApiCall
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_TRKSas82Cpnw2hDl');
+      return await this.errorHandler(bh, e, 'sd_79QWju6hE5WarnUc');
     }
   }
 
@@ -268,5 +252,5 @@ export class doctorService {
       throw e;
     }
   }
-  //appendnew_flow_doctorService_Catch
+  //appendnew_flow_doctorFilterService_Catch
 }

@@ -1,24 +1,24 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "id": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "type": "tab",
-        "createdDate": "2024-02-13T17:54:05.381Z",
-        "label": "doctorApi",
+        "createdDate": "2024-02-14T08:21:50.433Z",
+        "label": "createAppointmentApi",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "doctorApi",
-        "relativeParentPath": "doctor/doctorCreation"
+        "serviceName": "createAppointmentApi",
+        "relativeParentPath": "appointments/createAppointment"
     },
     {
-        "id": "sd_iBzM9lrAtNqxYyPw",
+        "id": "sd_5M3azCNmW5JUTshO",
         "type": "HttpIn",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "server",
         "nodeType": "start",
-        "name": "doctorCreation",
-        "path": "doctors/post",
+        "name": "appointment",
+        "path": "appointment/post",
         "uploadpath": "",
         "summary": "",
         "description": "",
@@ -39,26 +39,32 @@
             "responses": [],
             "params": [
                 {
-                    "key": "doctorDetails",
-                    "desc": "details about doctor ",
+                    "key": "appointmentDetails",
+                    "desc": "details",
                     "type": "body",
                     "required": false,
-                    "rowId": "sd_tYVYWGmwJj8Kv1lX",
+                    "rowId": "sd_hLaEqt6Zsh86dJEx",
                     "valid": true
                 }
             ],
             "produces": [],
-            "consumes": []
+            "consumes": [
+                {
+                    "key": "application/json",
+                    "rowId": "sd_jmElZhcrA4iMNsc7",
+                    "valid": true
+                }
+            ]
         },
         "inputs": 0,
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 205,
+        "x": 165,
         "y": 120,
         "wires": [
             [
-                "sd_X8P7bWDdzr1hXTTt"
+                "sd_XmMdO6lY5WFL2DJ3"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -72,64 +78,42 @@
         },
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorApi",
-        "functionName": "sd_iBzM9lrAtNqxYyPw"
+        "serviceName": "createAppointmentApi",
+        "functionName": "sd_5M3azCNmW5JUTshO"
     },
     {
-        "id": "sd_X8P7bWDdzr1hXTTt",
+        "id": "sd_eocoa37MJR5UXYFq",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "",
-        "script": "// console.log(bh.input?.body)\nconsole.log('start')",
-        "functionName": "sd_X8P7bWDdzr1hXTTt",
+        "name": "dataConfig",
+        "script": "console.log(bh.input.body)\nbh.local.statusCode = process.env.SUCCESS_STATUS_CODE\nbh.local.response ={\n    status:200,\n    response:bh.local?.result?.payload?.data\n}",
+        "functionName": "dataConfig",
         "category": "Function",
-        "x": 410,
+        "x": 505,
         "y": 120,
         "wires": [
             [
-                "sd_kN6JYUt4SAwsrrs0"
+                "sd_Ul7yeFoxZxSNVmMw"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorApi",
+        "serviceName": "createAppointmentApi",
         "generated": true
     },
     {
-        "id": "sd_0sgvSAgENBjfs5we",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "script": "console.log(bh.local)\nbh.local.response={\n    status:bh.local.result?.statusCode,\n    message:bh.local.result?.payload?.data\n    \n}\nconsole.log('success')",
-        "functionName": "sd_0sgvSAgENBjfs5we",
-        "category": "Function",
-        "x": 670,
-        "y": 120,
-        "wires": [
-            [
-                "sd_UyEo41l81UOcNYrx"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "doctorApi",
-        "generated": true
-    },
-    {
-        "id": "sd_UyEo41l81UOcNYrx",
+        "id": "sd_Ul7yeFoxZxSNVmMw",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "server",
         "nodeType": "flow",
-        "name": "",
+        "name": "appointmentApiCall",
         "headers": {},
         "responseBody": {
             "type": "bh.local",
-            "value": "response.message",
+            "value": "response",
             "ssd_typedInputField": true
         },
         "httpcode": {
@@ -141,8 +125,8 @@
         "swaggerResponse": {},
         "responseMapping": {
             "status": "bh.local.response.status",
-            "obj": "bh.local.response.message",
-            "send": "bh.local.response.message"
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
         },
         "dataModelIsArray": false,
         "inputs": 1,
@@ -161,20 +145,82 @@
             "headers": "Map",
             "cookies": "Map"
         },
-        "functionName": "sd_UyEo41l81UOcNYrx",
+        "functionName": "appointmentApiCall",
         "category": "HTTP",
-        "x": 790,
+        "x": 640,
         "y": 120,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorApi",
+        "serviceName": "createAppointmentApi",
         "generated": true
     },
     {
-        "id": "sd_NR5r9Lf2B7HTj7jt",
+        "id": "sd_UiEHpKRKypWiLgqY",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "appointmentServiceCall",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+            "type": "tab",
+            "createdDate": "2024-02-14T08:58:10.840Z",
+            "label": "createAppointmentService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_n7B7BA7ATjPV3SGH",
+            "flowName": "appointmentService"
+        },
+        "inputVariables": [
+            {
+                "key": "data",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "body"
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
+        "callService": "./createAppointmentService",
+        "startName": "appointmentService",
+        "inputParams": [
+            "bh.input.body"
+        ],
+        "accept_bh": false,
+        "functionName": "appointmentServiceCall",
+        "category": "General",
+        "x": 385,
+        "y": 120,
+        "wires": [
+            [
+                "sd_eocoa37MJR5UXYFq"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createAppointmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_e8y5i0BNMUVdo1Z6",
         "type": "Catch",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "common",
         "nodeType": "start",
         "name": "exceptionHandling",
@@ -182,48 +228,48 @@
         "selectCatchType": "allnodes",
         "masternodeList": "",
         "ignoreList": [
-            "sd_lMo9ShgDINOO2M31",
-            "sd_RTJ4uN7GD1yH3ctt"
+            "sd_1eMcUpnzHwdCinOP",
+            "sd_tnZP3aXhRnccU7RS"
         ],
         "functionName": "exceptionHandling",
         "category": "General",
-        "x": 405,
+        "x": 325,
         "y": 240,
         "wires": [
             [
-                "sd_lMo9ShgDINOO2M31"
+                "sd_1eMcUpnzHwdCinOP"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorApi"
+        "serviceName": "createAppointmentApi"
     },
     {
-        "id": "sd_lMo9ShgDINOO2M31",
+        "id": "sd_1eMcUpnzHwdCinOP",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "common",
         "nodeType": "flow",
         "name": "errorInfo",
         "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
         "functionName": "errorInfo",
         "category": "Function",
-        "x": 565,
+        "x": 485,
         "y": 240,
         "wires": [
             [
-                "sd_RTJ4uN7GD1yH3ctt"
+                "sd_tnZP3aXhRnccU7RS"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorApi",
+        "serviceName": "createAppointmentApi",
         "generated": true
     },
     {
-        "id": "sd_RTJ4uN7GD1yH3ctt",
+        "id": "sd_tnZP3aXhRnccU7RS",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "server",
         "nodeType": "flow",
         "name": "exceptionResponse",
@@ -265,74 +311,34 @@
         },
         "functionName": "exceptionResponse",
         "category": "HTTP",
-        "x": 777,
-        "y": 247.1999969482422,
+        "x": 660,
+        "y": 240,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorApi",
+        "serviceName": "createAppointmentApi",
         "generated": true
     },
     {
-        "id": "sd_kN6JYUt4SAwsrrs0",
-        "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "id": "sd_XmMdO6lY5WFL2DJ3",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "outputs": 1,
-        "isValidNode": true,
-        "noerr": 0,
-        "service": {
-            "id": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
-            "type": "tab",
-            "createdDate": "2024-02-13T18:25:46.845Z",
-            "label": "doctorService",
-            "disabled": false,
-            "info": "",
-            "functionSeq": 0
-        },
-        "flow": {
-            "flowId": "sd_R0xUVWx8v7iuEpcb",
-            "flowName": "doctorService"
-        },
-        "inputVariables": [
-            {
-                "key": "doctor",
-                "map": true,
-                "valueType": "bh.input",
-                "value": "body"
-            }
-        ],
-        "bhVariables": [],
-        "outputMapping": [
-            {
-                "mapVarType": "local",
-                "key": "response",
-                "valueType": "bh.local",
-                "value": "result",
-                "mapVarName": "response",
-                "localVar": "bh.local.result"
-            }
-        ],
-        "callService": "./doctorService",
-        "startName": "doctorService",
-        "inputParams": [
-            "bh.input.body"
-        ],
-        "accept_bh": false,
-        "functionName": "sd_kN6JYUt4SAwsrrs0",
-        "category": "General",
-        "x": 545,
+        "script": "console.log('HI')",
+        "functionName": "sd_XmMdO6lY5WFL2DJ3",
+        "category": "Function",
+        "x": 260,
         "y": 120,
         "wires": [
             [
-                "sd_0sgvSAgENBjfs5we"
+                "sd_UiEHpKRKypWiLgqY"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorApi",
+        "serviceName": "createAppointmentApi",
         "generated": true
     }
 ]

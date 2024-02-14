@@ -1,27 +1,27 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "id": "SSD_SERVICE_ID_sd_F58XlOhAZ8F4OeRg",
         "type": "tab",
-        "createdDate": "2024-02-13T18:25:46.845Z",
-        "label": "doctorService",
+        "createdDate": "2024-02-14T07:53:09.344Z",
+        "label": "doctorFilterService",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "doctorService",
-        "relativeParentPath": "doctor/doctorCreation"
+        "serviceName": "doctorFilterService",
+        "relativeParentPath": "doctor/doctorFilter"
     },
     {
-        "id": "sd_R0xUVWx8v7iuEpcb",
+        "id": "sd_8XQWSWiqqGoNJ8vx",
         "type": "Start",
-        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "z": "SSD_SERVICE_ID_sd_F58XlOhAZ8F4OeRg",
         "viewType": "client-server",
         "nodeType": "start",
-        "name": "doctorService",
+        "name": "filterDepartmentService",
         "outputs": 1,
         "inputVariables": [
             {
-                "key": "doctor",
+                "key": "doctorId",
                 "defaultValue": {
                     "type": "any",
                     "value": ""
@@ -37,73 +37,81 @@
                     "value": ""
                 },
                 "output": true
+            },
+            {
+                "key": "reqObject",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
             }
         ],
         "accept_bh": false,
-        "functionName": "doctorService",
+        "functionName": "filterDepartmentService",
         "category": "General",
-        "x": 245,
+        "x": 205,
         "y": 100,
         "wires": [
             [
-                "sd_elkfQpFfvo1IQs1K"
+                "sd_3DELk0wc9vaYU4CT"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorService"
+        "serviceName": "doctorFilterService"
     },
     {
-        "id": "sd_Q7JPk88Is00Mx2Wh",
+        "id": "sd_3DELk0wc9vaYU4CT",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "dataConfiguration",
-        "script": "// bh.local.url = `${process.env.API_URL}/department/put`\nlet data = bh.input?.doctor\nbh.local.url = `${process.env.API_URL}/doctors/post`\nbh.local.data = {\n            id:0,\n            name:data?.name,\n            phone_no: data?.phone_no,\n            email:data?.email,\n            address:data?.email,\n            dob:data?.dob,\n            department_id:data?.department_id,\n            education: data?.education,\n            salary: data?.salary,\n            token_limit: data?.token_limit,\n            status: \"Available\"\n        }\nconsole.log(bh.local.data)",
-        "functionName": "dataConfiguration",
-        "category": "Function",
-        "x": 525,
-        "y": 100,
-        "wires": [
-            [
-                "sd_TRKSas82Cpnw2hDl"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "doctorService",
-        "generated": true
-    },
-    {
-        "id": "sd_elkfQpFfvo1IQs1K",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "z": "SSD_SERVICE_ID_sd_F58XlOhAZ8F4OeRg",
         "viewType": "common",
         "nodeType": "flow",
         "name": "validation",
-        "script": "let data = bh.input.doctor\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nconsole.log(data)\nif(!data?.name?.trim())  throw new Error('Invalid name')\nif(!data?.email?.trim()) throw new Error('Invalid email')\nif(!emailRegex.test(data?.email)) throw new Error(\"Invalid email\")\n// if(!data.phone_no.trim()) throw new Error('Invalid phone number')\nif(typeof data[\"phone_no\"] !== 'number' ) throw new Error('Invalid phone number')\nif(!data.address?.trim()) throw new Error('Invalid address')\n// if(typeof data?.dob !== 'number') throw new Error('Invalid age')\nif(typeof data[\"department_id\"] !== 'number') throw new Error('Invalid department')\nif(typeof data?.salary!== 'number') throw new Error('Invalid salary')\nif(typeof data[\"token_limit\"] !== 'number' ) throw new Error('Invalid token number')",
+        "script": "console.log(bh.input)",
         "functionName": "validation",
         "category": "Function",
-        "x": 365,
+        "x": 330,
         "y": 100,
         "wires": [
             [
-                "sd_Q7JPk88Is00Mx2Wh"
+                "sd_pa1sn9J1175WVItq"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorService",
+        "serviceName": "doctorFilterService",
         "generated": true
     },
     {
-        "id": "sd_TRKSas82Cpnw2hDl",
+        "id": "sd_pa1sn9J1175WVItq",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_F58XlOhAZ8F4OeRg",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.url = `${process.env.API_URL}/doctorfilter/post`\nif (bh.input?.doctorId?.id) {\n    bh.local.reqObject = {\n        id: [bh.input?.doctorId?.id]\n    }\n}else{\n     bh.local.reqObject = {}\n}\n// console.log(bh.input.response)\nconsole.log(bh.local.url)\n\n",
+        "functionName": "sd_pa1sn9J1175WVItq",
+        "category": "Function",
+        "x": 485,
+        "y": 100,
+        "wires": [
+            [
+                "sd_79QWju6hE5WarnUc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorFilterService",
+        "generated": true
+    },
+    {
+        "id": "sd_79QWju6hE5WarnUc",
         "type": "ServerHttpRequest",
-        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "z": "SSD_SERVICE_ID_sd_F58XlOhAZ8F4OeRg",
         "viewType": "server",
         "nodeType": "flow",
-        "name": "departmentApiCall",
+        "name": "doctorApiCall",
         "method": "post",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
@@ -113,10 +121,10 @@
         },
         "ret": "json",
         "retMappingObj": {},
-        "reqBody": "bh.local.data",
+        "reqBody": "bh.local.reqObject",
         "reqBodyObj": {
             "mapVarType": "bh.local",
-            "mapVarValue": "data"
+            "mapVarValue": "reqObject"
         },
         "resultMapping": "bh.local.response",
         "resultMappingObj": {
@@ -155,16 +163,16 @@
             "type": "num",
             "value": ""
         },
-        "functionName": "departmentApiCall",
+        "functionName": "doctorApiCall",
         "category": "HTTP",
-        "x": 685,
+        "x": 610,
         "y": 100,
         "wires": [
             []
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorService",
+        "serviceName": "doctorFilterService",
         "generated": true
     }
 ]
