@@ -165,7 +165,7 @@ export class createAppointmentService {
         doctor_id: bh.input?.data?.doctor_id,
         cash: bh.input?.data?.cash,
         payment_method: bh.input?.data?.payment_method,
-        success_url: bh.input?.data?.sucess_url,
+        sucess_url: bh.input?.data?.sucess_url,
         cancel_url: bh.input?.data?.cancel_url,
       };
       console.log(bh.local.appointmentDetails);
