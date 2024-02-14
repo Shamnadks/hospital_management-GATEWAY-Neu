@@ -125,6 +125,7 @@ export class doctorApi {
     try {
       // console.log(bh.input?.body)
       console.log('start');
+      console.log(bh.input.body);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_kN6JYUt4SAwsrrs0(bh, parentSpanInst);
       //appendnew_next_sd_X8P7bWDdzr1hXTTt
