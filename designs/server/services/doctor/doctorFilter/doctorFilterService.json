@@ -90,7 +90,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.url = `${process.env.API_URL}/doctorfilter/post`\nif (bh.input?.data?.id) {\n    bh.local.reqObject = {\n        id: [bh.input?.data?.id]\n    }\n}else{\n     bh.local.reqObject = {}\n}\nif(bh.input?.data?.department){\n    bh.local.reqObject['department_id'] = [bh.input.data.department]\n}\nconsole.log(bh.input.reqObject)\nconsole.log(bh.local.url)\n\n",
+        "script": "bh.local.url = `${process.env.API_URL}/doctorfilter/post`\n\nbh.local?.reqObject = {}\n\nif (bh.input?.data?.id) {\n    bh.local?.reqObject = {\n        id: [bh.input?.data?.id]\n    }\n}\n\nif(bh.input?.data?.department){\n    bh.local?.reqObject?.['department_id'] = [bh.input?.data?.department]\n}\n\nconsole.log(bh.input?.reqObject)\nconsole.log(bh.local?.url)\n\n",
         "functionName": "sd_pa1sn9J1175WVItq",
         "category": "Function",
         "x": 485,

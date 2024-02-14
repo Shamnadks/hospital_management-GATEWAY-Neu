@@ -7,9 +7,9 @@ import * as cookieParser from 'cookie-parser'; //_splitter_
 import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
-import * as SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI from './filterDepartmentService'; //_splitter_
+import * as SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ from './patientListService'; //_splitter_
 //append_imports_end
-export class filterDepartmentApi {
+export class patientListApi {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -25,7 +25,7 @@ export class filterDepartmentApi {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'filterDepartmentApi';
+    this.serviceName = 'patientListApi';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -40,7 +40,7 @@ export class filterDepartmentApi {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new filterDepartmentApi(
+      instance = new patientListApi(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -69,19 +69,19 @@ export class filterDepartmentApi {
   }
 
   async mountTimers() {
-    //appendnew_flow_filterDepartmentApi_TimerStart
+    //appendnew_flow_patientListApi_TimerStart
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: filterDepartmentApi');
-    //appendnew_flow_filterDepartmentApi_MiddlewareStart
+    log.debug('mounting all middlewares for service :: patientListApi');
+    //appendnew_flow_patientListApi_MiddlewareStart
   }
 
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: filterDepartmentApi');
+    log.debug('mounting all paths for service :: patientListApi');
 
     this.app['get'](
-      `${this.serviceBasePath}/department-filter/get`,
+      `${this.serviceBasePath}/patients`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,
@@ -99,10 +99,10 @@ export class filterDepartmentApi {
             next
           );
           let parentSpanInst = null;
-          bh = await this.sd_Cyv0HHvBfWjSmbYZ(bh, parentSpanInst);
-          //appendnew_next_sd_VuYC7ggQ8IVBXptd
+          bh = await this.sd_SkMIkMswp1s0FGt2(bh, parentSpanInst);
+          //appendnew_next_sd_YOxrZLE8GZ4KeDVv
         } catch (e) {
-          return await this.errorHandler(bh, e, 'sd_VuYC7ggQ8IVBXptd');
+          return await this.errorHandler(bh, e, 'sd_YOxrZLE8GZ4KeDVv');
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
@@ -111,98 +111,37 @@ export class filterDepartmentApi {
         this.generatedMiddlewares
       )
     );
-    //appendnew_flow_filterDepartmentApi_HttpIn
+    //appendnew_flow_patientListApi_HttpIn
   }
-  //   service flows_filterDepartmentApi
+  //   service flows_patientListApi
 
-  //appendnew_flow_filterDepartmentApi_start
+  //appendnew_flow_patientListApi_start
 
-  async sd_Cyv0HHvBfWjSmbYZ(bh, parentSpanInst) {
+  async sd_SkMIkMswp1s0FGt2(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_Cyv0HHvBfWjSmbYZ',
+      'sd_SkMIkMswp1s0FGt2',
       parentSpanInst
     );
     try {
-      console.log('hi');
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_ib3DlC96bbaWGa1W(bh, parentSpanInst);
-      //appendnew_next_sd_Cyv0HHvBfWjSmbYZ
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_Cyv0HHvBfWjSmbYZ',
-        spanInst,
-        'sd_Cyv0HHvBfWjSmbYZ'
-      );
-    }
-  }
-
-  async sd_ib3DlC96bbaWGa1W(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_ib3DlC96bbaWGa1W',
-      parentSpanInst
-    );
-    try {
-      const SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbIInstance: SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI.filterDepartmentService =
-        SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI.filterDepartmentService.getInstance();
+      const SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZInstance: SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ.patientListService =
+        SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ.patientListService.getInstance();
       let outputVariables =
-        await SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbIInstance.filterDepartmentService(
+        await SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZInstance.patientListService(
           spanInst,
           bh.input.query
         );
-      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.responseData(bh, parentSpanInst);
-      //appendnew_next_sd_ib3DlC96bbaWGa1W
+      //appendnew_next_sd_SkMIkMswp1s0FGt2
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_ib3DlC96bbaWGa1W',
+        'sd_SkMIkMswp1s0FGt2',
         spanInst,
-        'sd_ib3DlC96bbaWGa1W'
+        'sd_SkMIkMswp1s0FGt2'
       );
-    }
-  }
-
-  async responseData(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'responseData',
-      parentSpanInst
-    );
-    try {
-      console.log(bh.local?.result?.payload);
-      console.log('kjkjkjkj');
-      bh.local.response = {
-        status: process.env.SUCCESS_STATUS_CODE,
-        response: bh.local?.result?.payload.data,
-      };
-      this.tracerService.sendData(spanInst, bh);
-      await this.sd_hkwQ9a362ym3pROe(bh, parentSpanInst);
-      //appendnew_next_responseData
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_4kDUz83rjLwRgKMS',
-        spanInst,
-        'responseData'
-      );
-    }
-  }
-
-  async sd_hkwQ9a362ym3pROe(bh, parentSpanInst) {
-    try {
-      bh.web.res.status(200).send(bh.local.response);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_hkwQ9a362ym3pROe');
     }
   }
 
@@ -227,5 +166,5 @@ export class filterDepartmentApi {
       throw e;
     }
   }
-  //appendnew_flow_filterDepartmentApi_Catch
+  //appendnew_flow_patientListApi_Catch
 }

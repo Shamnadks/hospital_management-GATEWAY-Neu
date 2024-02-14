@@ -164,6 +164,7 @@ export class createAppointmentService {
         blood_group: bh.input?.data?.blood_group,
         doctor_id: bh.input?.data?.doctor_id,
         cash: bh.input?.data?.cash,
+        method: bh.input?.data?.method,
       };
       console.log(bh.local.appointmentDetails);
 

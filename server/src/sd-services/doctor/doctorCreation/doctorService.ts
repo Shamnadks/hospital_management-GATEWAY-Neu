@@ -132,7 +132,7 @@ export class doctorService {
       if (!data?.name?.trim()) throw new Error('Invalid name');
       if (!data?.email?.trim()) throw new Error('Invalid email');
       if (!emailRegex.test(data?.email)) throw new Error('Invalid email');
-      // if(!data.phone_no.trim()) throw new Error('Invalid phone number')
+      // if(!""+data?.phone_no?.trim()) throw new Error('Invalid phone number')
       if (typeof data['phone_no'] !== 'number')
         throw new Error('Invalid phone number');
       if (!data.address?.trim()) throw new Error('Invalid address');
@@ -203,7 +203,7 @@ export class doctorService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: undefined,
+        cookies: {},
         authType: undefined,
         body: bh.local.data,
         paytoqs: false,

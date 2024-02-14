@@ -68,7 +68,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "dataConfig",
-        "script": "\nbh.local.url = `${process.env.API_URL}/appointment/post`\nbh.local.appointmentDetails = {\n    id:0,\n    name:bh.input?.data?.name,\n    phone_no:bh.input?.data?.phone_no,\n    dob: new Date(bh.input?.data?.dob),\n    place:bh.input?.data?.place,\n    address:bh.input?.data?.address,\n    pin_code:bh.input?.data?.pin_code,\n    email:bh.input?.data?.email,\n    blood_group:bh.input?.data?.blood_group,\n    doctor_id:bh.input?.data?.doctor_id,\n    cash:bh.input?.data?.cash\n}\nconsole.log(bh.local.appointmentDetails)\n",
+        "script": "\nbh.local.url = `${process.env.API_URL}/appointment/post`\nbh.local.appointmentDetails = {\n    id:0,\n    name:bh.input?.data?.name,\n    phone_no:bh.input?.data?.phone_no,\n    dob: new Date(bh.input?.data?.dob),\n    place:bh.input?.data?.place,\n    address:bh.input?.data?.address,\n    pin_code:bh.input?.data?.pin_code,\n    email:bh.input?.data?.email,\n    blood_group:bh.input?.data?.blood_group,\n    doctor_id:bh.input?.data?.doctor_id,\n    cash:bh.input?.data?.cash,\n    method:bh.input?.data?.method\n}\nconsole.log(bh.local.appointmentDetails)\n",
         "functionName": "dataConfig",
         "category": "Function",
         "x": 425,

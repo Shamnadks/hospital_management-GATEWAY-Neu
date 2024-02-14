@@ -155,7 +155,7 @@ export class updateDepartmentApi {
     try {
       bh.local.response = {
         status: bh.local.result.payload.statusCode,
-        message: bh.local.result?.payload?.data,
+        response: bh.local.result?.payload?.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.updationResponse(bh, parentSpanInst);

@@ -1,4 +1,8 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-patientListService-SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ
+import { patientListService as SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ } from './sd-services/patient/patientList/patientListService';
+//CORE_REFERENCE_IMPORT-patientListApi-SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF
+import { patientListApi as SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF } from './sd-services/patient/patientList/patientListApi';
 //CORE_REFERENCE_IMPORT-idsutil-sd_CBgLAFnpfXPJux1R
 import { idsutil as sd_CBgLAFnpfXPJux1R } from './sd-services/idsutil';
 //CORE_REFERENCE_IMPORT-ids-sd_9DCUVTdQNHyR9nhR
@@ -30,6 +34,10 @@ import { updateDepartmentApi as SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH } from './sd-
 
 export const UserRoutes = [
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientListService-SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ
+SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientListApi-SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF
+SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-idsutil-sd_CBgLAFnpfXPJux1R
 sd_CBgLAFnpfXPJux1R,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-ids-sd_9DCUVTdQNHyR9nhR

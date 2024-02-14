@@ -1,0 +1,130 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "type": "tab",
+        "createdDate": "2024-02-14T13:30:43.914Z",
+        "label": "patientListApi",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "patientListApi",
+        "relativeParentPath": "patient/patientList"
+    },
+    {
+        "id": "sd_YOxrZLE8GZ4KeDVv",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "patientList",
+        "path": "/patients",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "get",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "id",
+                    "desc": "appointmentId",
+                    "type": "query",
+                    "required": false,
+                    "rowId": "sd_kOXrbxiRxQP9ApcY",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 165,
+        "y": 160,
+        "wires": [
+            [
+                "sd_SkMIkMswp1s0FGt2"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "patientListApi",
+        "functionName": "sd_YOxrZLE8GZ4KeDVv",
+        "generated": false
+    },
+    {
+        "id": "sd_SkMIkMswp1s0FGt2",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ",
+            "type": "tab",
+            "createdDate": "2024-02-14T13:32:31.966Z",
+            "label": "patientListService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_hpHlxbLHOokH507a",
+            "flowName": "patientListService"
+        },
+        "inputVariables": [
+            {
+                "key": "id",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "query"
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./patientListService",
+        "startName": "patientListService",
+        "inputParams": [
+            "bh.input.query"
+        ],
+        "accept_bh": false,
+        "functionName": "sd_SkMIkMswp1s0FGt2",
+        "category": "General",
+        "x": 320,
+        "y": 160,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generated": true,
+        "generateNext": false,
+        "serviceName": "patientListApi"
+    }
+]
