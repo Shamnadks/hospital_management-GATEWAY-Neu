@@ -130,8 +130,10 @@ export class patientListApi {
           spanInst,
           bh.input.query
         );
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
+      bh = await this.responseData(bh, parentSpanInst);
       //appendnew_next_sd_SkMIkMswp1s0FGt2
       return bh;
     } catch (e) {
@@ -142,6 +144,41 @@ export class patientListApi {
         spanInst,
         'sd_SkMIkMswp1s0FGt2'
       );
+    }
+  }
+
+  async responseData(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'responseData',
+      parentSpanInst
+    );
+    try {
+      bh.local.response = {
+        status: 200,
+        response: bh.local?.result?.payload?.data,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_mRlgqsFGUr7OAukR(bh, parentSpanInst);
+      //appendnew_next_responseData
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_ZfY2xWev8P3vZzSP',
+        spanInst,
+        'responseData'
+      );
+    }
+  }
+
+  async sd_mRlgqsFGUr7OAukR(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_mRlgqsFGUr7OAukR');
     }
   }
 

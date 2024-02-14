@@ -90,7 +90,9 @@ export class patientListService {
       input: {
         id,
       },
-      local: {},
+      local: {
+        response: undefined,
+      },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
@@ -101,7 +103,9 @@ export class patientListService {
         // formatting output variables
         {
           input: {},
-          local: {},
+          local: {
+            response: bh.local.response,
+          },
         }
       );
     } catch (e) {
@@ -122,7 +126,16 @@ export class patientListService {
       parentSpanInst
     );
     try {
-      bh.local.url = `${process.env.API_URL}/doctorfilter/post`;
+      bh.local.url = `${process.env.API_URL}/getappointment/post`;
+
+      bh.local.requestObject = {
+        sorttable: 'token_number',
+        sorttype: 'DESC',
+        datas: {
+          appointment_date: ['2024-02-14'],
+        },
+      };
+      console.log(bh.local.requestObject);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.patientListApiCall(bh, parentSpanInst);
       //appendnew_next_dataConfig
@@ -143,7 +156,7 @@ export class patientListService {
       let requestOptions: any = {
         url: bh.local.url,
         timeout: 30000,
-        method: 'get',
+        method: 'post',
         headers: {},
         followRedirects: true,
         cookies: undefined,

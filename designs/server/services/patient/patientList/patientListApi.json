@@ -108,7 +108,16 @@
             }
         ],
         "bhVariables": [],
-        "outputMapping": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
         "callService": "./patientListService",
         "startName": "patientListService",
         "inputParams": [
@@ -120,11 +129,87 @@
         "x": 320,
         "y": 160,
         "wires": [
-            []
+            [
+                "sd_ZfY2xWev8P3vZzSP"
+            ]
         ],
         "__n_excludedFromValidation__": {},
         "generated": true,
         "generateNext": false,
         "serviceName": "patientListApi"
+    },
+    {
+        "id": "sd_mRlgqsFGUr7OAukR",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_mRlgqsFGUr7OAukR",
+        "category": "HTTP",
+        "x": 625,
+        "y": 160,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientListApi",
+        "generated": true
+    },
+    {
+        "id": "sd_ZfY2xWev8P3vZzSP",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "responseData",
+        "script": "bh.local.response = {\n    status:200,\n    response:bh.local?.result?.payload?.data\n}",
+        "functionName": "responseData",
+        "category": "Function",
+        "x": 485,
+        "y": 160,
+        "wires": [
+            [
+                "sd_mRlgqsFGUr7OAukR"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientListApi",
+        "generated": true
     }
 ]

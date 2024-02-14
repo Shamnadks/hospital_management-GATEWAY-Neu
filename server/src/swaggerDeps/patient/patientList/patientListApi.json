@@ -1,3 +1,22 @@
 {
-    "/patients": {}
+    "/patients": {
+        "get": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "id",
+                    "description": "appointmentId",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "patientListApi"
+            ]
+        }
+    }
 }

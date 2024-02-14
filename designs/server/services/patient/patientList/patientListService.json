@@ -29,7 +29,16 @@
                 "output": false
             }
         ],
-        "localVariables": [],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
         "accept_bh": false,
         "functionName": "patientListService",
         "category": "General",
@@ -51,7 +60,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "dataConfig",
-        "script": "bh.local.url = `${process.env.API_URL}/doctorfilter/post`",
+        "script": "bh.local.url = `${process.env.API_URL}/getappointment/post`\n\nbh.local.requestObject = {\n    \"sorttable\":\"token_number\",\n    \"sorttype\": \"DESC\",\n    \"datas\":{\n        \"appointment_date\":[\"2024-02-14\"]\n    }\n\n}\nconsole.log(bh.local.requestObject)",
         "functionName": "dataConfig",
         "category": "Function",
         "x": 380,
@@ -73,7 +82,7 @@
         "viewType": "server",
         "nodeType": "flow",
         "name": "patientListApiCall",
-        "method": "get",
+        "method": "post",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
