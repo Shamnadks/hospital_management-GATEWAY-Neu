@@ -1,0 +1,22 @@
+{
+    "/appointment/put": {
+        "put": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "data",
+                    "description": "success data",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "appointmentStatusApi"
+            ]
+        }
+    }
+}

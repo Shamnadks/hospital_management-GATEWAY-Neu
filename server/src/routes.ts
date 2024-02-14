@@ -1,4 +1,12 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-patientUpdateServer-SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb
+import { patientUpdateServer as SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb } from './sd-services/patient/patientStatusUpdate/patientUpdateServer';
+//CORE_REFERENCE_IMPORT-patientUpdateApi-SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY
+import { patientUpdateApi as SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY } from './sd-services/patient/patientStatusUpdate/patientUpdateApi';
+//CORE_REFERENCE_IMPORT-appointmentStatusService-SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch
+import { appointmentStatusService as SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch } from './sd-services/appointments/appointmentStatusUpdate/appointmentStatusService';
+//CORE_REFERENCE_IMPORT-appointmentStatusApi-SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh
+import { appointmentStatusApi as SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh } from './sd-services/appointments/appointmentStatusUpdate/appointmentStatusApi';
 //CORE_REFERENCE_IMPORT-patientListService-SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ
 import { patientListService as SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ } from './sd-services/patient/patientList/patientListService';
 //CORE_REFERENCE_IMPORT-patientListApi-SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF
@@ -34,6 +42,14 @@ import { updateDepartmentApi as SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH } from './sd-
 
 export const UserRoutes = [
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientUpdateServer-SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb
+SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientUpdateApi-SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY
+SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-appointmentStatusService-SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch
+SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-appointmentStatusApi-SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh
+SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientListService-SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ
 SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientListApi-SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF

@@ -1,0 +1,142 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "type": "tab",
+        "createdDate": "2024-02-14T18:34:06.377Z",
+        "label": "patientUpdateApi",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "patientUpdateApi",
+        "relativeParentPath": "patient/patientStatusUpdate"
+    },
+    {
+        "id": "sd_CeMd1pKYteisFuWc",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "patientUpdate",
+        "path": "/patient/put",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "put",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "data",
+                    "desc": "updateData",
+                    "type": "body",
+                    "required": false,
+                    "rowId": "sd_O75I4DWdURlXTu4F",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 165,
+        "y": 120,
+        "wires": [
+            [
+                "sd_Mfq2vF7CpjdxoBYS"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "patientUpdateApi",
+        "functionName": "sd_CeMd1pKYteisFuWc"
+    },
+    {
+        "id": "sd_5w9jujtH5wLTqFGj",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "",
+        "functionName": "sd_5w9jujtH5wLTqFGj",
+        "category": "Function",
+        "x": 565,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    },
+    {
+        "id": "sd_Mfq2vF7CpjdxoBYS",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+            "type": "tab",
+            "createdDate": "2024-02-14T18:34:21.336Z",
+            "label": "patientUpdateServer",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_mJhq6AwJD0EtgA2A",
+            "flowName": "sd_mJhq6AwJD0EtgA2A"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./patientUpdateServer",
+        "startName": "sd_mJhq6AwJD0EtgA2A",
+        "inputParams": [],
+        "accept_bh": "",
+        "functionName": "sd_Mfq2vF7CpjdxoBYS",
+        "category": "General",
+        "x": 285,
+        "y": 120,
+        "wires": [
+            [
+                "sd_5w9jujtH5wLTqFGj"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+        "type": "tab",
+        "createdDate": "2024-02-14T18:34:21.336Z",
+        "label": "patientUpdateServer",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "patientUpdateServer",
+        "relativeParentPath": "patient/patientStatusUpdate"
+    },
+    {
+        "id": "sd_mJhq6AwJD0EtgA2A",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "accept_bh": "",
+        "functionName": "sd_mJhq6AwJD0EtgA2A",
+        "category": "General",
+        "x": 220,
+        "y": 100,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "patientUpdateServer"
+    }
+]

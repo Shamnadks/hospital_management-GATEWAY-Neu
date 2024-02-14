@@ -1,0 +1,197 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "type": "tab",
+        "createdDate": "2024-02-14T17:42:38.779Z",
+        "label": "appointmentStatusApi",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "appointmentStatusApi",
+        "relativeParentPath": "appointments/appointmentStatusUpdate"
+    },
+    {
+        "id": "sd_Ne2NyjqBI7dSi2Fy",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "appointmentStatusUpdation",
+        "path": "/appointment/put",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "put",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "data",
+                    "desc": "success data",
+                    "type": "body",
+                    "required": false,
+                    "rowId": "sd_nAVJcEZrB4dhngAc",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "sd_8jIVTGtD5lOxdTRX"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "appointmentStatusApi",
+        "functionName": "sd_Ne2NyjqBI7dSi2Fy",
+        "generated": false
+    },
+    {
+        "id": "sd_CFVdykrsqHfFbeQ8",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_CFVdykrsqHfFbeQ8",
+        "category": "HTTP",
+        "x": 685,
+        "y": 140,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "appointmentStatusApi",
+        "generated": true
+    },
+    {
+        "id": "sd_8jIVTGtD5lOxdTRX",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch",
+            "type": "tab",
+            "createdDate": "2024-02-14T17:42:48.597Z",
+            "label": "appointmentStatusService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_0yJa3W1Bj3oShiAr",
+            "flowName": "sd_0yJa3W1Bj3oShiAr"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./appointmentStatusService",
+        "startName": "sd_0yJa3W1Bj3oShiAr",
+        "inputParams": [],
+        "accept_bh": "",
+        "functionName": "sd_8jIVTGtD5lOxdTRX",
+        "category": "General",
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "sd_dI3t0sqwp7ypRk4W"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generated": true,
+        "generateNext": false,
+        "serviceName": "appointmentStatusApi"
+    },
+    {
+        "id": "sd_dI3t0sqwp7ypRk4W",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response = {\n    status:bh.local?.result?.status,\n    message:'Success',\n    data:bh.local.result?.payload?.data\n}",
+        "functionName": "sd_dI3t0sqwp7ypRk4W",
+        "category": "Function",
+        "x": 525,
+        "y": 140,
+        "wires": [
+            [
+                "sd_CFVdykrsqHfFbeQ8"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "appointmentStatusApi",
+        "generated": true
+    }
+]
