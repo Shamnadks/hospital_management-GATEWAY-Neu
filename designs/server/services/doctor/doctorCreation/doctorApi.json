@@ -1,0 +1,347 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "type": "tab",
+        "createdDate": "2024-02-13T17:54:05.381Z",
+        "label": "doctorApi",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "doctorApi",
+        "relativeParentPath": "doctor/doctorCreation"
+    },
+    {
+        "id": "sd_iBzM9lrAtNqxYyPw",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "doctorCreation",
+        "path": "doctors/post",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "uploadFileOptions": "",
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "doctorDetails",
+                    "desc": "details about doctor ",
+                    "type": "body",
+                    "required": false,
+                    "rowId": "sd_tYVYWGmwJj8Kv1lX",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 205,
+        "y": 120,
+        "wires": [
+            [
+                "sd_X8P7bWDdzr1hXTTt"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "doctorApi",
+        "functionName": "sd_iBzM9lrAtNqxYyPw"
+    },
+    {
+        "id": "sd_X8P7bWDdzr1hXTTt",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// console.log(bh.input?.body)\nconsole.log('start')",
+        "functionName": "sd_X8P7bWDdzr1hXTTt",
+        "category": "Function",
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "sd_4yHXfZRGHNgxxg3E"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorApi",
+        "generated": true
+    },
+    {
+        "id": "sd_4yHXfZRGHNgxxg3E",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+            "type": "tab",
+            "createdDate": "2024-02-13T18:25:46.845Z",
+            "label": "doctorService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_R0xUVWx8v7iuEpcb",
+            "flowName": "doctorService"
+        },
+        "inputVariables": [
+            {
+                "key": "doctor",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "body"
+            },
+            {
+                "key": "response",
+                "map": true,
+                "valueType": "bh",
+                "value": ""
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [
+            {
+                "mapVarType": "input",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
+        "callService": "./doctorService",
+        "startName": "doctorService",
+        "inputParams": [
+            "bh.input.body",
+            null
+        ],
+        "accept_bh": false,
+        "functionName": "sd_4yHXfZRGHNgxxg3E",
+        "category": "General",
+        "x": 550,
+        "y": 120,
+        "wires": [
+            [
+                "sd_0sgvSAgENBjfs5we"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorApi",
+        "generated": true
+    },
+    {
+        "id": "sd_0sgvSAgENBjfs5we",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    status:200,\n    message:'success'\n}\nconsole.log('success')",
+        "functionName": "sd_0sgvSAgENBjfs5we",
+        "category": "Function",
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "sd_UyEo41l81UOcNYrx"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorApi",
+        "generated": true
+    },
+    {
+        "id": "sd_UyEo41l81UOcNYrx",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_UyEo41l81UOcNYrx",
+        "category": "HTTP",
+        "x": 790,
+        "y": 120,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorApi",
+        "generated": true
+    },
+    {
+        "id": "sd_NR5r9Lf2B7HTj7jt",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_lMo9ShgDINOO2M31",
+            "sd_RTJ4uN7GD1yH3ctt"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 405,
+        "y": 240,
+        "wires": [
+            [
+                "sd_lMo9ShgDINOO2M31"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "doctorApi"
+    },
+    {
+        "id": "sd_lMo9ShgDINOO2M31",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 565,
+        "y": 240,
+        "wires": [
+            [
+                "sd_RTJ4uN7GD1yH3ctt"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorApi",
+        "generated": true
+    },
+    {
+        "id": "sd_RTJ4uN7GD1yH3ctt",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 777,
+        "y": 247.1999969482422,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorApi",
+        "generated": true
+    }
+]

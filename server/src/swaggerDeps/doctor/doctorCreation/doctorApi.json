@@ -1,0 +1,22 @@
+{
+    "/doctors/post": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "doctorDetails",
+                    "description": "details about doctor ",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "doctorApi"
+            ]
+        }
+    }
+}
