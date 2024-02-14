@@ -179,7 +179,7 @@ export class filterDepartmentApi {
       console.log('kjkjkjkj');
       bh.local.response = {
         status: process.env.SUCCESS_STATUS_CODE,
-        message: bh.local?.result?.payload.data,
+        response: bh.local?.result?.payload.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_hkwQ9a362ym3pROe(bh, parentSpanInst);

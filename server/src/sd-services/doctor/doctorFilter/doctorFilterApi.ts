@@ -179,7 +179,7 @@ export class doctorFilterApi {
       console.log('kjkjkjkj');
       bh.local.response = {
         status: process.env.SUCCESS_STATUS_CODE,
-        message: bh.local?.result?.payload.data,
+        response: bh.local?.result?.payload.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_y31yN3xIxL58WvLj(bh, parentSpanInst);

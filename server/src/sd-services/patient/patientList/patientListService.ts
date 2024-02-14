@@ -7,7 +7,7 @@ import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
 //append_imports_end
-export class updateDepartmentService {
+export class patientListService {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -23,7 +23,7 @@ export class updateDepartmentService {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'updateDepartmentService';
+    this.serviceName = 'patientListService';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -38,7 +38,7 @@ export class updateDepartmentService {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new updateDepartmentService(
+      instance = new patientListService(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -67,34 +67,28 @@ export class updateDepartmentService {
   }
 
   async mountTimers() {
-    //appendnew_flow_updateDepartmentService_TimerStart
+    //appendnew_flow_patientListService_TimerStart
   }
 
   private mountAllMiddlewares() {
-    log.debug(
-      'mounting all middlewares for service :: updateDepartmentService'
-    );
-    //appendnew_flow_updateDepartmentService_MiddlewareStart
+    log.debug('mounting all middlewares for service :: patientListService');
+    //appendnew_flow_patientListService_MiddlewareStart
   }
 
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: updateDepartmentService');
-    //appendnew_flow_updateDepartmentService_HttpIn
+    log.debug('mounting all paths for service :: patientListService');
+    //appendnew_flow_patientListService_HttpIn
   }
-  //   service flows_updateDepartmentService
+  //   service flows_patientListService
 
-  async departmentUpdateService(
-    parentSpanInst,
-    data: any = undefined,
-    ...others
-  ) {
+  async patientListService(parentSpanInst, id: any = undefined, ...others) {
     const spanInst = this.tracerService.createSpan(
-      'departmentUpdateService',
+      'patientListService',
       parentSpanInst
     );
     let bh: any = {
       input: {
-        data,
+        id,
       },
       local: {
         response: undefined,
@@ -103,8 +97,8 @@ export class updateDepartmentService {
     try {
       bh = this.sdService.__constructDefault(bh);
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.validation(bh, parentSpanInst);
-      //appendnew_next_departmentUpdateService
+      bh = await this.dataConfig(bh, parentSpanInst);
+      //appendnew_next_patientListService
       return (
         // formatting output variables
         {
@@ -118,85 +112,56 @@ export class updateDepartmentService {
       return await this.errorHandler(
         bh,
         e,
-        'sd_YaV2QgAhVAzcA6Ps',
+        'sd_hpHlxbLHOokH507a',
         spanInst,
-        'departmentUpdateService'
+        'patientListService'
       );
     }
   }
-  //appendnew_flow_updateDepartmentService_start
+  //appendnew_flow_patientListService_start
 
-  async validation(bh, parentSpanInst) {
+  async dataConfig(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'validation',
+      'dataConfig',
       parentSpanInst
     );
     try {
-      let data = bh.input?.data;
-      console.log(data, 'data');
-      if (!data?.id) throw new Error('Invalide operation');
-      if (!data?.name?.trim()) {
-        throw new Error('Invalid department');
-      }
-      if (!data?.info?.trim()) throw new Error('Invalid Info');
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.dataConfiguration(bh, parentSpanInst);
-      //appendnew_next_validation
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_oH3kpgn9hfGQWaNM',
-        spanInst,
-        'validation'
-      );
-    }
-  }
+      bh.local.url = `${process.env.API_URL}/getappointment/post`;
 
-  async dataConfiguration(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'dataConfiguration',
-      parentSpanInst
-    );
-    try {
-      bh.local.url = `${process.env.API_URL}/department/put`;
-      bh.local.data = {
-        department: {
-          id: bh.input.data.id,
-          name: bh.input.data.name,
-          info: bh.input.data.info,
-          status: bh.input.data.status,
+      bh.local.requestObject = {
+        sorttable: 'token_number',
+        sorttype: 'DESC',
+        datas: {
+          appointment_date: ['2024-02-14'],
         },
       };
-      console.log(bh.local.data);
-      console.log(bh.local.url);
+      console.log(bh.local.requestObject);
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.updationRequest(bh, parentSpanInst);
-      //appendnew_next_dataConfiguration
+      bh = await this.patientListApiCall(bh, parentSpanInst);
+      //appendnew_next_dataConfig
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_yR4wxS5qsE2xArin',
+        'sd_cSCMBN4oOv1hKqQB',
         spanInst,
-        'dataConfiguration'
+        'dataConfig'
       );
     }
   }
 
-  async updationRequest(bh, parentSpanInst) {
+  async patientListApiCall(bh, parentSpanInst) {
     try {
       let requestOptions: any = {
         url: bh.local.url,
         timeout: 30000,
-        method: 'put',
+        method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: {},
+        cookies: undefined,
         authType: undefined,
-        body: bh.local.data,
+        body: undefined,
         paytoqs: false,
         proxyConfig: undefined,
         tlsConfig: undefined,
@@ -231,10 +196,10 @@ export class updateDepartmentService {
       );
 
       bh.local.response = responseMsg;
-      //appendnew_next_updationRequest
+      //appendnew_next_patientListApiCall
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_BuhTYSBAEv3iIaiM');
+      return await this.errorHandler(bh, e, 'sd_XQzvuv9BoHMJsZH6');
     }
   }
 
@@ -259,5 +224,5 @@ export class updateDepartmentService {
       throw e;
     }
   }
-  //appendnew_flow_updateDepartmentService_Catch
+  //appendnew_flow_patientListService_Catch
 }

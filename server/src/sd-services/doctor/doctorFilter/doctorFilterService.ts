@@ -154,18 +154,21 @@ export class doctorFilterService {
     );
     try {
       bh.local.url = `${process.env.API_URL}/doctorfilter/post`;
+
+      bh.local?.reqObject = {};
+
       if (bh.input?.data?.id) {
-        bh.local.reqObject = {
+        bh.local?.reqObject = {
           id: [bh.input?.data?.id],
         };
-      } else {
-        bh.local.reqObject = {};
       }
+
       if (bh.input?.data?.department) {
-        bh.local.reqObject['department_id'] = [bh.input.data.department];
+        bh.local?.reqObject?.['department_id'] = [bh.input?.data?.department];
       }
-      console.log(bh.input.reqObject);
-      console.log(bh.local.url);
+
+      console.log(bh.input?.reqObject);
+      console.log(bh.local?.url);
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.doctorApiCall(bh, parentSpanInst);

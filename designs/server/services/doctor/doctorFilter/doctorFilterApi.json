@@ -81,8 +81,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "doctorFilterApi",
-        "functionName": "sd_gM6LLOgYgYi63NqC",
-        "generated": false
+        "functionName": "sd_gM6LLOgYgYi63NqC"
     },
     {
         "id": "sd_y31yN3xIxL58WvLj",
@@ -110,7 +109,6 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
-        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -144,7 +142,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
-        "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    message:bh.local?.result?.payload.data\n}",
+        "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.payload.data\n}",
         "functionName": "responseData",
         "category": "Function",
         "x": 570,
@@ -239,9 +237,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "doctorFilterApi"
+        "serviceName": "doctorFilterApi",
+        "generated": true
     },
     {
         "id": "sd_nd4brDuUHhfg27ca",
@@ -268,8 +266,7 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorFilterApi",
-        "generated": false
+        "serviceName": "doctorFilterApi"
     },
     {
         "id": "sd_oH1NfLgBGOIyO7vw",

@@ -102,7 +102,6 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
-        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -136,7 +135,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
-        "script": "bh.local.response = {\n    status:bh.local.result.payload.statusCode,\n    message:bh.local.result?.payload?.data\n}",
+        "script": "bh.local.response = {\n    status:bh.local.result.payload.statusCode,\n    response:bh.local.result?.payload?.data\n}",
         "functionName": "responseData",
         "category": "Function",
         "x": 500,
@@ -167,8 +166,8 @@
         ],
         "functionName": "exceptionHandling",
         "category": "General",
-        "x": 389,
-        "y": 222.8000030517578,
+        "x": 325,
+        "y": 220,
         "wires": [
             [
                 "sd_pfxh1Cph1O0LSggG"
@@ -188,8 +187,8 @@
         "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
         "functionName": "errorInfo",
         "category": "Function",
-        "x": 549,
-        "y": 222.8000030517578,
+        "x": 505,
+        "y": 220,
         "wires": [
             [
                 "sd_g2jyRiSi4ZqPu50s"
@@ -245,8 +244,8 @@
         },
         "functionName": "exceptionResponse",
         "category": "HTTP",
-        "x": 724,
-        "y": 222.8000030517578,
+        "x": 625,
+        "y": 220,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,

@@ -1,27 +1,27 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "id": "SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ",
         "type": "tab",
-        "createdDate": "2024-02-13T17:18:31.639Z",
-        "label": "updateDepartmentService",
+        "createdDate": "2024-02-14T13:32:31.966Z",
+        "label": "patientListService",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "updateDepartmentService",
-        "relativeParentPath": "department/updateDepartment"
+        "serviceName": "patientListService",
+        "relativeParentPath": "patient/patientList"
     },
     {
-        "id": "sd_YaV2QgAhVAzcA6Ps",
+        "id": "sd_hpHlxbLHOokH507a",
         "type": "Start",
-        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "z": "SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ",
         "viewType": "client-server",
         "nodeType": "start",
-        "name": "departmentUpdateService",
+        "name": "patientListService",
         "outputs": 1,
         "inputVariables": [
             {
-                "key": "data",
+                "key": "id",
                 "defaultValue": {
                     "type": "any",
                     "value": ""
@@ -40,72 +40,49 @@
             }
         ],
         "accept_bh": false,
-        "functionName": "departmentUpdateService",
+        "functionName": "patientListService",
         "category": "General",
-        "x": 225,
-        "y": 140,
+        "x": 220,
+        "y": 120,
         "wires": [
             [
-                "sd_oH3kpgn9hfGQWaNM"
+                "sd_cSCMBN4oOv1hKqQB"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "updateDepartmentService"
+        "serviceName": "patientListService"
     },
     {
-        "id": "sd_oH3kpgn9hfGQWaNM",
+        "id": "sd_cSCMBN4oOv1hKqQB",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "z": "SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "validation",
-        "script": "let data = bh.input?.data\nconsole.log(data,'data')\nif(!data?.id) throw new Error('Invalide operation')\nif(!data?.name?.trim()){\n    throw new Error('Invalid department')\n}\nif(!data?.info?.trim()) throw new Error('Invalid Info')",
-        "functionName": "validation",
+        "name": "dataConfig",
+        "script": "bh.local.url = `${process.env.API_URL}/getappointment/post`\n\nbh.local.requestObject = {\n    \"sorttable\":\"token_number\",\n    \"sorttype\": \"DESC\",\n    \"datas\":{\n        \"appointment_date\":[\"2024-02-14\"]\n    }\n\n}\nconsole.log(bh.local.requestObject)",
+        "functionName": "dataConfig",
         "category": "Function",
-        "x": 405,
-        "y": 140,
+        "x": 380,
+        "y": 120,
         "wires": [
             [
-                "sd_yR4wxS5qsE2xArin"
+                "sd_XQzvuv9BoHMJsZH6"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "updateDepartmentService",
+        "serviceName": "patientListService",
         "generated": true
     },
     {
-        "id": "sd_yR4wxS5qsE2xArin",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "dataConfiguration",
-        "script": "bh.local.url = `${process.env.API_URL}/department/put`\nbh.local.data = {\n    \"department\": {\n            \"id\": bh.input.data.id,\n            \"name\": bh.input.data.name,\n            \"info\": bh.input.data.info,\n            \"status\":bh.input.data.status,\n        }\n}\nconsole.log(bh.local.data)\nconsole.log(bh.local.url)",
-        "functionName": "dataConfiguration",
-        "category": "Function",
-        "x": 560,
-        "y": 140,
-        "wires": [
-            [
-                "sd_BuhTYSBAEv3iIaiM"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "updateDepartmentService",
-        "generated": true
-    },
-    {
-        "id": "sd_BuhTYSBAEv3iIaiM",
+        "id": "sd_XQzvuv9BoHMJsZH6",
         "type": "ServerHttpRequest",
-        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "z": "SSD_SERVICE_ID_sd_VVv6JZ6ue70O2tjZ",
         "viewType": "server",
         "nodeType": "flow",
-        "name": "updationRequest",
-        "method": "put",
-        "methodMapping": "",
+        "name": "patientListApiCall",
+        "method": "post",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
@@ -113,12 +90,10 @@
             "mapVarValue": "url"
         },
         "ret": "json",
-        "retMapping": "",
         "retMappingObj": {},
-        "reqBody": "bh.local.data",
         "reqBodyObj": {
-            "mapVarType": "bh.local",
-            "mapVarValue": "data"
+            "mapVarType": "bh",
+            "mapVarValue": ""
         },
         "resultMapping": "bh.local.response",
         "resultMappingObj": {
@@ -127,16 +102,11 @@
         },
         "headers": {},
         "headersObj": [],
-        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
-        "paramMapping": "",
         "paramMappingObj": {},
-        "authType": "",
         "useAuthTypeMappingObj": {},
-        "useAuthTypeMap": {},
-        "useAuthType": "",
         "useAuthUsername": "",
         "useAuthUsernameMappingObj": "",
         "useAuthPassword": "",
@@ -152,7 +122,6 @@
         "proxy": "",
         "useProxy": false,
         "usetls": false,
-        "cookies": [],
         "cookiesMapObj": {},
         "cookiesList": {},
         "switchStates": {
@@ -163,16 +132,16 @@
             "type": "num",
             "value": ""
         },
-        "functionName": "updationRequest",
+        "functionName": "patientListApiCall",
         "category": "HTTP",
-        "x": 720,
-        "y": 140,
+        "x": 565,
+        "y": 120,
         "wires": [
             []
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "updateDepartmentService",
+        "serviceName": "patientListService",
         "generated": true
     }
 ]

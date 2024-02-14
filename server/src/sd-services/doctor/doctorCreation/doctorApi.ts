@@ -179,7 +179,7 @@ export class doctorApi {
       console.log(bh.local);
       bh.local.response = {
         status: bh.local.result?.statusCode,
-        message: bh.local.result?.payload?.data,
+        response: bh.local.result?.payload?.data,
       };
       console.log('success');
       this.tracerService.sendData(spanInst, bh);
@@ -199,9 +199,7 @@ export class doctorApi {
 
   async sd_UyEo41l81UOcNYrx(bh, parentSpanInst) {
     try {
-      bh.web.res
-        .status(bh.local.response.status)
-        .send(bh.local.response.message);
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
 
       return bh;
     } catch (e) {

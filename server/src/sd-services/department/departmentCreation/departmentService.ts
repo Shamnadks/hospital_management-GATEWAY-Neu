@@ -126,11 +126,11 @@ export class departmentService {
       parentSpanInst
     );
     try {
-      let data = bh.input.department;
-      if (!data.name.trim()) {
+      let data = bh.input?.department;
+      if (!data?.name?.trim()) {
         throw new Error('Invalid department');
       }
-      if (!data.info.trim()) throw new Error('Invalid Info');
+      if (!data?.info?.trim()) throw new Error('Invalid Info');
       this.tracerService.sendData(spanInst, bh);
       bh = await this.dataConfiguration(bh, parentSpanInst);
       //appendnew_next_validation
@@ -155,8 +155,8 @@ export class departmentService {
       bh.local.url = `${process.env.API_URL}/department/post`;
       bh.local.data = {
         id: 0,
-        name: bh.input.department.name,
-        info: bh.input.department.info,
+        name: bh.input?.department?.name,
+        info: bh.input?.department?.info,
         status: true,
       };
 
@@ -183,7 +183,7 @@ export class departmentService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: undefined,
+        cookies: {},
         authType: undefined,
         body: bh.local.data,
         paytoqs: false,
