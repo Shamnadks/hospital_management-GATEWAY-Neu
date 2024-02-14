@@ -1,0 +1,22 @@
+{
+    "/department/post": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "department",
+                    "description": "department details",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "departmentApi"
+            ]
+        }
+    }
+}

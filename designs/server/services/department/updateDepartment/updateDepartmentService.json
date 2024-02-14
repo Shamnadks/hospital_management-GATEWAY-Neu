@@ -1,0 +1,170 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "type": "tab",
+        "createdDate": "2024-02-13T17:18:31.639Z",
+        "label": "updateDepartmentService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "updateDepartmentService",
+        "relativeParentPath": "department/updateDepartment"
+    },
+    {
+        "id": "sd_YaV2QgAhVAzcA6Ps",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "departmentUpdateService",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "data",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "departmentUpdateService",
+        "category": "General",
+        "x": 225,
+        "y": 140,
+        "wires": [
+            [
+                "sd_oH3kpgn9hfGQWaNM"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "updateDepartmentService"
+    },
+    {
+        "id": "sd_oH3kpgn9hfGQWaNM",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "let data = bh.input?.data\nconsole.log(data,'data')\nif(!data?.id) throw new Error('Invalide operation')\nif(!data?.name?.trim()){\n    throw new Error('Invalid department')\n}\nif(!data?.info?.trim()) throw new Error('Invalid Info')",
+        "functionName": "sd_oH3kpgn9hfGQWaNM",
+        "category": "Function",
+        "x": 405,
+        "y": 140,
+        "wires": [
+            [
+                "sd_yR4wxS5qsE2xArin"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_yR4wxS5qsE2xArin",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "dataConfiguration",
+        "script": "bh.local.url = `${process.env.API_URL}/department/put`\nbh.local.data = {\n    \"department\": {\n            \"id\": bh.input.data.id,\n            \"name\": bh.input.data.name,\n            \"info\": bh.input.data.info,\n            \"status\":bh.input.data.status,\n        }\n}\nconsole.log(bh.local.data)\nconsole.log(bh.local.url)",
+        "functionName": "dataConfiguration",
+        "category": "Function",
+        "x": 560,
+        "y": 140,
+        "wires": [
+            [
+                "sd_BuhTYSBAEv3iIaiM"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_BuhTYSBAEv3iIaiM",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "updationRequest",
+        "method": "put",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.data",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "data"
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "updationRequest",
+        "category": "HTTP",
+        "x": 720,
+        "y": 140,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentService",
+        "generated": true
+    }
+]

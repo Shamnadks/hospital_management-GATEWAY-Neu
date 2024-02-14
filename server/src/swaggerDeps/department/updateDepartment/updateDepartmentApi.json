@@ -1,0 +1,22 @@
+{
+    "/department/put": {
+        "put": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "department",
+                    "description": "details",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "updateDepartmentApi"
+            ]
+        }
+    }
+}

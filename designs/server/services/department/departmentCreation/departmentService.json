@@ -1,0 +1,170 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN",
+        "type": "tab",
+        "createdDate": "2024-02-13T17:49:46.105Z",
+        "label": "departmentService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "departmentService",
+        "relativeParentPath": "department/departmentCreation"
+    },
+    {
+        "id": "sd_fehz8k9FxCbO3x4u",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "department",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "department",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "department",
+        "category": "General",
+        "x": 165,
+        "y": 120,
+        "wires": [
+            [
+                "sd_iO1KlqIxoKrqy5B4"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "departmentService"
+    },
+    {
+        "id": "sd_F72sahUmPEBPngPm",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "dataConfiguration",
+        "script": "bh.local.url = `${process.env.API_URL}/department/post`\nbh.local.data = {\n    id: 0,\n    name: bh.input.department.name,\n    info: bh.input.department.info,\n    status: true\n}\n",
+        "functionName": "dataConfiguration",
+        "category": "Function",
+        "x": 445,
+        "y": 120,
+        "wires": [
+            [
+                "sd_ZRRRaNpOciKNQZYY"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "departmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_ZRRRaNpOciKNQZYY",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "departmentApiCall",
+        "method": "post",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.data",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "data"
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "departmentApiCall",
+        "category": "HTTP",
+        "x": 625,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "departmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_iO1KlqIxoKrqy5B4",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "validation",
+        "script": "let data = bh.input.department\nif(!data.name.trim()){\n    throw new Error('Invalid department')\n}\nif(!data.info.trim()) throw new Error('Invalid Info')",
+        "functionName": "validation",
+        "category": "Function",
+        "x": 285,
+        "y": 120,
+        "wires": [
+            [
+                "sd_F72sahUmPEBPngPm"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "departmentService",
+        "generated": true
+    }
+]

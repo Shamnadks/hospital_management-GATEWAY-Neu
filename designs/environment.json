@@ -13,7 +13,10 @@
             "SSD_DEFAULT_PORT": "server",
             "webAppMountpoint": "both",
             "CLOCK_TOLERANCE": "server",
-            "NGFORAGE_MOBILE_DRIVER": "client"
+            "NGFORAGE_MOBILE_DRIVER": "client",
+            "SUCCESS_STATUS_CODE": "server",
+            "API_URL": "server",
+            "SUCCESS_MESSAGE": "server"
         }
     },
     "dev": {
@@ -30,7 +33,10 @@
             "SSD_DEFAULT_PORT": "8081",
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
-            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
+            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
+            "SUCCESS_STATUS_CODE": "200",
+            "API_URL": "http://localhost:8083/api",
+            "SUCCESS_MESSAGE": "success"
         }
     },
     "prod": {
@@ -47,7 +53,10 @@
             "SSD_DEFAULT_PORT": "8081",
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
-            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
+            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
+            "SUCCESS_STATUS_CODE": "200",
+            "API_URL": "http://localhost:8083/api",
+            "SUCCESS_MESSAGE": "success"
         }
     }
 }

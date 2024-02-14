@@ -1,0 +1,24 @@
+{
+    "/appointment/post": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "appointmentDetails",
+                    "description": "details",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "appointment"
+            ]
+        }
+    }
+}

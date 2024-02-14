@@ -1,0 +1,318 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "type": "tab",
+        "createdDate": "2024-02-13T17:18:15.318Z",
+        "label": "updateDepartmentApi",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "updateDepartmentApi",
+        "relativeParentPath": "department/updateDepartment"
+    },
+    {
+        "id": "sd_vVGKR48i2Du1V8dn",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "departmentUpdate",
+        "path": "/department/put",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "put",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "uploadFileOptions": "",
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "department",
+                    "desc": "details",
+                    "type": "body",
+                    "required": false,
+                    "rowId": "sd_dhYcgKbBZ3selb1b",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 145,
+        "y": 100,
+        "wires": [
+            [
+                "sd_zCCP7aGWxqUpAT2F"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "updateDepartmentApi",
+        "functionName": "sd_vVGKR48i2Du1V8dn"
+    },
+    {
+        "id": "sd_9psPmlTR1EHZVaLT",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "updationResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "updationResponse",
+        "category": "HTTP",
+        "x": 625,
+        "y": 100,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_U06j3JKG0a5ZqcDC",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "responseData",
+        "script": "bh.local.response = {\n    status:bh.local.result.payload.statusCode,\n    message:bh.local.result?.payload?.data\n}",
+        "functionName": "responseData",
+        "category": "Function",
+        "x": 500,
+        "y": 100,
+        "wires": [
+            [
+                "sd_9psPmlTR1EHZVaLT"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_9zaTIYf8IqWkudqq",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_pfxh1Cph1O0LSggG",
+            "sd_g2jyRiSi4ZqPu50s"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 389,
+        "y": 222.8000030517578,
+        "wires": [
+            [
+                "sd_pfxh1Cph1O0LSggG"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "updateDepartmentApi"
+    },
+    {
+        "id": "sd_pfxh1Cph1O0LSggG",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 549,
+        "y": 222.8000030517578,
+        "wires": [
+            [
+                "sd_g2jyRiSi4ZqPu50s"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_g2jyRiSi4ZqPu50s",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 724,
+        "y": 222.8000030517578,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentApi",
+        "generated": true
+    },
+    {
+        "id": "sd_zCCP7aGWxqUpAT2F",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13",
+            "type": "tab",
+            "createdDate": "2024-02-13T17:18:31.639Z",
+            "label": "updateDepartmentService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_YaV2QgAhVAzcA6Ps",
+            "flowName": "departmentUpdateService"
+        },
+        "inputVariables": [
+            {
+                "key": "data",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "body"
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
+        "callService": "./updateDepartmentService",
+        "startName": "departmentUpdateService",
+        "inputParams": [
+            "bh.input.body"
+        ],
+        "accept_bh": false,
+        "functionName": "sd_zCCP7aGWxqUpAT2F",
+        "category": "General",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "sd_U06j3JKG0a5ZqcDC"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateDepartmentApi",
+        "generated": true
+    }
+]

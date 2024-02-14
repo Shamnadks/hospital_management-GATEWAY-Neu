@@ -1,0 +1,169 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "type": "tab",
+        "createdDate": "2024-02-13T18:25:46.845Z",
+        "label": "doctorService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "doctorService",
+        "relativeParentPath": "doctor/doctorCreation"
+    },
+    {
+        "id": "sd_R0xUVWx8v7iuEpcb",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "doctorService",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "doctor",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            },
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "localVariables": [],
+        "accept_bh": false,
+        "functionName": "doctorService",
+        "category": "General",
+        "x": 245,
+        "y": 100,
+        "wires": [
+            [
+                "sd_elkfQpFfvo1IQs1K"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "doctorService"
+    },
+    {
+        "id": "sd_Q7JPk88Is00Mx2Wh",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "dataConfiguration",
+        "script": "// bh.local.url = `${process.env.API_URL}/department/put`\nlet data = bh.input?.doctor\nbh.local.url = `${process.env.API_URL}/doctors/post`\nbh.local.data = {\n    doctors:[\n        {\n            id:0,\n            name:data?.name,\n            phone_no: data?.phone_no,\n            email:data?.email,\n            address:data?.email,\n            age:data?.age,\n            department_id:data?.department_id,\n            education: data?.education,\n            salary: data?.salary,\n            token_limit: data?.token_limit,\n            status: \"Available\"\n\n        }\n    ]\n}\nconsole.log(bh.local.data)",
+        "functionName": "dataConfiguration",
+        "category": "Function",
+        "x": 525,
+        "y": 100,
+        "wires": [
+            [
+                "sd_TRKSas82Cpnw2hDl"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorService",
+        "generated": true
+    },
+    {
+        "id": "sd_elkfQpFfvo1IQs1K",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "validation",
+        "script": "let data = bh.input.doctor\nconsole.log(data)\nif(!data?.name?.trim())  throw new Error('Invalid name')\nif(!data?.email?.trim()) throw new Error('Invalid email')\n// if(!data.phone_no.trim()) throw new Error('Invalid phone number')\nif(typeof data[\"phone_no\"] !== 'number' ) throw new Error('Invalid phone number')\nif(!data.address?.trim()) throw new Error('Invalid address')\nif(typeof data?.age !== 'number') throw new Error('Invalid age')\nif(typeof data[\"department_id\"] !== 'number') throw new Error('Invalid department')\nif(typeof data?.salary!== 'number') throw new Error('Invalid salary')\nif(typeof data[\"token_limit\"] !== 'number' ) throw new Error('Invalid token number')",
+        "functionName": "validation",
+        "category": "Function",
+        "x": 365,
+        "y": 100,
+        "wires": [
+            [
+                "sd_Q7JPk88Is00Mx2Wh"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorService",
+        "generated": true
+    },
+    {
+        "id": "sd_TRKSas82Cpnw2hDl",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "departmentApiCall",
+        "method": "post",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.data",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "data"
+        },
+        "resultMapping": "bh.input.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.input",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "departmentApiCall",
+        "category": "HTTP",
+        "x": 685,
+        "y": 100,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "doctorService",
+        "generated": true
+    }
+]

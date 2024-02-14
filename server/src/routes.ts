@@ -1,5 +1,41 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-doctorService-SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ
+import { doctorService as SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ } from './sd-services/doctor/doctorCreation/doctorService';
+//CORE_REFERENCE_IMPORT-doctorApi-SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ
+import { doctorApi as SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ } from './sd-services/doctor/doctorCreation/doctorApi';
+//CORE_REFERENCE_IMPORT-departmentService-SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN
+import { departmentService as SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN } from './sd-services/department/departmentCreation/departmentService';
+//CORE_REFERENCE_IMPORT-departmentApi-SSD_SERVICE_ID_sd_l0HX7iP5IWfzwEkN
+import { departmentApi as SSD_SERVICE_ID_sd_l0HX7iP5IWfzwEkN } from './sd-services/department/departmentCreation/departmentApi';
+//CORE_REFERENCE_IMPORT-filterDepartmentService-SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI
+import { filterDepartmentService as SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI } from './sd-services/department/filterDepartment/filterDepartmentService';
+//CORE_REFERENCE_IMPORT-filterDepartmentApi-SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7
+import { filterDepartmentApi as SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7 } from './sd-services/department/filterDepartment/filterDepartmentApi';
+//CORE_REFERENCE_IMPORT-updateDepartmentService-SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13
+import { updateDepartmentService as SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13 } from './sd-services/department/updateDepartment/updateDepartmentService';
+//CORE_REFERENCE_IMPORT-updateDepartmentApi-SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH
+import { updateDepartmentApi as SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH } from './sd-services/department/updateDepartment/updateDepartmentApi';
+//CORE_REFERENCE_IMPORT-appointment-SSD_SERVICE_ID_sd_bAt0PbNJZUqm28s6
+import { appointment as SSD_SERVICE_ID_sd_bAt0PbNJZUqm28s6 } from './sd-services/appointments/appointment';
 
 export const UserRoutes = [
-    //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-doctorService-SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ
+SSD_SERVICE_ID_sd_lxfVH3wRqGdS2rpQ,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-doctorApi-SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ
+SSD_SERVICE_ID_sd_toqy16Rh6NHLcttQ,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-departmentService-SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN
+SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-departmentApi-SSD_SERVICE_ID_sd_l0HX7iP5IWfzwEkN
+SSD_SERVICE_ID_sd_l0HX7iP5IWfzwEkN,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-filterDepartmentService-SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI
+SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-filterDepartmentApi-SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7
+SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-updateDepartmentService-SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13
+SSD_SERVICE_ID_sd_CXGNBitJ8i2Oql13,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-updateDepartmentApi-SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH
+SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-appointment-SSD_SERVICE_ID_sd_bAt0PbNJZUqm28s6
+SSD_SERVICE_ID_sd_bAt0PbNJZUqm28s6,
 ];
