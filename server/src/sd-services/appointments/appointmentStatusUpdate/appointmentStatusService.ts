@@ -83,14 +83,19 @@ export class appointmentStatusService {
   }
   //   service flows_appointmentStatusService
 
-  async sd_0yJa3W1Bj3oShiAr(parentSpanInst, ...others) {
+  async sd_0yJa3W1Bj3oShiAr(parentSpanInst, query: any = undefined, ...others) {
     const spanInst = this.tracerService.createSpan(
       'sd_0yJa3W1Bj3oShiAr',
       parentSpanInst
     );
     let bh: any = {
-      input: {},
-      local: {},
+      input: {
+        query,
+      },
+      local: {
+        response: undefined,
+        requestBody: undefined,
+      },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
@@ -101,7 +106,9 @@ export class appointmentStatusService {
         // formatting output variables
         {
           input: {},
-          local: {},
+          local: {
+            response: bh.local.response,
+          },
         }
       );
     } catch (e) {
@@ -122,7 +129,11 @@ export class appointmentStatusService {
       parentSpanInst
     );
     try {
-      bh.local.url = `${process.env.API_URL}/appointment/put`;
+      bh.local.url = `${process.env.API_URL}/paymentverify/post`;
+      console.log(bh.input.query);
+      bh.local.requestBody = {
+        payment_id: bh.input?.query?.payment_id,
+      };
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.statusUpdateApiCall(bh, parentSpanInst);
@@ -144,12 +155,12 @@ export class appointmentStatusService {
       let requestOptions: any = {
         url: bh.local.url,
         timeout: 30000,
-        method: 'put',
+        method: 'post',
         headers: {},
         followRedirects: true,
         cookies: undefined,
         authType: undefined,
-        body: undefined,
+        body: bh.local.requestBody,
         paytoqs: false,
         proxyConfig: undefined,
         tlsConfig: undefined,

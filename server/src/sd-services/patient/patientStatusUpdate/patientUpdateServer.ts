@@ -81,24 +81,33 @@ export class patientUpdateServer {
   }
   //   service flows_patientUpdateServer
 
-  async sd_mJhq6AwJD0EtgA2A(parentSpanInst, ...others) {
+  async sd_mJhq6AwJD0EtgA2A(parentSpanInst, body: any = undefined, ...others) {
     const spanInst = this.tracerService.createSpan(
       'sd_mJhq6AwJD0EtgA2A',
       parentSpanInst
     );
     let bh: any = {
-      input: {},
-      local: {},
+      input: {
+        body,
+      },
+      local: {
+        response: undefined,
+        requestBody: undefined,
+        url: undefined,
+      },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
       this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_sX999jhZUtFTUZGj(bh, parentSpanInst);
       //appendnew_next_sd_mJhq6AwJD0EtgA2A
       return (
         // formatting output variables
         {
           input: {},
-          local: {},
+          local: {
+            response: bh.local.response,
+          },
         }
       );
     } catch (e) {
@@ -112,6 +121,85 @@ export class patientUpdateServer {
     }
   }
   //appendnew_flow_patientUpdateServer_start
+
+  async sd_sX999jhZUtFTUZGj(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_sX999jhZUtFTUZGj',
+      parentSpanInst
+    );
+    try {
+      bh.local.url = `${process.env.API_URL}/updateappointment/post`;
+
+      bh.local.requestBody = {
+        id: bh.input.body.id,
+        status: bh.input?.body?.status,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.statusUpdateApiCall(bh, parentSpanInst);
+      //appendnew_next_sd_sX999jhZUtFTUZGj
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_sX999jhZUtFTUZGj',
+        spanInst,
+        'sd_sX999jhZUtFTUZGj'
+      );
+    }
+  }
+
+  async statusUpdateApiCall(bh, parentSpanInst) {
+    try {
+      let requestOptions: any = {
+        url: bh.local.url,
+        timeout: 30000,
+        method: 'post',
+        headers: {},
+        followRedirects: true,
+        cookies: undefined,
+        authType: undefined,
+        body: bh.local.requestBody,
+        paytoqs: false,
+        proxyConfig: undefined,
+        tlsConfig: undefined,
+        ret: 'json',
+        params: {},
+        username: undefined,
+        password: undefined,
+        token: undefined,
+        useQuerystring: false,
+      };
+      requestOptions.rejectUnauthorized = false;
+      requestOptions.tlsConfig = undefined;
+      requestOptions.proxyConfig = undefined;
+      let responseMsg: any = await this.sdService.httpRequest(
+        requestOptions.url,
+        requestOptions.timeout,
+        requestOptions.method,
+        requestOptions.headers,
+        requestOptions.followRedirects,
+        requestOptions.cookies,
+        requestOptions.authType,
+        requestOptions.body,
+        requestOptions.paytoqs,
+        requestOptions.proxyConfig,
+        requestOptions.tlsConfig,
+        requestOptions.ret,
+        requestOptions.params,
+        requestOptions.rejectUnauthorized,
+        requestOptions.username,
+        requestOptions.password,
+        requestOptions.token
+      );
+
+      bh.local.response = responseMsg;
+      //appendnew_next_statusUpdateApiCall
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_JNFP97culICcZOay');
+    }
+  }
 
   //appendnew_node
 

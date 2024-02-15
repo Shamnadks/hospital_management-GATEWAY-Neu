@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "post",
-        "sequenceId": "",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -73,7 +73,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "departmentApi",
-        "functionName": "sd_9A5OKpFHGYdIkdIP"
+        "functionName": "sd_9A5OKpFHGYdIkdIP",
+        "generated": false
     },
     {
         "id": "sd_BtetFMZ3h0iu0OMJ",
@@ -133,9 +134,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
+        "generated": true,
         "generateNext": false,
-        "serviceName": "departmentApi",
-        "generated": true
+        "serviceName": "departmentApi"
     },
     {
         "id": "sd_IWMOnbnbtlZczX52",
@@ -236,7 +237,8 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "departmentApi"
+        "serviceName": "departmentApi",
+        "generated": false
     },
     {
         "id": "sd_R3JV5tswwuvGeBja",

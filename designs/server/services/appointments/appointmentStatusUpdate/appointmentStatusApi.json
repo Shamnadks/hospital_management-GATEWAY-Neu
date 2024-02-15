@@ -18,12 +18,12 @@
         "viewType": "server",
         "nodeType": "start",
         "name": "appointmentStatusUpdation",
-        "path": "/appointment/put",
+        "path": "paymentverify/get",
         "uploadpath": "",
         "summary": "",
         "description": "",
-        "method": "put",
-        "sequenceId": "",
+        "method": "get",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -39,11 +39,11 @@
             "responses": [],
             "params": [
                 {
-                    "key": "data",
-                    "desc": "success data",
-                    "type": "body",
+                    "key": "payment_id",
+                    "desc": "for updating status",
+                    "type": "query",
                     "required": false,
-                    "rowId": "sd_nAVJcEZrB4dhngAc",
+                    "rowId": "sd_WYLLBxcGZuFcNWJ5",
                     "valid": true
                 }
             ],
@@ -151,13 +151,31 @@
             "flowId": "sd_0yJa3W1Bj3oShiAr",
             "flowName": "sd_0yJa3W1Bj3oShiAr"
         },
-        "inputVariables": [],
+        "inputVariables": [
+            {
+                "key": "query",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "query"
+            }
+        ],
         "bhVariables": [],
-        "outputMapping": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
         "callService": "./appointmentStatusService",
         "startName": "sd_0yJa3W1Bj3oShiAr",
-        "inputParams": [],
-        "accept_bh": "",
+        "inputParams": [
+            "bh.input.query"
+        ],
+        "accept_bh": false,
         "functionName": "sd_8jIVTGtD5lOxdTRX",
         "category": "General",
         "x": 380,
@@ -179,7 +197,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.response = {\n    status:bh.local?.result?.status,\n    message:'Success',\n    data:bh.local.result?.payload?.data\n}",
+        "script": "bh.local.response = {\n    status:200,\n    message:'success'\n}",
         "functionName": "sd_dI3t0sqwp7ypRk4W",
         "category": "Function",
         "x": 525,

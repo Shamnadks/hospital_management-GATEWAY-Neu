@@ -1,3 +1,22 @@
 {
-    "/patient/put": {}
+    "/patient/put": {
+        "put": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "data",
+                    "description": "updateData",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "patientUpdateApi"
+            ]
+        }
+    }
 }

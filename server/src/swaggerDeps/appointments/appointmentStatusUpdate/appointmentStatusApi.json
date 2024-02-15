@@ -1,15 +1,15 @@
 {
-    "/appointment/put": {
-        "put": {
+    "/paymentverify/get": {
+        "get": {
             "summary": "",
             "description": "",
             "consumes": [],
             "produces": [],
             "parameters": [
                 {
-                    "in": "body",
-                    "name": "data",
-                    "description": "success data",
+                    "in": "query",
+                    "name": "payment_id",
+                    "description": "for updating status",
                     "required": false
                 }
             ],

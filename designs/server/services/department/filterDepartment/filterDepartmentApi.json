@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "get",
-        "sequenceId": "",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",

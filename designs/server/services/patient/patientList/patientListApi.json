@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "get",
-        "sequenceId": "",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -73,8 +73,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "patientListApi",
-        "functionName": "sd_YOxrZLE8GZ4KeDVv",
-        "generated": false
+        "functionName": "sd_YOxrZLE8GZ4KeDVv"
     },
     {
         "id": "sd_SkMIkMswp1s0FGt2",
@@ -134,9 +133,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "patientListApi"
+        "serviceName": "patientListApi",
+        "generated": true
     },
     {
         "id": "sd_mRlgqsFGUr7OAukR",

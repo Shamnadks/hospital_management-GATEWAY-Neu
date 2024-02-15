@@ -84,7 +84,7 @@ export class filterDepartmentApi {
       `${this.serviceBasePath}/department-filter/get`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class filterDepartmentApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )

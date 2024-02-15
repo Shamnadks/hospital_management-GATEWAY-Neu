@@ -84,7 +84,7 @@ export class departmentApi {
       `${this.serviceBasePath}/department/post`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class departmentApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )

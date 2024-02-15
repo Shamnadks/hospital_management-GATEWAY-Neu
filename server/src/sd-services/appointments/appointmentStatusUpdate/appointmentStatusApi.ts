@@ -80,11 +80,11 @@ export class appointmentStatusApi {
   private mountAllPaths() {
     log.debug('mounting all paths for service :: appointmentStatusApi');
 
-    this.app['put'](
-      `${this.serviceBasePath}/appointment/put`,
+    this.app['get'](
+      `${this.serviceBasePath}/paymentverify/get`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class appointmentStatusApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )
@@ -127,8 +127,10 @@ export class appointmentStatusApi {
         SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch.appointmentStatusService.getInstance();
       let outputVariables =
         await SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDchInstance.sd_0yJa3W1Bj3oShiAr(
-          spanInst
+          spanInst,
+          bh.input.query
         );
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_dI3t0sqwp7ypRk4W(bh, parentSpanInst);
@@ -152,9 +154,8 @@ export class appointmentStatusApi {
     );
     try {
       bh.local.response = {
-        status: bh.local?.result?.status,
-        message: 'Success',
-        data: bh.local.result?.payload?.data,
+        status: 200,
+        message: 'success',
       };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_CFVdykrsqHfFbeQ8(bh, parentSpanInst);

@@ -84,7 +84,7 @@ export class patientUpdateApi {
       `${this.serviceBasePath}/patient/put`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class patientUpdateApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )
@@ -127,8 +127,10 @@ export class patientUpdateApi {
         SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb.patientUpdateServer.getInstance();
       let outputVariables =
         await SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance.sd_mJhq6AwJD0EtgA2A(
-          spanInst
+          spanInst,
+          bh.input.body
         );
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_5w9jujtH5wLTqFGj(bh, parentSpanInst);
@@ -151,7 +153,13 @@ export class patientUpdateApi {
       parentSpanInst
     );
     try {
+      bh.local.respose = {
+        status: 200,
+        message: 'success',
+        data: bh.local?.result?.payload?.data,
+      };
       this.tracerService.sendData(spanInst, bh);
+      await this.statusUpdateResponse(bh, parentSpanInst);
       //appendnew_next_sd_5w9jujtH5wLTqFGj
       return bh;
     } catch (e) {
@@ -162,6 +170,16 @@ export class patientUpdateApi {
         spanInst,
         'sd_5w9jujtH5wLTqFGj'
       );
+    }
+  }
+
+  async statusUpdateResponse(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_Jhn7LjxiqQpgOcfk');
     }
   }
 

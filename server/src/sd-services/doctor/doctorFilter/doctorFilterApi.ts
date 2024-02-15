@@ -84,7 +84,7 @@ export class doctorFilterApi {
       `${this.serviceBasePath}/doctor/get`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class doctorFilterApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )
