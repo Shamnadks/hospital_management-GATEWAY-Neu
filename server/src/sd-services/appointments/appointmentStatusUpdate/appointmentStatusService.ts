@@ -132,8 +132,9 @@ export class appointmentStatusService {
       bh.local.url = `${process.env.API_URL}/paymentverify/post`;
       console.log(bh.input.query);
       bh.local.requestBody = {
-        payment_id: bh.input?.query?.payment_id,
+        payment_id: bh.input?.query?.session_id,
       };
+      console.log(bh.local.requestBody);
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.statusUpdateApiCall(bh, parentSpanInst);

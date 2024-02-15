@@ -129,11 +129,12 @@ export class patientUpdateServer {
     );
     try {
       bh.local.url = `${process.env.API_URL}/updateappointment/post`;
-
+      console.log(bh.input.body);
       bh.local.requestBody = {
         id: bh.input.body.id,
-        status: bh.input?.body?.status,
+        status: bh.input.body?.status,
       };
+      console.log(bh.input.body);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.statusUpdateApiCall(bh, parentSpanInst);
       //appendnew_next_sd_sX999jhZUtFTUZGj

@@ -163,6 +163,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -206,6 +207,108 @@
                 "sd_mRlgqsFGUr7OAukR"
             ]
         ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientListApi",
+        "generated": true
+    },
+    {
+        "id": "sd_L5xWVths9QobKrJB",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_xu2IDlrcxdALmBlJ",
+            "sd_rrh7TKEluCmshBEF"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 325,
+        "y": 280,
+        "wires": [
+            [
+                "sd_xu2IDlrcxdALmBlJ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "patientListApi"
+    },
+    {
+        "id": "sd_xu2IDlrcxdALmBlJ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 485,
+        "y": 280,
+        "wires": [
+            [
+                "sd_rrh7TKEluCmshBEF"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientListApi",
+        "generated": true
+    },
+    {
+        "id": "sd_rrh7TKEluCmshBEF",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 660,
+        "y": 280,
+        "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "patientListApi",

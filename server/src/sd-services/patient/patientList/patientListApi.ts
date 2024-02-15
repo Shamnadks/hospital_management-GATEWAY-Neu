@@ -182,6 +182,39 @@ export class patientListApi {
     }
   }
 
+  async errorInfo(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan('errorInfo', parentSpanInst);
+    try {
+      console.log(bh.error);
+      bh.local.response = {
+        status: 400,
+        message: bh.error.message,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      await this.exceptionResponse(bh, parentSpanInst);
+      //appendnew_next_errorInfo
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_xu2IDlrcxdALmBlJ',
+        spanInst,
+        'errorInfo'
+      );
+    }
+  }
+
+  async exceptionResponse(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_rrh7TKEluCmshBEF');
+    }
+  }
+
   //appendnew_node
 
   // error_handler_slot
@@ -197,11 +230,28 @@ export class patientListApi {
     bh.errorSource = src;
     bh.errorFunName = functionName;
     this.tracerService.sendData(parentSpanInst, bh, true);
-    if (bh.web.next) {
-      bh.web.next(e);
+    if (
+      false ||
+      (await this.exceptionHandling(bh, parentSpanInst))
+      /*appendnew_next_Catch*/
+    ) {
+      return bh;
     } else {
-      throw e;
+      if (bh.web.next) {
+        bh.web.next(e);
+      } else {
+        throw e;
+      }
     }
+  }
+  async exceptionHandling(bh, parentSpanInst) {
+    const catchConnectedNodes = ['sd_xu2IDlrcxdALmBlJ', 'sd_rrh7TKEluCmshBEF'];
+    if (catchConnectedNodes.includes(bh.errorSource)) {
+      return false;
+    }
+    bh = await this.errorInfo(bh, parentSpanInst);
+    //appendnew_next_exceptionHandling
+    return true;
   }
   //appendnew_flow_patientListApi_Catch
 }

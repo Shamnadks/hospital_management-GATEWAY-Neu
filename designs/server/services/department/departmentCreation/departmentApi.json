@@ -73,8 +73,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "departmentApi",
-        "functionName": "sd_9A5OKpFHGYdIkdIP",
-        "generated": false
+        "functionName": "sd_9A5OKpFHGYdIkdIP"
     },
     {
         "id": "sd_BtetFMZ3h0iu0OMJ",
@@ -134,9 +133,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "departmentApi"
+        "serviceName": "departmentApi",
+        "generated": true
     },
     {
         "id": "sd_IWMOnbnbtlZczX52",
@@ -164,6 +163,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -237,8 +237,7 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "departmentApi",
-        "generated": false
+        "serviceName": "departmentApi"
     },
     {
         "id": "sd_R3JV5tswwuvGeBja",

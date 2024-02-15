@@ -39,7 +39,7 @@
             "responses": [],
             "params": [
                 {
-                    "key": "payment_id",
+                    "key": "session_id",
                     "desc": "for updating status",
                     "type": "query",
                     "required": false,
@@ -73,8 +73,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "appointmentStatusApi",
-        "functionName": "sd_Ne2NyjqBI7dSi2Fy",
-        "generated": false
+        "functionName": "sd_Ne2NyjqBI7dSi2Fy"
     },
     {
         "id": "sd_CFVdykrsqHfFbeQ8",
@@ -186,9 +185,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "appointmentStatusApi"
+        "serviceName": "appointmentStatusApi",
+        "generated": true
     },
     {
         "id": "sd_dI3t0sqwp7ypRk4W",

@@ -73,8 +73,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "patientUpdateApi",
-        "functionName": "sd_CeMd1pKYteisFuWc",
-        "generated": false
+        "functionName": "sd_CeMd1pKYteisFuWc"
     },
     {
         "id": "sd_5w9jujtH5wLTqFGj",
@@ -83,7 +82,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.respose ={\n    status:200,\n    message:'success',\n    data:bh.local?.result?.payload?.data\n}",
+        "script": "bh.local.response ={\n    status:200,\n    message:'success',\n    data:bh.local?.result?.payload\n}",
         "functionName": "sd_5w9jujtH5wLTqFGj",
         "category": "Function",
         "x": 565,
@@ -156,9 +155,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "patientUpdateApi"
+        "serviceName": "patientUpdateApi",
+        "generated": true
     },
     {
         "id": "sd_Jhn7LjxiqQpgOcfk",
@@ -206,6 +205,108 @@
         "category": "HTTP",
         "x": 700,
         "y": 120,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    },
+    {
+        "id": "sd_h4ZWxN5QMUkWno8g",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_dUD5TGq9c0m55bjM",
+            "sd_NrZEow5FKVxbZpph"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 345,
+        "y": 240,
+        "wires": [
+            [
+                "sd_dUD5TGq9c0m55bjM"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "patientUpdateApi"
+    },
+    {
+        "id": "sd_dUD5TGq9c0m55bjM",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 565,
+        "y": 240,
+        "wires": [
+            [
+                "sd_NrZEow5FKVxbZpph"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    },
+    {
+        "id": "sd_NrZEow5FKVxbZpph",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 705,
+        "y": 240,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,

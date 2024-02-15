@@ -8,7 +8,7 @@
             "parameters": [
                 {
                     "in": "query",
-                    "name": "payment_id",
+                    "name": "session_id",
                     "description": "for updating status",
                     "required": false
                 }
