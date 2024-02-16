@@ -135,7 +135,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
-        "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.payload.data\n}",
+        "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.payload\n}",
         "functionName": "responseData",
         "category": "Function",
         "x": 590,
