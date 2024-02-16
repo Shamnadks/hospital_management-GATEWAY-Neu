@@ -179,7 +179,7 @@ export class tokenBasedFilterApi {
       console.log('kjkjkjkj');
       bh.local.response = {
         status: process.env.SUCCESS_STATUS_CODE,
-        response: bh.local?.result?.payload.data,
+        response: bh.local?.result?.payload,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_9sXj65KhXdQ0lqcu(bh, parentSpanInst);
