@@ -1,24 +1,24 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "id": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "type": "tab",
-        "createdDate": "2024-02-14T07:52:50.462Z",
-        "label": "doctorFilterApi",
+        "createdDate": "2024-02-16T11:00:55.323Z",
+        "label": "tokenBasedFilterApi",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "doctorFilterApi",
-        "relativeParentPath": "doctor/doctorFilter"
+        "serviceName": "tokenBasedFilterApi",
+        "relativeParentPath": "doctor/tokenBasedFilter"
     },
     {
-        "id": "sd_gM6LLOgYgYi63NqC",
+        "id": "sd_dLjZuvBg70wA6vJB",
         "type": "HttpIn",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "server",
         "nodeType": "start",
-        "name": "filterDcotor",
-        "path": "/doctor/get",
+        "name": "filterDcotorBasedOnToken",
+        "path": "/token/get",
         "uploadpath": "",
         "summary": "",
         "description": "",
@@ -45,14 +45,6 @@
                     "required": false,
                     "rowId": "sd_6AIqXmxFIiRSJRV0",
                     "valid": true
-                },
-                {
-                    "key": "department",
-                    "desc": "departmentId",
-                    "type": "query",
-                    "required": false,
-                    "rowId": "sd_SgcSeGx2vOOjMH3e",
-                    "valid": true
                 }
             ],
             "produces": [],
@@ -62,11 +54,11 @@
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 145,
+        "x": 165,
         "y": 100,
         "wires": [
             [
-                "sd_AuUN4qxzC4UEKnlh"
+                "sd_jcHIN9CPfoc8EjZL"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -80,13 +72,13 @@
         },
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorFilterApi",
-        "functionName": "sd_gM6LLOgYgYi63NqC"
+        "serviceName": "tokenBasedFilterApi",
+        "functionName": "sd_dLjZuvBg70wA6vJB"
     },
     {
-        "id": "sd_y31yN3xIxL58WvLj",
+        "id": "sd_9sXj65KhXdQ0lqcu",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "server",
         "nodeType": "flow",
         "name": "",
@@ -126,64 +118,64 @@
             "headers": "Map",
             "cookies": "Map"
         },
-        "functionName": "sd_y31yN3xIxL58WvLj",
+        "functionName": "sd_9sXj65KhXdQ0lqcu",
         "category": "HTTP",
-        "x": 685,
+        "x": 705,
         "y": 100,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_9LJOFmMqXiALTNrq",
+        "id": "sd_q0C5NwcXIUOZNc47",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
         "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.payload.data\n}",
         "functionName": "responseData",
         "category": "Function",
-        "x": 570,
+        "x": 590,
         "y": 100,
         "wires": [
             [
-                "sd_y31yN3xIxL58WvLj"
+                "sd_9sXj65KhXdQ0lqcu"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_AuUN4qxzC4UEKnlh",
+        "id": "sd_jcHIN9CPfoc8EjZL",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log('hi')",
-        "functionName": "sd_AuUN4qxzC4UEKnlh",
+        "script": "console.log('hiiii')",
+        "functionName": "sd_jcHIN9CPfoc8EjZL",
         "category": "Function",
-        "x": 305,
+        "x": 325,
         "y": 100,
         "wires": [
             [
-                "sd_U8vGHS7POCTloCbP"
+                "sd_jF1HwsKMdZUKGutf"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_U8vGHS7POCTloCbP",
+        "id": "sd_jF1HwsKMdZUKGutf",
         "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
@@ -191,16 +183,16 @@
         "isValidNode": true,
         "noerr": 0,
         "service": {
-            "id": "SSD_SERVICE_ID_sd_F58XlOhAZ8F4OeRg",
+            "id": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
             "type": "tab",
-            "createdDate": "2024-02-14T07:53:09.344Z",
-            "label": "doctorFilterService",
+            "createdDate": "2024-02-16T11:01:07.288Z",
+            "label": "tokenBasedFilterService",
             "disabled": false,
             "info": "",
             "functionSeq": 0
         },
         "flow": {
-            "flowId": "sd_8XQWSWiqqGoNJ8vx",
+            "flowId": "sd_87XqvgZoFrKh3bh5",
             "flowName": "filterDepartmentService"
         },
         "inputVariables": [
@@ -222,30 +214,30 @@
                 "localVar": "bh.local.result"
             }
         ],
-        "callService": "./doctorFilterService",
+        "callService": "./tokenBasedFilterService",
         "startName": "filterDepartmentService",
         "inputParams": [
             "bh.input.query"
         ],
         "accept_bh": false,
-        "functionName": "sd_U8vGHS7POCTloCbP",
+        "functionName": "sd_jF1HwsKMdZUKGutf",
         "category": "General",
-        "x": 425,
+        "x": 445,
         "y": 100,
         "wires": [
             [
-                "sd_9LJOFmMqXiALTNrq"
+                "sd_q0C5NwcXIUOZNc47"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_nd4brDuUHhfg27ca",
+        "id": "sd_GQwdy106f5fzZTeD",
         "type": "Catch",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "start",
         "name": "exceptionHandling",
@@ -253,48 +245,48 @@
         "selectCatchType": "allnodes",
         "masternodeList": "",
         "ignoreList": [
-            "sd_oH1NfLgBGOIyO7vw",
-            "sd_drS28p4KhmA5ZBvr"
+            "sd_jc5yimmfQ7EsgSRe",
+            "sd_v96Hvlr7qmw1aGTp"
         ],
         "functionName": "exceptionHandling",
         "category": "General",
-        "x": 425,
-        "y": 200,
+        "x": 445,
+        "y": 220,
         "wires": [
             [
-                "sd_oH1NfLgBGOIyO7vw"
+                "sd_jc5yimmfQ7EsgSRe"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "doctorFilterApi"
+        "serviceName": "tokenBasedFilterApi"
     },
     {
-        "id": "sd_oH1NfLgBGOIyO7vw",
+        "id": "sd_jc5yimmfQ7EsgSRe",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "errorInfo",
         "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
         "functionName": "errorInfo",
         "category": "Function",
-        "x": 565,
-        "y": 200,
+        "x": 585,
+        "y": 220,
         "wires": [
             [
-                "sd_drS28p4KhmA5ZBvr"
+                "sd_v96Hvlr7qmw1aGTp"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_drS28p4KhmA5ZBvr",
+        "id": "sd_v96Hvlr7qmw1aGTp",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_MoSMIyg6HRG1tnOR",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "server",
         "nodeType": "flow",
         "name": "exceptionResponse",
@@ -336,12 +328,12 @@
         },
         "functionName": "exceptionResponse",
         "category": "HTTP",
-        "x": 685,
-        "y": 200,
+        "x": 705,
+        "y": 220,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "doctorFilterApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     }
 ]

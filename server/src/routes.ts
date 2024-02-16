@@ -1,4 +1,8 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-tokenBasedFilterService-SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz
+import { tokenBasedFilterService as SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz } from './sd-services/doctor/tokenBasedFilter/tokenBasedFilterService';
+//CORE_REFERENCE_IMPORT-tokenBasedFilterApi-SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB
+import { tokenBasedFilterApi as SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB } from './sd-services/doctor/tokenBasedFilter/tokenBasedFilterApi';
 //CORE_REFERENCE_IMPORT-patientUpdateServer-SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb
 import { patientUpdateServer as SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb } from './sd-services/patient/patientStatusUpdate/patientUpdateServer';
 //CORE_REFERENCE_IMPORT-patientUpdateApi-SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY
@@ -42,6 +46,10 @@ import { updateDepartmentApi as SSD_SERVICE_ID_sd_nKaaCzh3n3kJ8sBH } from './sd-
 
 export const UserRoutes = [
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-tokenBasedFilterService-SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz
+SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-tokenBasedFilterApi-SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB
+SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientUpdateServer-SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb
 SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-patientUpdateApi-SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY

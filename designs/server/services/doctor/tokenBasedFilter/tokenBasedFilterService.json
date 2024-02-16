@@ -1,0 +1,178 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
+        "type": "tab",
+        "createdDate": "2024-02-16T11:01:07.288Z",
+        "label": "tokenBasedFilterService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "tokenBasedFilterService",
+        "relativeParentPath": "doctor/tokenBasedFilter"
+    },
+    {
+        "id": "sd_87XqvgZoFrKh3bh5",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "filterDepartmentService",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "data",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            },
+            {
+                "key": "reqObject",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "filterDepartmentService",
+        "category": "General",
+        "x": 225,
+        "y": 120,
+        "wires": [
+            [
+                "sd_UKR869pncTearIX3"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "tokenBasedFilterService"
+    },
+    {
+        "id": "sd_UKR869pncTearIX3",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "validation",
+        "script": "console.log(bh.input)",
+        "functionName": "validation",
+        "category": "Function",
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "sd_prfvpHvKeURTCxQn"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "tokenBasedFilterService",
+        "generated": true
+    },
+    {
+        "id": "sd_prfvpHvKeURTCxQn",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "dataConfig",
+        "script": "bh.local.url = `${process.env.API_URL}/selectdoctor/post`\n\nbh.local.reqObject = {}\nconsole.log(bh.input,'calling')\n\nif (bh.input?.data?.id) {\n    bh.local?.reqObject = {\n        id: bh.input?.data?.id\n    }\n}\n\n// if(bh.input?.data?.department){\n//     bh.local?.reqObject?.['department_id'] = [bh.input?.data?.department]\n// }\n\nconsole.log(bh.local?.reqObject)\nconsole.log(bh.local?.url)\n\n",
+        "functionName": "dataConfig",
+        "category": "Function",
+        "x": 505,
+        "y": 120,
+        "wires": [
+            [
+                "sd_vJ0TYXqPx0lww2Bc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "tokenBasedFilterService",
+        "generated": true
+    },
+    {
+        "id": "sd_vJ0TYXqPx0lww2Bc",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "doctorApiCall",
+        "method": "post",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.reqObject",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "reqObject"
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "doctorApiCall",
+        "category": "HTTP",
+        "x": 630,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "tokenBasedFilterService",
+        "generated": true
+    }
+]
