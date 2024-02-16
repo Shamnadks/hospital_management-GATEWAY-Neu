@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "post",
-        "sequenceId": "",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -163,6 +163,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",

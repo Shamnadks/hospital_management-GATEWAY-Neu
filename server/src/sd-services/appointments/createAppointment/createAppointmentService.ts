@@ -130,6 +130,27 @@ export class createAppointmentService {
     );
     try {
       console.log('validation');
+      console.log(bh.input.data);
+      let data = bh.input?.data;
+      let pin_code = data?.pin_code;
+      if (!data?.name.trim()) throw new Error('Invalid Name');
+      if (typeof data?.phone_no !== 'number')
+        throw new Error('Invalid phone number');
+      if (!data?.place?.trim()) throw new Error('Invalid place name');
+      if (!data?.address?.trim()) throw new Error('Invalid address');
+      if (typeof data?.pin_code !== 'number')
+        if (pin_code?.length > 6 || pin_code?.length < 6)
+          throw new Error('Invalid pincode');
+      if (!data?.email?.trim()) throw new Error('Invalid email address');
+      if (!data?.blood_group?.trim()) throw new Error('Invalid blood group');
+      if (!data?.doctor_id) throw new Error('Invalid docotor Id');
+      if (!data?.cash) throw new Error('Invalid Cash');
+      if (!data?.payment_method?.trim())
+        throw new Error('Invalid payment method');
+      if (!data?.sucess_url.trim()) throw new Error('Invalid success url');
+      if (!data?.cancel_url.trim()) throw new Error('Invalid cancel url');
+      // if(!data.payment_method !== 'cash' || !data?.payment_method !== 'strip') throw new Error('Invalid payment method')
+
       this.tracerService.sendData(spanInst, bh);
       bh = await this.dataConfig(bh, parentSpanInst);
       //appendnew_next_validation
@@ -151,12 +172,19 @@ export class createAppointmentService {
       parentSpanInst
     );
     try {
+      const currentDate = new Date(bh.input?.data?.dob);
+
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      console.log(formattedDate);
       bh.local.url = `${process.env.API_URL}/appointment/post`;
       bh.local.appointmentDetails = {
         id: 0,
         name: bh.input?.data?.name,
         phone_no: bh.input?.data?.phone_no,
-        dob: new Date(bh.input?.data?.dob),
+        dob: formattedDate,
         place: bh.input?.data?.place,
         address: bh.input?.data?.address,
         pin_code: bh.input?.data?.pin_code,
@@ -168,7 +196,7 @@ export class createAppointmentService {
         sucess_url: bh.input?.data?.sucess_url,
         cancel_url: bh.input?.data?.cancel_url,
       };
-      console.log(bh.local.appointmentDetails);
+      // console.log(bh.local.appointmentDetails)
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.appointmenApiCall(bh, parentSpanInst);
@@ -193,7 +221,7 @@ export class createAppointmentService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: undefined,
+        cookies: {},
         authType: undefined,
         body: bh.local.appointmentDetails,
         paytoqs: false,

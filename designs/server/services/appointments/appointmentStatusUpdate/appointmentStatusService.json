@@ -19,8 +19,34 @@
         "nodeType": "start",
         "name": "",
         "outputs": 1,
-        "inputVariables": [],
-        "localVariables": [],
+        "inputVariables": [
+            {
+                "key": "query",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            },
+            {
+                "key": "requestBody",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
         "accept_bh": false,
         "functionName": "sd_0yJa3W1Bj3oShiAr",
         "category": "General",
@@ -41,9 +67,9 @@
         "z": "SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "",
-        "script": "bh.local.url = `${process.env.API_URL}/appointment/put`\n",
-        "functionName": "sd_GRVrxyiXttB1Ockm",
+        "name": "validation",
+        "script": "bh.local.url = `${process.env.API_URL}/paymentverify/post`\nconsole.log(bh.input.query)\n\nif(!bh.input?.query?.session_id) throw new Error('Invalid sessionId')\n\nbh.local.requestBody = {\n    payment_id: bh.input?.query?.session_id\n}\nconsole.log(bh.local.requestBody)\n",
+        "functionName": "validation",
         "category": "Function",
         "x": 400,
         "y": 140,
@@ -64,7 +90,8 @@
         "viewType": "server",
         "nodeType": "flow",
         "name": "statusUpdateApiCall",
-        "method": "put",
+        "method": "post",
+        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
@@ -72,10 +99,12 @@
             "mapVarValue": "url"
         },
         "ret": "json",
+        "retMapping": "",
         "retMappingObj": {},
+        "reqBody": "bh.local.requestBody",
         "reqBodyObj": {
-            "mapVarType": "bh",
-            "mapVarValue": ""
+            "mapVarType": "bh.local",
+            "mapVarValue": "requestBody"
         },
         "resultMapping": "bh.local.response",
         "resultMappingObj": {
@@ -84,11 +113,16 @@
         },
         "headers": {},
         "headersObj": [],
+        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
+        "paramMapping": "",
         "paramMappingObj": {},
+        "authType": "",
         "useAuthTypeMappingObj": {},
+        "useAuthTypeMap": {},
+        "useAuthType": "",
         "useAuthUsername": "",
         "useAuthUsernameMappingObj": "",
         "useAuthPassword": "",
@@ -104,6 +138,7 @@
         "proxy": "",
         "useProxy": false,
         "usetls": false,
+        "cookies": [],
         "cookiesMapObj": {},
         "cookiesList": {},
         "switchStates": {

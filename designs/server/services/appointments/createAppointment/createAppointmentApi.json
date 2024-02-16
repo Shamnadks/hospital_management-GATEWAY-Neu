@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "post",
-        "sequenceId": "",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",

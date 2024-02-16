@@ -7,7 +7,7 @@ import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
 //append_imports_end
-export class patientUpdateServer {
+export class tokenBasedFilterService {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -23,7 +23,7 @@ export class patientUpdateServer {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'patientUpdateServer';
+    this.serviceName = 'tokenBasedFilterService';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -38,7 +38,7 @@ export class patientUpdateServer {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new patientUpdateServer(
+      instance = new tokenBasedFilterService(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -67,40 +67,45 @@ export class patientUpdateServer {
   }
 
   async mountTimers() {
-    //appendnew_flow_patientUpdateServer_TimerStart
+    //appendnew_flow_tokenBasedFilterService_TimerStart
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: patientUpdateServer');
-    //appendnew_flow_patientUpdateServer_MiddlewareStart
+    log.debug(
+      'mounting all middlewares for service :: tokenBasedFilterService'
+    );
+    //appendnew_flow_tokenBasedFilterService_MiddlewareStart
   }
 
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: patientUpdateServer');
-    //appendnew_flow_patientUpdateServer_HttpIn
+    log.debug('mounting all paths for service :: tokenBasedFilterService');
+    //appendnew_flow_tokenBasedFilterService_HttpIn
   }
-  //   service flows_patientUpdateServer
+  //   service flows_tokenBasedFilterService
 
-  async patientStatusUpdate(parentSpanInst, body: any = undefined, ...others) {
+  async filterDepartmentService(
+    parentSpanInst,
+    data: any = undefined,
+    ...others
+  ) {
     const spanInst = this.tracerService.createSpan(
-      'patientStatusUpdate',
+      'filterDepartmentService',
       parentSpanInst
     );
     let bh: any = {
       input: {
-        body,
+        data,
       },
       local: {
         response: undefined,
-        requestBody: undefined,
-        url: undefined,
+        reqObject: undefined,
       },
     };
     try {
       bh = this.sdService.__constructDefault(bh);
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.dataConfig(bh, parentSpanInst);
-      //appendnew_next_patientStatusUpdate
+      bh = await this.validation(bh, parentSpanInst);
+      //appendnew_next_filterDepartmentService
       return (
         // formatting output variables
         {
@@ -114,13 +119,35 @@ export class patientUpdateServer {
       return await this.errorHandler(
         bh,
         e,
-        'sd_mJhq6AwJD0EtgA2A',
+        'sd_87XqvgZoFrKh3bh5',
         spanInst,
-        'patientStatusUpdate'
+        'filterDepartmentService'
       );
     }
   }
-  //appendnew_flow_patientUpdateServer_start
+  //appendnew_flow_tokenBasedFilterService_start
+
+  async validation(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'validation',
+      parentSpanInst
+    );
+    try {
+      console.log(bh.input);
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.dataConfig(bh, parentSpanInst);
+      //appendnew_next_validation
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_UKR869pncTearIX3',
+        spanInst,
+        'validation'
+      );
+    }
+  }
 
   async dataConfig(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
@@ -128,29 +155,40 @@ export class patientUpdateServer {
       parentSpanInst
     );
     try {
-      bh.local.url = `${process.env.API_URL}/updateappointment/post`;
-      console.log(bh.input.body);
-      bh.local.requestBody = {
-        id: bh.input.body?.id,
-        status: bh.input.body?.status,
-      };
-      console.log(bh.input.body);
+      bh.local.url = `${process.env.API_URL}/selectdoctor/post`;
+
+      bh.local.reqObject = {};
+      console.log(bh.input, 'calling');
+
+      if (bh.input?.data?.id) {
+        bh.local?.reqObject = {
+          id: bh.input?.data?.id,
+        };
+      }
+
+      // if(bh.input?.data?.department){
+      //     bh.local?.reqObject?.['department_id'] = [bh.input?.data?.department]
+      // }
+
+      console.log(bh.local?.reqObject);
+      console.log(bh.local?.url);
+
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.statusUpdateApiCall(bh, parentSpanInst);
+      bh = await this.doctorApiCall(bh, parentSpanInst);
       //appendnew_next_dataConfig
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_sX999jhZUtFTUZGj',
+        'sd_prfvpHvKeURTCxQn',
         spanInst,
         'dataConfig'
       );
     }
   }
 
-  async statusUpdateApiCall(bh, parentSpanInst) {
+  async doctorApiCall(bh, parentSpanInst) {
     try {
       let requestOptions: any = {
         url: bh.local.url,
@@ -158,9 +196,9 @@ export class patientUpdateServer {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: {},
+        cookies: undefined,
         authType: undefined,
-        body: bh.local.requestBody,
+        body: bh.local.reqObject,
         paytoqs: false,
         proxyConfig: undefined,
         tlsConfig: undefined,
@@ -195,10 +233,10 @@ export class patientUpdateServer {
       );
 
       bh.local.response = responseMsg;
-      //appendnew_next_statusUpdateApiCall
+      //appendnew_next_doctorApiCall
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_JNFP97culICcZOay');
+      return await this.errorHandler(bh, e, 'sd_vJ0TYXqPx0lww2Bc');
     }
   }
 
@@ -223,5 +261,5 @@ export class patientUpdateServer {
       throw e;
     }
   }
-  //appendnew_flow_patientUpdateServer_Catch
+  //appendnew_flow_tokenBasedFilterService_Catch
 }

@@ -1,27 +1,27 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+        "id": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
         "type": "tab",
-        "createdDate": "2024-02-14T18:34:21.336Z",
-        "label": "patientUpdateServer",
+        "createdDate": "2024-02-16T11:01:07.288Z",
+        "label": "tokenBasedFilterService",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "patientUpdateServer",
-        "relativeParentPath": "patient/patientStatusUpdate"
+        "serviceName": "tokenBasedFilterService",
+        "relativeParentPath": "doctor/tokenBasedFilter"
     },
     {
-        "id": "sd_mJhq6AwJD0EtgA2A",
+        "id": "sd_87XqvgZoFrKh3bh5",
         "type": "Start",
-        "z": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
         "viewType": "client-server",
         "nodeType": "start",
-        "name": "patientStatusUpdate",
+        "name": "filterDepartmentService",
         "outputs": 1,
         "inputVariables": [
             {
-                "key": "body",
+                "key": "data",
                 "defaultValue": {
                     "type": "any",
                     "value": ""
@@ -39,15 +39,7 @@
                 "output": true
             },
             {
-                "key": "requestBody",
-                "defaultValue": {
-                    "type": "any",
-                    "value": ""
-                },
-                "output": false
-            },
-            {
-                "key": "url",
+                "key": "reqObject",
                 "defaultValue": {
                     "type": "any",
                     "value": ""
@@ -56,50 +48,71 @@
             }
         ],
         "accept_bh": false,
-        "functionName": "patientStatusUpdate",
+        "functionName": "filterDepartmentService",
         "category": "General",
-        "x": 205,
-        "y": 100,
+        "x": 225,
+        "y": 120,
         "wires": [
             [
-                "sd_sX999jhZUtFTUZGj"
+                "sd_UKR869pncTearIX3"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "patientUpdateServer"
+        "serviceName": "tokenBasedFilterService"
     },
     {
-        "id": "sd_sX999jhZUtFTUZGj",
+        "id": "sd_UKR869pncTearIX3",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "dataConfig",
-        "script": "bh.local.url = `${process.env.API_URL}/updateappointment/post`\nconsole.log(bh.input.body)\nbh.local.requestBody = {\n    id: bh.input.body?.id,\n    status: bh.input.body?.status\n}\nconsole.log(bh.input.body)",
-        "functionName": "dataConfig",
+        "name": "validation",
+        "script": "console.log(bh.input)",
+        "functionName": "validation",
         "category": "Function",
-        "x": 345,
-        "y": 100,
+        "x": 350,
+        "y": 120,
         "wires": [
             [
-                "sd_JNFP97culICcZOay"
+                "sd_prfvpHvKeURTCxQn"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "patientUpdateServer",
+        "serviceName": "tokenBasedFilterService",
         "generated": true
     },
     {
-        "id": "sd_JNFP97culICcZOay",
+        "id": "sd_prfvpHvKeURTCxQn",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "dataConfig",
+        "script": "bh.local.url = `${process.env.API_URL}/selectdoctor/post`\n\nbh.local.reqObject = {}\nconsole.log(bh.input,'calling')\n\nif (bh.input?.data?.id) {\n    bh.local?.reqObject = {\n        id: bh.input?.data?.id\n    }\n}\n\n// if(bh.input?.data?.department){\n//     bh.local?.reqObject?.['department_id'] = [bh.input?.data?.department]\n// }\n\nconsole.log(bh.local?.reqObject)\nconsole.log(bh.local?.url)\n\n",
+        "functionName": "dataConfig",
+        "category": "Function",
+        "x": 505,
+        "y": 120,
+        "wires": [
+            [
+                "sd_vJ0TYXqPx0lww2Bc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "tokenBasedFilterService",
+        "generated": true
+    },
+    {
+        "id": "sd_vJ0TYXqPx0lww2Bc",
         "type": "ServerHttpRequest",
-        "z": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
+        "z": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
         "viewType": "server",
         "nodeType": "flow",
-        "name": "statusUpdateApiCall",
+        "name": "doctorApiCall",
         "method": "post",
-        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
@@ -107,12 +120,11 @@
             "mapVarValue": "url"
         },
         "ret": "json",
-        "retMapping": "",
         "retMappingObj": {},
-        "reqBody": "bh.local.requestBody",
+        "reqBody": "bh.local.reqObject",
         "reqBodyObj": {
             "mapVarType": "bh.local",
-            "mapVarValue": "requestBody"
+            "mapVarValue": "reqObject"
         },
         "resultMapping": "bh.local.response",
         "resultMappingObj": {
@@ -121,16 +133,11 @@
         },
         "headers": {},
         "headersObj": [],
-        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
-        "paramMapping": "",
         "paramMappingObj": {},
-        "authType": "",
         "useAuthTypeMappingObj": {},
-        "useAuthTypeMap": {},
-        "useAuthType": "",
         "useAuthUsername": "",
         "useAuthUsernameMappingObj": "",
         "useAuthPassword": "",
@@ -146,7 +153,6 @@
         "proxy": "",
         "useProxy": false,
         "usetls": false,
-        "cookies": [],
         "cookiesMapObj": {},
         "cookiesList": {},
         "switchStates": {
@@ -157,16 +163,16 @@
             "type": "num",
             "value": ""
         },
-        "functionName": "statusUpdateApiCall",
+        "functionName": "doctorApiCall",
         "category": "HTTP",
-        "x": 520,
-        "y": 100,
+        "x": 630,
+        "y": 120,
         "wires": [
             []
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "patientUpdateServer",
+        "serviceName": "tokenBasedFilterService",
         "generated": true
     }
 ]

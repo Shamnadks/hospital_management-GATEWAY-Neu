@@ -23,13 +23,14 @@
         "summary": "",
         "description": "",
         "method": "put",
-        "sequenceId": "",
+        "sequenceId": "IDSAuthroizedAPIs",
         "consumes": "",
         "produces": "",
         "filetype": "path",
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
+        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -81,14 +82,16 @@
         "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "",
-        "script": "",
-        "functionName": "sd_5w9jujtH5wLTqFGj",
+        "name": "responseData",
+        "script": "bh.local.response ={\n    status:200,\n    message:'success',\n    response:bh.local?.result?.payload\n}",
+        "functionName": "responseData",
         "category": "Function",
         "x": 565,
         "y": 120,
         "wires": [
-            []
+            [
+                "sd_Jhn7LjxiqQpgOcfk"
+            ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
@@ -116,24 +119,197 @@
         },
         "flow": {
             "flowId": "sd_mJhq6AwJD0EtgA2A",
-            "flowName": "sd_mJhq6AwJD0EtgA2A"
+            "flowName": "patientStatusUpdate"
         },
-        "inputVariables": [],
+        "inputVariables": [
+            {
+                "key": "body",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "body"
+            }
+        ],
         "bhVariables": [],
-        "outputMapping": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
         "callService": "./patientUpdateServer",
-        "startName": "sd_mJhq6AwJD0EtgA2A",
-        "inputParams": [],
-        "accept_bh": "",
+        "startName": "patientStatusUpdate",
+        "inputParams": [
+            "bh.input.body"
+        ],
+        "accept_bh": false,
         "functionName": "sd_Mfq2vF7CpjdxoBYS",
         "category": "General",
-        "x": 285,
+        "x": 345,
         "y": 120,
         "wires": [
             [
                 "sd_5w9jujtH5wLTqFGj"
             ]
         ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    },
+    {
+        "id": "sd_Jhn7LjxiqQpgOcfk",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "statusUpdateResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "statusUpdateResponse",
+        "category": "HTTP",
+        "x": 700,
+        "y": 120,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    },
+    {
+        "id": "sd_h4ZWxN5QMUkWno8g",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_dUD5TGq9c0m55bjM",
+            "sd_NrZEow5FKVxbZpph"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 345,
+        "y": 240,
+        "wires": [
+            [
+                "sd_dUD5TGq9c0m55bjM"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "patientUpdateApi"
+    },
+    {
+        "id": "sd_dUD5TGq9c0m55bjM",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 565,
+        "y": 240,
+        "wires": [
+            [
+                "sd_NrZEow5FKVxbZpph"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientUpdateApi",
+        "generated": true
+    },
+    {
+        "id": "sd_NrZEow5FKVxbZpph",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 705,
+        "y": 240,
+        "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "patientUpdateApi",

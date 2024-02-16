@@ -1,24 +1,24 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "id": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "type": "tab",
-        "createdDate": "2024-02-13T17:41:44.493Z",
-        "label": "filterDepartmentApi",
+        "createdDate": "2024-02-16T11:00:55.323Z",
+        "label": "tokenBasedFilterApi",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "filterDepartmentApi",
-        "relativeParentPath": "department/filterDepartment"
+        "serviceName": "tokenBasedFilterApi",
+        "relativeParentPath": "doctor/tokenBasedFilter"
     },
     {
-        "id": "sd_VuYC7ggQ8IVBXptd",
+        "id": "sd_dLjZuvBg70wA6vJB",
         "type": "HttpIn",
-        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "server",
         "nodeType": "start",
-        "name": "filterDepartmentApi",
-        "path": "/department-filter/get",
+        "name": "filterDcotorBasedOnToken",
+        "path": "/token/get",
         "uploadpath": "",
         "summary": "",
         "description": "",
@@ -40,10 +40,10 @@
             "params": [
                 {
                     "key": "id",
-                    "desc": "department filtering",
+                    "desc": "doctorId",
                     "type": "query",
                     "required": false,
-                    "rowId": "sd_pcO0V0k7TwLm2hRP",
+                    "rowId": "sd_6AIqXmxFIiRSJRV0",
                     "valid": true
                 }
             ],
@@ -54,11 +54,11 @@
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 160,
+        "x": 165,
         "y": 100,
         "wires": [
             [
-                "sd_Cyv0HHvBfWjSmbYZ"
+                "sd_jcHIN9CPfoc8EjZL"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -72,13 +72,13 @@
         },
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "filterDepartmentApi",
-        "functionName": "sd_VuYC7ggQ8IVBXptd"
+        "serviceName": "tokenBasedFilterApi",
+        "functionName": "sd_dLjZuvBg70wA6vJB"
     },
     {
-        "id": "sd_hkwQ9a362ym3pROe",
+        "id": "sd_9sXj65KhXdQ0lqcu",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "server",
         "nodeType": "flow",
         "name": "",
@@ -101,6 +101,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -117,64 +118,64 @@
             "headers": "Map",
             "cookies": "Map"
         },
-        "functionName": "sd_hkwQ9a362ym3pROe",
+        "functionName": "sd_9sXj65KhXdQ0lqcu",
         "category": "HTTP",
-        "x": 640,
+        "x": 705,
         "y": 100,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "filterDepartmentApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_4kDUz83rjLwRgKMS",
+        "id": "sd_q0C5NwcXIUOZNc47",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "responseData",
         "script": "console.log(bh.local?.result?.payload)\nconsole.log('kjkjkjkj')\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.payload.data\n}",
         "functionName": "responseData",
         "category": "Function",
-        "x": 525,
+        "x": 590,
         "y": 100,
         "wires": [
             [
-                "sd_hkwQ9a362ym3pROe"
+                "sd_9sXj65KhXdQ0lqcu"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "filterDepartmentApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_Cyv0HHvBfWjSmbYZ",
+        "id": "sd_jcHIN9CPfoc8EjZL",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log('hi')",
-        "functionName": "sd_Cyv0HHvBfWjSmbYZ",
+        "script": "console.log('hiiii')",
+        "functionName": "sd_jcHIN9CPfoc8EjZL",
         "category": "Function",
-        "x": 260,
+        "x": 325,
         "y": 100,
         "wires": [
             [
-                "sd_ib3DlC96bbaWGa1W"
+                "sd_jF1HwsKMdZUKGutf"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "filterDepartmentApi",
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     },
     {
-        "id": "sd_ib3DlC96bbaWGa1W",
+        "id": "sd_jF1HwsKMdZUKGutf",
         "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_QJTfXfrbTcP5dtG7",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
@@ -182,16 +183,16 @@
         "isValidNode": true,
         "noerr": 0,
         "service": {
-            "id": "SSD_SERVICE_ID_sd_wodP8aUqBpp4AwbI",
+            "id": "SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz",
             "type": "tab",
-            "createdDate": "2024-02-13T17:41:58.595Z",
-            "label": "filterDepartmentService",
+            "createdDate": "2024-02-16T11:01:07.288Z",
+            "label": "tokenBasedFilterService",
             "disabled": false,
             "info": "",
             "functionSeq": 0
         },
         "flow": {
-            "flowId": "sd_qAnKd14advEjb2RM",
+            "flowId": "sd_87XqvgZoFrKh3bh5",
             "flowName": "filterDepartmentService"
         },
         "inputVariables": [
@@ -213,24 +214,126 @@
                 "localVar": "bh.local.result"
             }
         ],
-        "callService": "./filterDepartmentService",
+        "callService": "./tokenBasedFilterService",
         "startName": "filterDepartmentService",
         "inputParams": [
             "bh.input.query"
         ],
         "accept_bh": false,
-        "functionName": "sd_ib3DlC96bbaWGa1W",
+        "functionName": "sd_jF1HwsKMdZUKGutf",
         "category": "General",
-        "x": 380,
+        "x": 445,
         "y": 100,
         "wires": [
             [
-                "sd_4kDUz83rjLwRgKMS"
+                "sd_q0C5NwcXIUOZNc47"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "filterDepartmentApi",
+        "serviceName": "tokenBasedFilterApi",
+        "generated": true
+    },
+    {
+        "id": "sd_GQwdy106f5fzZTeD",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_jc5yimmfQ7EsgSRe",
+            "sd_v96Hvlr7qmw1aGTp"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 445,
+        "y": 220,
+        "wires": [
+            [
+                "sd_jc5yimmfQ7EsgSRe"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "tokenBasedFilterApi"
+    },
+    {
+        "id": "sd_jc5yimmfQ7EsgSRe",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 585,
+        "y": 220,
+        "wires": [
+            [
+                "sd_v96Hvlr7qmw1aGTp"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "tokenBasedFilterApi",
+        "generated": true
+    },
+    {
+        "id": "sd_v96Hvlr7qmw1aGTp",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_FvSmMkqkWczAJdJB",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 705,
+        "y": 220,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "tokenBasedFilterApi",
         "generated": true
     }
 ]

@@ -1,5 +1,5 @@
 {
-    "/paymentverify/get": {
+    "/token/get": {
         "get": {
             "summary": "",
             "description": "",
@@ -8,14 +8,14 @@
             "parameters": [
                 {
                     "in": "query",
-                    "name": "session_id",
-                    "description": "for updating status",
+                    "name": "id",
+                    "description": "doctorId",
                     "required": false
                 }
             ],
             "responses": {},
             "tags": [
-                "appointmentStatusApi"
+                "tokenBasedFilterApi"
             ]
         }
     }

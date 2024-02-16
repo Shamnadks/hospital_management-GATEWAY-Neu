@@ -84,7 +84,7 @@ export class patientUpdateApi {
       `${this.serviceBasePath}/patient/put`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class patientUpdateApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )
@@ -126,12 +126,14 @@ export class patientUpdateApi {
       const SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance: SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb.patientUpdateServer =
         SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb.patientUpdateServer.getInstance();
       let outputVariables =
-        await SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance.sd_mJhq6AwJD0EtgA2A(
-          spanInst
+        await SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance.patientStatusUpdate(
+          spanInst,
+          bh.input.body
         );
+      bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_5w9jujtH5wLTqFGj(bh, parentSpanInst);
+      bh = await this.responseData(bh, parentSpanInst);
       //appendnew_next_sd_Mfq2vF7CpjdxoBYS
       return bh;
     } catch (e) {
@@ -145,14 +147,20 @@ export class patientUpdateApi {
     }
   }
 
-  async sd_5w9jujtH5wLTqFGj(bh, parentSpanInst) {
+  async responseData(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_5w9jujtH5wLTqFGj',
+      'responseData',
       parentSpanInst
     );
     try {
+      bh.local.response = {
+        status: 200,
+        message: 'success',
+        response: bh.local?.result?.payload,
+      };
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_5w9jujtH5wLTqFGj
+      await this.statusUpdateResponse(bh, parentSpanInst);
+      //appendnew_next_responseData
       return bh;
     } catch (e) {
       return await this.errorHandler(
@@ -160,8 +168,51 @@ export class patientUpdateApi {
         e,
         'sd_5w9jujtH5wLTqFGj',
         spanInst,
-        'sd_5w9jujtH5wLTqFGj'
+        'responseData'
       );
+    }
+  }
+
+  async statusUpdateResponse(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_Jhn7LjxiqQpgOcfk');
+    }
+  }
+
+  async errorInfo(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan('errorInfo', parentSpanInst);
+    try {
+      console.log(bh.error);
+      bh.local.response = {
+        status: 400,
+        message: bh.error.message,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      await this.exceptionResponse(bh, parentSpanInst);
+      //appendnew_next_errorInfo
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_dUD5TGq9c0m55bjM',
+        spanInst,
+        'errorInfo'
+      );
+    }
+  }
+
+  async exceptionResponse(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.local.response.status).send(bh.local.response);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_NrZEow5FKVxbZpph');
     }
   }
 
@@ -180,11 +231,28 @@ export class patientUpdateApi {
     bh.errorSource = src;
     bh.errorFunName = functionName;
     this.tracerService.sendData(parentSpanInst, bh, true);
-    if (bh.web.next) {
-      bh.web.next(e);
+    if (
+      false ||
+      (await this.exceptionHandling(bh, parentSpanInst))
+      /*appendnew_next_Catch*/
+    ) {
+      return bh;
     } else {
-      throw e;
+      if (bh.web.next) {
+        bh.web.next(e);
+      } else {
+        throw e;
+      }
     }
+  }
+  async exceptionHandling(bh, parentSpanInst) {
+    const catchConnectedNodes = ['sd_dUD5TGq9c0m55bjM', 'sd_NrZEow5FKVxbZpph'];
+    if (catchConnectedNodes.includes(bh.errorSource)) {
+      return false;
+    }
+    bh = await this.errorInfo(bh, parentSpanInst);
+    //appendnew_next_exceptionHandling
+    return true;
   }
   //appendnew_flow_patientUpdateApi_Catch
 }

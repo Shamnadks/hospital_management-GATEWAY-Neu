@@ -7,9 +7,9 @@ import * as cookieParser from 'cookie-parser'; //_splitter_
 import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
-import * as SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN from './departmentService'; //_splitter_
+import * as SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz from './tokenBasedFilterService'; //_splitter_
 //append_imports_end
-export class departmentApi {
+export class tokenBasedFilterApi {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -25,7 +25,7 @@ export class departmentApi {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'departmentApi';
+    this.serviceName = 'tokenBasedFilterApi';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -40,7 +40,7 @@ export class departmentApi {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new departmentApi(
+      instance = new tokenBasedFilterApi(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -69,19 +69,19 @@ export class departmentApi {
   }
 
   async mountTimers() {
-    //appendnew_flow_departmentApi_TimerStart
+    //appendnew_flow_tokenBasedFilterApi_TimerStart
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: departmentApi');
-    //appendnew_flow_departmentApi_MiddlewareStart
+    log.debug('mounting all middlewares for service :: tokenBasedFilterApi');
+    //appendnew_flow_tokenBasedFilterApi_MiddlewareStart
   }
 
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: departmentApi');
+    log.debug('mounting all paths for service :: tokenBasedFilterApi');
 
-    this.app['post'](
-      `${this.serviceBasePath}/department/post`,
+    this.app['get'](
+      `${this.serviceBasePath}/token/get`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         'IDSAuthroizedAPIs',
@@ -99,10 +99,10 @@ export class departmentApi {
             next
           );
           let parentSpanInst = null;
-          bh = await this.toDepartmentApi(bh, parentSpanInst);
-          //appendnew_next_sd_9A5OKpFHGYdIkdIP
+          bh = await this.sd_jcHIN9CPfoc8EjZL(bh, parentSpanInst);
+          //appendnew_next_sd_dLjZuvBg70wA6vJB
         } catch (e) {
-          return await this.errorHandler(bh, e, 'sd_9A5OKpFHGYdIkdIP');
+          return await this.errorHandler(bh, e, 'sd_dLjZuvBg70wA6vJB');
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
@@ -111,38 +111,60 @@ export class departmentApi {
         this.generatedMiddlewares
       )
     );
-    //appendnew_flow_departmentApi_HttpIn
+    //appendnew_flow_tokenBasedFilterApi_HttpIn
   }
-  //   service flows_departmentApi
+  //   service flows_tokenBasedFilterApi
 
-  //appendnew_flow_departmentApi_start
+  //appendnew_flow_tokenBasedFilterApi_start
 
-  async toDepartmentApi(bh, parentSpanInst) {
+  async sd_jcHIN9CPfoc8EjZL(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'toDepartmentApi',
+      'sd_jcHIN9CPfoc8EjZL',
       parentSpanInst
     );
     try {
-      const SSD_SERVICE_ID_sd_I6lm3HkHLDly79aNInstance: SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN.departmentService =
-        SSD_SERVICE_ID_sd_I6lm3HkHLDly79aN.departmentService.getInstance();
-      let outputVariables =
-        await SSD_SERVICE_ID_sd_I6lm3HkHLDly79aNInstance.department(
-          spanInst,
-          bh.input.body
-        );
-      bh.local.result = outputVariables.local.response;
-
+      console.log('hiiii');
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.responseData(bh, parentSpanInst);
-      //appendnew_next_toDepartmentApi
+      bh = await this.sd_jF1HwsKMdZUKGutf(bh, parentSpanInst);
+      //appendnew_next_sd_jcHIN9CPfoc8EjZL
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_BtetFMZ3h0iu0OMJ',
+        'sd_jcHIN9CPfoc8EjZL',
         spanInst,
-        'toDepartmentApi'
+        'sd_jcHIN9CPfoc8EjZL'
+      );
+    }
+  }
+
+  async sd_jF1HwsKMdZUKGutf(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_jF1HwsKMdZUKGutf',
+      parentSpanInst
+    );
+    try {
+      const SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEzInstance: SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz.tokenBasedFilterService =
+        SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEz.tokenBasedFilterService.getInstance();
+      let outputVariables =
+        await SSD_SERVICE_ID_sd_3btD3LlcSg9QwlEzInstance.filterDepartmentService(
+          spanInst,
+          bh.input.query
+        );
+      bh.local.result = outputVariables.local.response;
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.responseData(bh, parentSpanInst);
+      //appendnew_next_sd_jF1HwsKMdZUKGutf
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_jF1HwsKMdZUKGutf',
+        spanInst,
+        'sd_jF1HwsKMdZUKGutf'
       );
     }
   }
@@ -153,33 +175,34 @@ export class departmentApi {
       parentSpanInst
     );
     try {
-      console.log(bh.local?.result);
+      console.log(bh.local?.result?.payload);
+      console.log('kjkjkjkj');
       bh.local.response = {
         status: process.env.SUCCESS_STATUS_CODE,
-        response: bh.local?.result?.payload?.data,
+        response: bh.local?.result?.payload.data,
       };
       this.tracerService.sendData(spanInst, bh);
-      await this.departmentCreationResponse(bh, parentSpanInst);
+      await this.sd_9sXj65KhXdQ0lqcu(bh, parentSpanInst);
       //appendnew_next_responseData
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_m6Gb33rNrwZL9qcK',
+        'sd_q0C5NwcXIUOZNc47',
         spanInst,
         'responseData'
       );
     }
   }
 
-  async departmentCreationResponse(bh, parentSpanInst) {
+  async sd_9sXj65KhXdQ0lqcu(bh, parentSpanInst) {
     try {
-      bh.web.res.status(bh.local.response.status).send(bh.local.response);
+      bh.web.res.status(200).send(bh.local.response);
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_IWMOnbnbtlZczX52');
+      return await this.errorHandler(bh, e, 'sd_9sXj65KhXdQ0lqcu');
     }
   }
 
@@ -199,7 +222,7 @@ export class departmentApi {
       return await this.errorHandler(
         bh,
         e,
-        'sd_R3JV5tswwuvGeBja',
+        'sd_jc5yimmfQ7EsgSRe',
         spanInst,
         'errorInfo'
       );
@@ -212,7 +235,7 @@ export class departmentApi {
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_BSuN9vkSSOz0C3L0');
+      return await this.errorHandler(bh, e, 'sd_v96Hvlr7qmw1aGTp');
     }
   }
 
@@ -246,7 +269,7 @@ export class departmentApi {
     }
   }
   async exceptionHandling(bh, parentSpanInst) {
-    const catchConnectedNodes = ['sd_R3JV5tswwuvGeBja', 'sd_BSuN9vkSSOz0C3L0'];
+    const catchConnectedNodes = ['sd_jc5yimmfQ7EsgSRe', 'sd_v96Hvlr7qmw1aGTp'];
     if (catchConnectedNodes.includes(bh.errorSource)) {
       return false;
     }
@@ -254,5 +277,5 @@ export class departmentApi {
     //appendnew_next_exceptionHandling
     return true;
   }
-  //appendnew_flow_departmentApi_Catch
+  //appendnew_flow_tokenBasedFilterApi_Catch
 }
