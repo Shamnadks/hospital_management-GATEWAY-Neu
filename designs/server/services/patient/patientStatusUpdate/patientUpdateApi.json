@@ -30,6 +30,7 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
+        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -81,9 +82,9 @@
         "z": "SSD_SERVICE_ID_sd_VkNVAGq7ppCBupSY",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "",
-        "script": "bh.local.response ={\n    status:200,\n    message:'success',\n    data:bh.local?.result?.payload\n}",
-        "functionName": "sd_5w9jujtH5wLTqFGj",
+        "name": "responseData",
+        "script": "bh.local.response ={\n    status:200,\n    message:'success',\n    response:bh.local?.result?.payload\n}",
+        "functionName": "responseData",
         "category": "Function",
         "x": 565,
         "y": 120,
@@ -118,7 +119,7 @@
         },
         "flow": {
             "flowId": "sd_mJhq6AwJD0EtgA2A",
-            "flowName": "sd_mJhq6AwJD0EtgA2A"
+            "flowName": "patientStatusUpdate"
         },
         "inputVariables": [
             {
@@ -140,7 +141,7 @@
             }
         ],
         "callService": "./patientUpdateServer",
-        "startName": "sd_mJhq6AwJD0EtgA2A",
+        "startName": "patientStatusUpdate",
         "inputParams": [
             "bh.input.body"
         ],
@@ -185,6 +186,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",

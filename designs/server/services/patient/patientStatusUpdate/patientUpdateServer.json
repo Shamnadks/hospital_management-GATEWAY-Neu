@@ -17,7 +17,7 @@
         "z": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
         "viewType": "client-server",
         "nodeType": "start",
-        "name": "",
+        "name": "patientStatusUpdate",
         "outputs": 1,
         "inputVariables": [
             {
@@ -56,7 +56,7 @@
             }
         ],
         "accept_bh": false,
-        "functionName": "sd_mJhq6AwJD0EtgA2A",
+        "functionName": "patientStatusUpdate",
         "category": "General",
         "x": 205,
         "y": 100,
@@ -75,9 +75,9 @@
         "z": "SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "",
-        "script": "bh.local.url = `${process.env.API_URL}/updateappointment/post`\nconsole.log(bh.input.body)\nbh.local.requestBody = {\n    id: bh.input.body.id,\n    status: bh.input.body?.status\n}\nconsole.log(bh.input.body)",
-        "functionName": "sd_sX999jhZUtFTUZGj",
+        "name": "dataConfig",
+        "script": "bh.local.url = `${process.env.API_URL}/updateappointment/post`\nconsole.log(bh.input.body)\nbh.local.requestBody = {\n    id: bh.input.body?.id,\n    status: bh.input.body?.status\n}\nconsole.log(bh.input.body)",
+        "functionName": "dataConfig",
         "category": "Function",
         "x": 345,
         "y": 100,
@@ -99,6 +99,7 @@
         "nodeType": "flow",
         "name": "statusUpdateApiCall",
         "method": "post",
+        "methodMapping": "",
         "methodMappingObj": {},
         "urlMapping": "bh.local.url",
         "urlMappingObj": {
@@ -106,6 +107,7 @@
             "mapVarValue": "url"
         },
         "ret": "json",
+        "retMapping": "",
         "retMappingObj": {},
         "reqBody": "bh.local.requestBody",
         "reqBodyObj": {
@@ -119,11 +121,16 @@
         },
         "headers": {},
         "headersObj": [],
+        "headerMapping": "",
         "headerMappingObj": {},
         "params": {},
         "paramsObj": [],
+        "paramMapping": "",
         "paramMappingObj": {},
+        "authType": "",
         "useAuthTypeMappingObj": {},
+        "useAuthTypeMap": {},
+        "useAuthType": "",
         "useAuthUsername": "",
         "useAuthUsernameMappingObj": "",
         "useAuthPassword": "",
@@ -139,6 +146,7 @@
         "proxy": "",
         "useProxy": false,
         "usetls": false,
+        "cookies": [],
         "cookiesMapObj": {},
         "cookiesList": {},
         "switchStates": {

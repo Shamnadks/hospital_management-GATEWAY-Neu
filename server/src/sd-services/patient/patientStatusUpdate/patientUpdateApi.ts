@@ -126,14 +126,14 @@ export class patientUpdateApi {
       const SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance: SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb.patientUpdateServer =
         SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYb.patientUpdateServer.getInstance();
       let outputVariables =
-        await SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance.sd_mJhq6AwJD0EtgA2A(
+        await SSD_SERVICE_ID_sd_Sajp3IPpjYinIWYbInstance.patientStatusUpdate(
           spanInst,
           bh.input.body
         );
       bh.local.result = outputVariables.local.response;
 
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_5w9jujtH5wLTqFGj(bh, parentSpanInst);
+      bh = await this.responseData(bh, parentSpanInst);
       //appendnew_next_sd_Mfq2vF7CpjdxoBYS
       return bh;
     } catch (e) {
@@ -147,20 +147,20 @@ export class patientUpdateApi {
     }
   }
 
-  async sd_5w9jujtH5wLTqFGj(bh, parentSpanInst) {
+  async responseData(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_5w9jujtH5wLTqFGj',
+      'responseData',
       parentSpanInst
     );
     try {
       bh.local.response = {
         status: 200,
         message: 'success',
-        data: bh.local?.result?.payload,
+        response: bh.local?.result?.payload,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.statusUpdateResponse(bh, parentSpanInst);
-      //appendnew_next_sd_5w9jujtH5wLTqFGj
+      //appendnew_next_responseData
       return bh;
     } catch (e) {
       return await this.errorHandler(
@@ -168,7 +168,7 @@ export class patientUpdateApi {
         e,
         'sd_5w9jujtH5wLTqFGj',
         spanInst,
-        'sd_5w9jujtH5wLTqFGj'
+        'responseData'
       );
     }
   }

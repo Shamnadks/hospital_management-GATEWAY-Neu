@@ -81,9 +81,9 @@ export class patientUpdateServer {
   }
   //   service flows_patientUpdateServer
 
-  async sd_mJhq6AwJD0EtgA2A(parentSpanInst, body: any = undefined, ...others) {
+  async patientStatusUpdate(parentSpanInst, body: any = undefined, ...others) {
     const spanInst = this.tracerService.createSpan(
-      'sd_mJhq6AwJD0EtgA2A',
+      'patientStatusUpdate',
       parentSpanInst
     );
     let bh: any = {
@@ -99,8 +99,8 @@ export class patientUpdateServer {
     try {
       bh = this.sdService.__constructDefault(bh);
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_sX999jhZUtFTUZGj(bh, parentSpanInst);
-      //appendnew_next_sd_mJhq6AwJD0EtgA2A
+      bh = await this.dataConfig(bh, parentSpanInst);
+      //appendnew_next_patientStatusUpdate
       return (
         // formatting output variables
         {
@@ -116,28 +116,28 @@ export class patientUpdateServer {
         e,
         'sd_mJhq6AwJD0EtgA2A',
         spanInst,
-        'sd_mJhq6AwJD0EtgA2A'
+        'patientStatusUpdate'
       );
     }
   }
   //appendnew_flow_patientUpdateServer_start
 
-  async sd_sX999jhZUtFTUZGj(bh, parentSpanInst) {
+  async dataConfig(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_sX999jhZUtFTUZGj',
+      'dataConfig',
       parentSpanInst
     );
     try {
       bh.local.url = `${process.env.API_URL}/updateappointment/post`;
       console.log(bh.input.body);
       bh.local.requestBody = {
-        id: bh.input.body.id,
+        id: bh.input.body?.id,
         status: bh.input.body?.status,
       };
       console.log(bh.input.body);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.statusUpdateApiCall(bh, parentSpanInst);
-      //appendnew_next_sd_sX999jhZUtFTUZGj
+      //appendnew_next_dataConfig
       return bh;
     } catch (e) {
       return await this.errorHandler(
@@ -145,7 +145,7 @@ export class patientUpdateServer {
         e,
         'sd_sX999jhZUtFTUZGj',
         spanInst,
-        'sd_sX999jhZUtFTUZGj'
+        'dataConfig'
       );
     }
   }
@@ -158,7 +158,7 @@ export class patientUpdateServer {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: undefined,
+        cookies: {},
         authType: undefined,
         body: bh.local.requestBody,
         paytoqs: false,
