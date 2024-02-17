@@ -4,7 +4,7 @@
             "summary": "",
             "description": "",
             "consumes": [
-                "application/json"
+                "multipart/form-data"
             ],
             "produces": [],
             "parameters": [

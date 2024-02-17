@@ -4,6 +4,8 @@ let instance = null;
 //append_imports_start
 
 import * as cookieParser from 'cookie-parser'; //_splitter_
+import * as os from 'os'; //_splitter_
+import { sep } from 'path'; //_splitter_
 import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
@@ -84,10 +86,15 @@ export class createAppointmentApi {
       `${this.serviceBasePath}/appointment/post`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'pre',
         this.generatedMiddlewares
       ),
+      this.sdService.multipartParser({
+        type: 'path',
+        path: (os.tmpdir() + '').replace(/\\|\//g, sep),
+        options: [{ name: 'newFile', maxCount: 1 }],
+      }),
 
       async (req, res, next) => {
         let bh: any = {};
@@ -106,7 +113,7 @@ export class createAppointmentApi {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'post',
         this.generatedMiddlewares
       )
@@ -124,6 +131,7 @@ export class createAppointmentApi {
     );
     try {
       console.log('HI');
+      console.log(bh.input.files.newFile[0].path);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.appointmentServiceCall(bh, parentSpanInst);
       //appendnew_next_sd_XmMdO6lY5WFL2DJ3
@@ -150,7 +158,8 @@ export class createAppointmentApi {
       let outputVariables =
         await SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8Instance.appointmentService(
           spanInst,
-          bh.input.body
+          bh.input.body,
+          bh.input.files.newFile[0].path
         );
       bh.local.result = outputVariables.local.response;
 
@@ -177,10 +186,15 @@ export class createAppointmentApi {
     try {
       console.log(bh.input.body);
       bh.local.statusCode = process.env.SUCCESS_STATUS_CODE;
-      bh.local.response = {
-        status: 200,
-        response: bh.local?.result?.payload?.data,
-      };
+      if (bh.local.result.error) {
+        bh.local.response = { ...bh.local.result };
+      } else {
+        bh.local.response = {
+          status: 200,
+          response: bh.local?.result?.payload?.data,
+        };
+      }
+
       this.tracerService.sendData(spanInst, bh);
       await this.appointmentApiCall(bh, parentSpanInst);
       //appendnew_next_dataConfig

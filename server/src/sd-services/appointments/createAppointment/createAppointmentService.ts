@@ -83,7 +83,12 @@ export class createAppointmentService {
   }
   //   service flows_createAppointmentService
 
-  async appointmentService(parentSpanInst, data: any = undefined, ...others) {
+  async appointmentService(
+    parentSpanInst,
+    data: any = undefined,
+    newFile: any = undefined,
+    ...others
+  ) {
     const spanInst = this.tracerService.createSpan(
       'appointmentService',
       parentSpanInst
@@ -91,6 +96,7 @@ export class createAppointmentService {
     let bh: any = {
       input: {
         data,
+        newFile,
       },
       local: {
         appointmentDetails: undefined,
@@ -130,12 +136,13 @@ export class createAppointmentService {
     );
     try {
       console.log('validation');
+      console.log(bh.input?.newFile);
       console.log(bh.input.data);
       let data = bh.input?.data;
+      console.log(typeof data.dob);
       let pin_code = data?.pin_code;
       if (!data?.name.trim()) throw new Error('Invalid Name');
-      if (typeof data?.phone_no !== 'number')
-        throw new Error('Invalid phone number');
+      if (!data?.phone_no?.trim()) throw new Error('Invalid phone number');
       if (!data?.place?.trim()) throw new Error('Invalid place name');
       if (!data?.address?.trim()) throw new Error('Invalid address');
       if (typeof data?.pin_code !== 'number')
@@ -147,8 +154,12 @@ export class createAppointmentService {
       if (!data?.cash) throw new Error('Invalid Cash');
       if (!data?.payment_method?.trim())
         throw new Error('Invalid payment method');
-      if (!data?.sucess_url.trim()) throw new Error('Invalid success url');
-      if (!data?.cancel_url.trim()) throw new Error('Invalid cancel url');
+
+      if (data?.payment_method == 'stripe') {
+        console.log('stripe');
+        if (!data?.sucess_url.trim()) throw new Error('Invalid success url');
+        if (!data?.cancel_url.trim()) throw new Error('Invalid cancel url');
+      }
       // if(!data.payment_method !== 'cash' || !data?.payment_method !== 'strip') throw new Error('Invalid payment method')
 
       this.tracerService.sendData(spanInst, bh);
@@ -195,8 +206,18 @@ export class createAppointmentService {
         payment_method: bh.input?.data?.payment_method,
         sucess_url: bh.input?.data?.sucess_url,
         cancel_url: bh.input?.data?.cancel_url,
+        newFile: bh.input.newFile,
       };
-      // console.log(bh.local.appointmentDetails)
+
+      if (bh.inut?.data?.payment_method == 'stripe') {
+        console.log('stripe');
+        bh.local.appointmentDetails['sucess_url'] = bh.input?.data?.sucess_url;
+        bh.local?.appointmentDetails['cancel_url'] = bh.input?.data?.cancel_url;
+      }
+
+      console.log(bh.local.appointmentDetails);
+
+      console.log('bgvtbfgvdrfcds');
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.appointmenApiCall(bh, parentSpanInst);
@@ -265,6 +286,31 @@ export class createAppointmentService {
     }
   }
 
+  async errorInfo(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan('errorInfo', parentSpanInst);
+    try {
+      console.log('bh.error');
+      console.log(bh.error);
+
+      bh.local.response = {
+        status: 400,
+        message: bh.error.message,
+        error: true,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_errorInfo
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_6d88pn1nKknP7Kv4',
+        spanInst,
+        'errorInfo'
+      );
+    }
+  }
+
   //appendnew_node
 
   // error_handler_slot
@@ -280,11 +326,28 @@ export class createAppointmentService {
     bh.errorSource = src;
     bh.errorFunName = functionName;
     this.tracerService.sendData(parentSpanInst, bh, true);
-    if (bh.web.next) {
-      bh.web.next(e);
+    if (
+      false ||
+      (await this.exceptionHandling(bh, parentSpanInst))
+      /*appendnew_next_Catch*/
+    ) {
+      return bh;
     } else {
-      throw e;
+      if (bh.web.next) {
+        bh.web.next(e);
+      } else {
+        throw e;
+      }
     }
+  }
+  async exceptionHandling(bh, parentSpanInst) {
+    const nodes = ['sd_uyBTiN53oHe8z0x1'];
+    if (nodes.includes(bh.errorSource)) {
+      bh = await this.errorInfo(bh, parentSpanInst);
+      //appendnew_next_exceptionHandling
+      return true;
+    }
+    return false;
   }
   //appendnew_flow_createAppointmentService_Catch
 }
