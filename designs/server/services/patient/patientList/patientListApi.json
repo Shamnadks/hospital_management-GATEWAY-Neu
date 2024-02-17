@@ -58,7 +58,7 @@
         "y": 160,
         "wires": [
             [
-                "sd_SkMIkMswp1s0FGt2"
+                "sd_EL7u4Ij2hFPz2DHs"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -125,7 +125,7 @@
         "accept_bh": false,
         "functionName": "sd_SkMIkMswp1s0FGt2",
         "category": "General",
-        "x": 320,
+        "x": 385,
         "y": 160,
         "wires": [
             [
@@ -309,6 +309,28 @@
         "x": 660,
         "y": 280,
         "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "patientListApi",
+        "generated": true
+    },
+    {
+        "id": "sd_EL7u4Ij2hFPz2DHs",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_fg6aLAJPSh1SbdXF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(\"hello patientList\")",
+        "functionName": "sd_EL7u4Ij2hFPz2DHs",
+        "category": "Function",
+        "x": 245,
+        "y": 160,
+        "wires": [
+            [
+                "sd_SkMIkMswp1s0FGt2"
+            ]
+        ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "patientListApi",
