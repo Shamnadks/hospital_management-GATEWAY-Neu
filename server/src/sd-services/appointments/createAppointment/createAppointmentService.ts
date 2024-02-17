@@ -221,7 +221,7 @@ export class createAppointmentService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: {},
+        cookies: undefined,
         authType: undefined,
         body: bh.local.appointmentDetails,
         paytoqs: false,

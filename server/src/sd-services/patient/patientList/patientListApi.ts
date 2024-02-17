@@ -99,7 +99,7 @@ export class patientListApi {
             next
           );
           let parentSpanInst = null;
-          bh = await this.sd_SkMIkMswp1s0FGt2(bh, parentSpanInst);
+          bh = await this.sd_EL7u4Ij2hFPz2DHs(bh, parentSpanInst);
           //appendnew_next_sd_YOxrZLE8GZ4KeDVv
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_YOxrZLE8GZ4KeDVv');
@@ -116,6 +116,28 @@ export class patientListApi {
   //   service flows_patientListApi
 
   //appendnew_flow_patientListApi_start
+
+  async sd_EL7u4Ij2hFPz2DHs(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_EL7u4Ij2hFPz2DHs',
+      parentSpanInst
+    );
+    try {
+      console.log('hello patientList');
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_SkMIkMswp1s0FGt2(bh, parentSpanInst);
+      //appendnew_next_sd_EL7u4Ij2hFPz2DHs
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_EL7u4Ij2hFPz2DHs',
+        spanInst,
+        'sd_EL7u4Ij2hFPz2DHs'
+      );
+    }
+  }
 
   async sd_SkMIkMswp1s0FGt2(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
