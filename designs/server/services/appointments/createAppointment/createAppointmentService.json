@@ -27,6 +27,14 @@
                     "value": ""
                 },
                 "output": false
+            },
+            {
+                "key": "newFile",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
             }
         ],
         "localVariables": [
@@ -68,7 +76,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "dataConfig",
-        "script": "const currentDate = new Date(bh.input?.data?.dob);\n\n\nconst year = currentDate.getFullYear();\nconst month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed\nconst day = String(currentDate.getDate()).padStart(2, '0');\nconst formattedDate = `${year}-${month}-${day}`;\nconsole.log(formattedDate)\nbh.local.url = `${process.env.API_URL}/appointment/post`\nbh.local.appointmentDetails = {\n    id:0,\n    name:bh.input?.data?.name,\n    phone_no:bh.input?.data?.phone_no,\n    dob: formattedDate,\n    place:bh.input?.data?.place,\n    address:bh.input?.data?.address,\n    pin_code:bh.input?.data?.pin_code,\n    email:bh.input?.data?.email,\n    blood_group:bh.input?.data?.blood_group,\n    doctor_id:bh.input?.data?.doctor_id,\n    cash:bh.input?.data?.cash,\n    payment_method:bh.input?.data?.payment_method,\n    sucess_url:bh.input?.data?.sucess_url,\n    cancel_url:bh.input?.data?.cancel_url\n}\n// console.log(bh.local.appointmentDetails)\n",
+        "script": "const currentDate = new Date(bh.input?.data?.dob);\n\n\nconst year = currentDate.getFullYear();\nconst month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed\nconst day = String(currentDate.getDate()).padStart(2, '0');\nconst formattedDate = `${year}-${month}-${day}`;\nconsole.log(formattedDate)\nbh.local.url = `${process.env.API_URL}/appointment/post`\nbh.local.appointmentDetails ={\n    id:0,\n    name:bh.input?.data?.name,\n    phone_no:bh.input?.data?.phone_no,\n    dob: formattedDate,\n    place:bh.input?.data?.place,\n    address:bh.input?.data?.address,\n    pin_code:bh.input?.data?.pin_code,\n    email:bh.input?.data?.email,\n    blood_group:bh.input?.data?.blood_group,\n    doctor_id:bh.input?.data?.doctor_id,\n    cash:bh.input?.data?.cash,\n    payment_method:bh.input?.data?.payment_method,\n    sucess_url:bh.input?.data?.sucess_url ,\n    cancel_url:bh.input?.data?.cancel_url,\n    newFile:bh.input.newFile\n}\n\nif(bh.inut?.data?.payment_method == 'stripe'){\n    console.log('stripe')\n    bh.local.appointmentDetails['sucess_url'] = bh.input?.data?.sucess_url \n    bh.local?.appointmentDetails['cancel_url'] = bh.input?.data?.cancel_url\n}\n\nconsole.log(bh.local.appointmentDetails)\n\nconsole.log(\"bgvtbfgvdrfcds\")\n",
         "functionName": "dataConfig",
         "category": "Function",
         "x": 425,
@@ -143,7 +151,7 @@
         },
         "functionName": "appointmenApiCall",
         "category": "HTTP",
-        "x": 540,
+        "x": 565,
         "y": 120,
         "wires": [
             []
@@ -160,7 +168,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "validation",
-        "script": "console.log('validation')\nconsole.log(bh.input.data)\nlet data = bh.input?.data\nlet pin_code = data?.pin_code\nif(!data?.name.trim()) throw new Error('Invalid Name')\nif(typeof data?.phone_no !== 'number') throw new Error('Invalid phone number')\nif(!data?.place?.trim()) throw new Error('Invalid place name')\nif(!data?.address?.trim()) throw new Error('Invalid address')\nif(typeof data?.pin_code !== 'number')\nif(pin_code?.length > 6 || pin_code?.length < 6) throw new Error('Invalid pincode')\nif(!data?.email?.trim()) throw new Error('Invalid email address')\nif(!data?.blood_group?.trim()) throw new Error('Invalid blood group')\nif(!data?.doctor_id) throw new Error('Invalid docotor Id')\nif(!data?.cash) throw new Error('Invalid Cash')\nif(!data?.payment_method?.trim()) throw new Error('Invalid payment method')\nif(!data?.sucess_url.trim()) throw new Error('Invalid success url')\nif(!data?.cancel_url.trim()) throw new Error('Invalid cancel url')\n// if(!data.payment_method !== 'cash' || !data?.payment_method !== 'strip') throw new Error('Invalid payment method')\n\n",
+        "script": "console.log('validation')\nconsole.log(bh.input?.newFile)\nconsole.log(bh.input.data)\nlet data = bh.input?.data\nconsole.log(typeof data.dob)\nlet pin_code = data?.pin_code\nif (!data?.name.trim()) throw new Error('Invalid Name')\nif (!data?.phone_no?.trim()) throw new Error('Invalid phone number')\nif (!data?.place?.trim()) throw new Error('Invalid place name')\nif (!data?.address?.trim()) throw new Error('Invalid address')\nif (typeof data?.pin_code !== 'number')\n    if (pin_code?.length > 6 || pin_code?.length < 6) throw new Error('Invalid pincode')\nif (!data?.email?.trim()) throw new Error('Invalid email address')\nif (!data?.blood_group?.trim()) throw new Error('Invalid blood group')\nif (!data?.doctor_id) throw new Error('Invalid docotor Id')\nif (!data?.cash) throw new Error('Invalid Cash')\nif (!data?.payment_method?.trim()) throw new Error('Invalid payment method')\n\nif (data?.payment_method == 'stripe') {\n    console.log('stripe')\n    if (!data?.sucess_url.trim()) throw new Error('Invalid success url')\n    if (!data?.cancel_url.trim()) throw new Error('Invalid cancel url')\n}\n// if(!data.payment_method !== 'cash' || !data?.payment_method !== 'strip') throw new Error('Invalid payment method')\n\n",
         "functionName": "validation",
         "category": "Function",
         "x": 305,
@@ -174,5 +182,106 @@
         "generateNext": false,
         "serviceName": "createAppointmentService",
         "generated": true
+    },
+    {
+        "id": "sd_SJIY2dg8y9klekmH",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": [
+            "sd_uyBTiN53oHe8z0x1"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_1eMcUpnzHwdCinOP",
+            "sd_tnZP3aXhRnccU7RS"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 305,
+        "y": 240,
+        "wires": [
+            [
+                "sd_6d88pn1nKknP7Kv4"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "createAppointmentService"
+    },
+    {
+        "id": "sd_6d88pn1nKknP7Kv4",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log('bh.error')\nconsole.log(bh.error)\n\nbh.local.response = {\n    status:400,\n    message:bh.error.message,\n    error:true\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 465,
+        "y": 240,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createAppointmentService",
+        "generated": true
+    },
+    {
+        "id": "sd_K6fGh2Xba2HbZWea",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 640,
+        "y": 240,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "createAppointmentService"
     }
 ]
