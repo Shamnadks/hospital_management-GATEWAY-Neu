@@ -143,6 +143,8 @@ export class createAppointmentService {
       let pin_code = data?.pin_code;
       if (!data?.name.trim()) throw new Error('Invalid Name');
       if (!data?.phone_no?.trim()) throw new Error('Invalid phone number');
+      if (data?.phone_no?.length > 10 || data?.phone_no?.length < 10)
+        throw new Error('Invalid phone number');
       if (!data?.place?.trim()) throw new Error('Invalid place name');
       if (!data?.address?.trim()) throw new Error('Invalid address');
       if (typeof data?.pin_code !== 'number')

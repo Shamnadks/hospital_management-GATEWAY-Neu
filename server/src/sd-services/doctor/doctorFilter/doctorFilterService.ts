@@ -193,7 +193,7 @@ export class doctorFilterService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: {},
+        cookies: undefined,
         authType: undefined,
         body: bh.local.reqObject,
         paytoqs: false,
