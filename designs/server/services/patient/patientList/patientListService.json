@@ -60,7 +60,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "dataConfig",
-        "script": "bh.local.url = `${process.env.API_URL}/getappointment/post`\n\nbh.local.requestObject = {\n    \"sorttable\":\"token_number\",\n    \"sorttype\": \"DESC\",\n    \"datas\":{\n        \"appointment_date\":[\"2024-02-14\"]\n    }\n\n}\nconsole.log(bh.local.requestObject)",
+        "script": "bh.local.url = `${process.env.API_URL}/getappointment/post`\n\nconst currentDate = new Date();\n\n\nconst year = currentDate.getFullYear();\nconst month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed\nconst day = String(currentDate.getDate()).padStart(2, '0');\nconst formattedDate = `${year}-${month}-${day}`;\n\nbh.local.requestObject = {\n    \"sorttable\":\"id\",\n    \"sorttype\": \"DESC\",\n    \"datas\":{\n        \"appointment_date\":[formattedDate]\n    }\n\n}\nconsole.log(bh.local.requestObject)",
         "functionName": "dataConfig",
         "category": "Function",
         "x": 380,
@@ -91,9 +91,10 @@
         },
         "ret": "json",
         "retMappingObj": {},
+        "reqBody": "bh.local.requestObject",
         "reqBodyObj": {
-            "mapVarType": "bh",
-            "mapVarValue": ""
+            "mapVarType": "bh.local",
+            "mapVarValue": "requestObject"
         },
         "resultMapping": "bh.local.response",
         "resultMappingObj": {
