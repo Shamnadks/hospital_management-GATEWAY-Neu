@@ -1,0 +1,148 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_pi5oPV7DScNxI5o3",
+        "type": "tab",
+        "createdDate": "2024-02-23T10:58:30.888Z",
+        "label": "create_holiday_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "create_holiday_service",
+        "relativeParentPath": "holiday/createHoliday"
+    },
+    {
+        "id": "sd_TAeFqxHrdRVlnmzU",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_pi5oPV7DScNxI5o3",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "body",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "sd_TAeFqxHrdRVlnmzU",
+        "category": "General",
+        "x": 165,
+        "y": 180,
+        "wires": [
+            [
+                "sd_GcsEVqRbXVCBPP7W"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "create_holiday_service"
+    },
+    {
+        "id": "sd_GcsEVqRbXVCBPP7W",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_pi5oPV7DScNxI5o3",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "configureUrl",
+        "script": "bh.local.url = `${process.env.API_URL}/holiday/post`\nbh.local.body={\n     holidays: {\n    starting_date: bh.input.body.starting_date,\n    end_date: bh.input.body.starting_date,\n    name: bh.input.body.name,\n    days:bh.input.body.days\n  }\n}",
+        "functionName": "configureUrl",
+        "category": "Function",
+        "x": 285,
+        "y": 180,
+        "wires": [
+            [
+                "sd_0IeuJb89Z9VO5AJE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "create_holiday_service",
+        "generated": true
+    },
+    {
+        "id": "sd_0IeuJb89Z9VO5AJE",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_pi5oPV7DScNxI5o3",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "method": "post",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.body",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "body"
+        },
+        "resultMapping": "bh.input.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.input",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "sd_0IeuJb89Z9VO5AJE",
+        "category": "HTTP",
+        "x": 500,
+        "y": 180,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "create_holiday_service",
+        "generated": true
+    }
+]

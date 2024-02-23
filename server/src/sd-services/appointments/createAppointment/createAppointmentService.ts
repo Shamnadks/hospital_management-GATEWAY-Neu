@@ -140,6 +140,7 @@ export class createAppointmentService {
       console.log(bh.input.data);
       let data = bh.input?.data;
       console.log(typeof data.dob);
+      console.log(data.sla, 'slaaaaaaaaaaaaa');
       let pin_code = data?.pin_code;
       if (!data?.name.trim()) throw new Error('Invalid Name');
       if (!data?.phone_no?.trim()) throw new Error('Invalid phone number');
@@ -209,6 +210,7 @@ export class createAppointmentService {
         sucess_url: bh.input?.data?.sucess_url,
         cancel_url: bh.input?.data?.cancel_url,
         newFile: bh.input.newFile,
+        sla: bh.input?.data?.sla,
       };
 
       if (bh.inut?.data?.payment_method == 'stripe') {
@@ -244,7 +246,7 @@ export class createAppointmentService {
         method: 'post',
         headers: {},
         followRedirects: true,
-        cookies: undefined,
+        cookies: {},
         authType: undefined,
         body: bh.local.appointmentDetails,
         paytoqs: false,

@@ -1,0 +1,31 @@
+{
+    "/holiday/put": {
+        "put": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "holiday",
+                    "required": true,
+                    "schema": {
+                        "type": "array",
+                        "properties": {
+                            "holiday": {
+                                "items": {
+                                    "$ref": "#/definitions/holiday_model ~ holiday"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "edit_holiday_api"
+            ]
+        }
+    }
+}

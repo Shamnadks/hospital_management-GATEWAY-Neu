@@ -1,0 +1,29 @@
+{
+    "/holiday/post": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "holiday",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "holiday": {
+                                "$ref": "#/definitions/holiday_model ~ holiday"
+                            }
+                        }
+                    }
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "create_holiday_api"
+            ]
+        }
+    }
+}

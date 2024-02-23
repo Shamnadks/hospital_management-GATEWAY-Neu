@@ -1,0 +1,138 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_cbdBH9TA3DDjglXD",
+        "type": "tab",
+        "createdDate": "2024-02-23T10:59:47.818Z",
+        "label": "get_holiday_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "get_holiday_service",
+        "relativeParentPath": "holiday/getHolidays"
+    },
+    {
+        "id": "sd_exBoamuJvMzY1feq",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_cbdBH9TA3DDjglXD",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "getHoliday_service",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "getHolidayService",
+        "category": "General",
+        "x": 145,
+        "y": 160,
+        "wires": [
+            [
+                "sd_H9xPzlC7Wb8TfHZy"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "get_holiday_service"
+    },
+    {
+        "id": "sd_H9xPzlC7Wb8TfHZy",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_cbdBH9TA3DDjglXD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.url = `${process.env.API_URL}/holiday/get`",
+        "functionName": "sd_H9xPzlC7Wb8TfHZy",
+        "category": "Function",
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "sd_iWAZXxDjBb7lfIX3"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "get_holiday_service",
+        "generated": true
+    },
+    {
+        "id": "sd_iWAZXxDjBb7lfIX3",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_cbdBH9TA3DDjglXD",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBodyObj": {
+            "mapVarType": "bh",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "sd_iWAZXxDjBb7lfIX3",
+        "category": "HTTP",
+        "x": 420,
+        "y": 160,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "get_holiday_service",
+        "generated": true
+    }
+]

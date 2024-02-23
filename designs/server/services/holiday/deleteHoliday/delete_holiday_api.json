@@ -1,0 +1,382 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "type": "tab",
+        "createdDate": "2024-02-23T10:58:49.643Z",
+        "label": "delete_holiday_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "delete_holiday_api",
+        "relativeParentPath": "holiday/deleteHoliday"
+    },
+    {
+        "id": "sd_23iDikK7N0bZVQAU",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "exceptionHandling",
+        "selectedNodes": "all-nodes",
+        "selectCatchType": "allnodes",
+        "masternodeList": "",
+        "ignoreList": [
+            "sd_dVzenJFyXDFkId0f",
+            "sd_nKg17sn6ZWFmgSaQ"
+        ],
+        "functionName": "exceptionHandling",
+        "category": "General",
+        "x": 245,
+        "y": 240,
+        "wires": [
+            [
+                "sd_dVzenJFyXDFkId0f"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "delete_holiday_api"
+    },
+    {
+        "id": "sd_dVzenJFyXDFkId0f",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "errorInfo",
+        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "functionName": "errorInfo",
+        "category": "Function",
+        "x": 405,
+        "y": 240,
+        "wires": [
+            [
+                "sd_nKg17sn6ZWFmgSaQ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_nKg17sn6ZWFmgSaQ",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "exceptionResponse",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "exceptionResponse",
+        "category": "HTTP",
+        "x": 580,
+        "y": 240,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_N3FdaHAYtoRbfAhP",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "holiday/delete",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "delete",
+        "sequenceId": "IDSAuthroizedAPIs",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": true,
+        "dataModelIsArray": true,
+        "erd": "_DM_c2fx0fitg",
+        "erdName": "holiday_model",
+        "entity": "holiday_id",
+        "entityId": "_EN_389im5nt94",
+        "ref": "#/definitions/holiday_model ~ holiday_id",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "id",
+                    "desc": "id for delete",
+                    "type": "query",
+                    "required": false,
+                    "rowId": "sd_grRcKDk1vYGmyrQB",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 65,
+        "y": 100,
+        "wires": [
+            [
+                "sd_kZGmgJLPuum1qo5w"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "delete_holiday_api",
+        "functionName": "sd_N3FdaHAYtoRbfAhP"
+    },
+    {
+        "id": "sd_8CV8GP9CPLNnFuX6",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response.response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.status",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.status",
+            "obj": "bh.local.response.response",
+            "send": "bh.local.response.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "entityId": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_8CV8GP9CPLNnFuX6",
+        "category": "HTTP",
+        "x": 725,
+        "y": 100,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_AAr07tRSrsfMQaP1",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.query.id,\"id reached to api\")",
+        "functionName": "sd_AAr07tRSrsfMQaP1",
+        "category": "Function",
+        "x": 265,
+        "y": 100,
+        "wires": [
+            [
+                "sd_Px5eEjOAnrFy3lE8"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_Px5eEjOAnrFy3lE8",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_418prrgjKUiwBSGa",
+            "type": "tab",
+            "createdDate": "2024-02-23T10:59:00.778Z",
+            "label": "delete_holiday_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_rqVSWpXDj3cTMaWk",
+            "flowName": "sd_rqVSWpXDj3cTMaWk"
+        },
+        "inputVariables": [
+            {
+                "key": "id",
+                "map": true,
+                "valueType": "bh.input",
+                "value": "query.id"
+            }
+        ],
+        "bhVariables": [],
+        "outputMapping": [
+            {
+                "mapVarType": "local",
+                "key": "response",
+                "valueType": "bh.local",
+                "value": "result",
+                "mapVarName": "response",
+                "localVar": "bh.local.result"
+            }
+        ],
+        "callService": "./delete_holiday_service",
+        "startName": "sd_rqVSWpXDj3cTMaWk",
+        "inputParams": [
+            "bh.input.query.id"
+        ],
+        "accept_bh": false,
+        "functionName": "sd_Px5eEjOAnrFy3lE8",
+        "category": "General",
+        "x": 465,
+        "y": 100,
+        "wires": [
+            [
+                "sd_P2LdIuO3oL0058y6"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_P2LdIuO3oL0058y6",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.local?.result)\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result\n}",
+        "functionName": "sd_P2LdIuO3oL0058y6",
+        "category": "Function",
+        "x": 585,
+        "y": 100,
+        "wires": [
+            [
+                "sd_8CV8GP9CPLNnFuX6"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_kZGmgJLPuum1qo5w",
+        "type": "validate",
+        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "erd": "_DM_c2fx0fitg",
+        "entityId": "_EN_389im5nt94",
+        "_UI_entityName": "holiday_id",
+        "dbConfigId": "",
+        "validateObject": "bh.input.query",
+        "checkboxThrowError": true,
+        "resultMapping": "",
+        "functionName": "sd_kZGmgJLPuum1qo5w",
+        "category": "Data Model",
+        "x": 165,
+        "y": 100,
+        "wires": [
+            [
+                "sd_AAr07tRSrsfMQaP1"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "validateObject": {
+                "type": "bh.input",
+                "value": "query",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {
+            "resultMapping": true
+        },
+        "generateNext": false,
+        "serviceName": "delete_holiday_api",
+        "generated": true
+    }
+]

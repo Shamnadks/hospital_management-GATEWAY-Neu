@@ -1,25 +1,25 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "id": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "type": "tab",
-        "createdDate": "2024-02-14T08:21:50.433Z",
-        "label": "createAppointmentApi",
+        "createdDate": "2024-02-23T10:58:09.528Z",
+        "label": "create_holiday_api",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "createAppointmentApi",
-        "relativeParentPath": "appointments/createAppointment"
+        "serviceName": "create_holiday_api",
+        "relativeParentPath": "holiday/createHoliday"
     },
     {
-        "id": "sd_5M3azCNmW5JUTshO",
+        "id": "sd_5sbIkjhxZcUejQFd",
         "type": "HttpIn",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "viewType": "server",
         "nodeType": "start",
-        "name": "appointment",
-        "path": "appointment/post",
-        "uploadpath": "os.tmpdir() + \"\"",
+        "name": "",
+        "path": "holiday/post",
+        "uploadpath": "",
         "summary": "",
         "description": "",
         "method": "post",
@@ -27,112 +27,56 @@
         "consumes": "",
         "produces": "",
         "filetype": "path",
-        "acceptFileUpload": true,
-        "useDataModel": false,
+        "acceptFileUpload": false,
+        "useDataModel": true,
         "dataModelIsArray": false,
-        "uploadFileOptions": {
-            "type": "path",
-            "fileOptions": [
-                {
-                    "name": "newFile",
-                    "maxCount": 1
-                }
-            ],
-            "path": "os.tmpdir() + \"\""
-        },
-        "erd": "",
-        "erdName": "",
-        "entity": "",
-        "entityId": "",
-        "ref": "",
+        "erd": "_DM_c2fx0fitg",
+        "erdName": "holiday_model",
+        "entity": "holiday",
+        "entityId": "_EN_6p5c4fcw8s",
+        "ref": "#/definitions/holiday_model ~ holiday",
         "editableListData": {
-            "fileoptions": [
-                {
-                    "key": "newFile",
-                    "value": "1",
-                    "rowId": "sd_3cISqLOsQiIFAl1D",
-                    "valid": true
-                }
-            ],
             "responses": [],
-            "params": [
-                {
-                    "key": "appointmentDetails",
-                    "desc": "details",
-                    "type": "body",
-                    "required": false,
-                    "rowId": "sd_hLaEqt6Zsh86dJEx",
-                    "valid": true
-                }
-            ],
+            "params": [],
             "produces": [],
-            "consumes": [
-                {
-                    "key": "multipart/form-data",
-                    "rowId": "sd_jmElZhcrA4iMNsc7",
-                    "valid": true
-                }
-            ]
+            "consumes": []
         },
         "inputs": 0,
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 165,
+        "x": 85,
         "y": 120,
         "wires": [
             [
-                "sd_XmMdO6lY5WFL2DJ3"
+                "sd_eomYAbdxmEVLMt7N"
             ]
         ],
         "__ssdTypeInputs__": {
             "uploadpath": {
-                "type": "tmpdir",
+                "type": "str",
                 "value": "",
                 "nullable": "true",
                 "nullableValue": "",
-                "constant": false,
-                "_customGenerator": true
+                "constant": false
             }
         },
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "createAppointmentApi",
-        "functionName": "sd_5M3azCNmW5JUTshO"
+        "serviceName": "create_holiday_api",
+        "functionName": "sd_5sbIkjhxZcUejQFd"
     },
     {
-        "id": "sd_eocoa37MJR5UXYFq",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "dataConfig",
-        "script": "console.log(bh.input.body)\nbh.local.statusCode = process.env.SUCCESS_STATUS_CODE\nif (bh.local.result.error) {\n    bh.local.response = { ...bh.local.result }\n}\nelse {\n    bh.local.response = {\n        status: 200,\n        response: bh.local?.result?.payload?.data\n    }\n}\n",
-        "functionName": "dataConfig",
-        "category": "Function",
-        "x": 505,
-        "y": 120,
-        "wires": [
-            [
-                "sd_Ul7yeFoxZxSNVmMw"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "createAppointmentApi",
-        "generated": true
-    },
-    {
-        "id": "sd_Ul7yeFoxZxSNVmMw",
+        "id": "sd_sA4zfeLUQ9MdSmSw",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "viewType": "server",
         "nodeType": "flow",
-        "name": "appointmentApiCall",
+        "name": "",
         "headers": {},
         "responseBody": {
             "type": "bh.local",
-            "value": "response",
+            "value": "response.response",
             "ssd_typedInputField": true
         },
         "httpcode": {
@@ -144,8 +88,8 @@
         "swaggerResponse": {},
         "responseMapping": {
             "status": "bh.local.response.status",
-            "obj": "bh.local.response",
-            "send": "bh.local.response"
+            "obj": "bh.local.response.response",
+            "send": "bh.local.response.response"
         },
         "dataModelIsArray": false,
         "inputs": 1,
@@ -164,51 +108,67 @@
             "headers": "Map",
             "cookies": "Map"
         },
-        "functionName": "appointmentApiCall",
+        "functionName": "sd_sA4zfeLUQ9MdSmSw",
         "category": "HTTP",
-        "x": 640,
+        "x": 765,
         "y": 120,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "createAppointmentApi",
+        "serviceName": "create_holiday_api",
         "generated": true
     },
     {
-        "id": "sd_UiEHpKRKypWiLgqY",
-        "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "id": "sd_P3n6xhNOwCqSZ5sY",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "appointmentServiceCall",
+        "name": "",
+        "script": "console.log(bh.input.body)",
+        "functionName": "sd_P3n6xhNOwCqSZ5sY",
+        "category": "Function",
+        "x": 325,
+        "y": 120,
+        "wires": [
+            [
+                "sd_29pLPaCw9Dud3tax"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "create_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_29pLPaCw9Dud3tax",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
         "outputs": 1,
         "isValidNode": true,
         "noerr": 0,
         "service": {
-            "id": "SSD_SERVICE_ID_sd_rBMLYYjvVhOZ76b8",
+            "id": "SSD_SERVICE_ID_sd_pi5oPV7DScNxI5o3",
             "type": "tab",
-            "createdDate": "2024-02-14T08:58:10.840Z",
-            "label": "createAppointmentService",
+            "createdDate": "2024-02-23T10:58:30.888Z",
+            "label": "create_holiday_service",
             "disabled": false,
             "info": "",
             "functionSeq": 0
         },
         "flow": {
-            "flowId": "sd_n7B7BA7ATjPV3SGH",
-            "flowName": "appointmentService"
+            "flowId": "sd_TAeFqxHrdRVlnmzU",
+            "flowName": "sd_TAeFqxHrdRVlnmzU"
         },
         "inputVariables": [
             {
-                "key": "data",
+                "key": "body",
                 "map": true,
                 "valueType": "bh.input",
                 "value": "body"
-            },
-            {
-                "key": "newFile",
-                "map": true,
-                "valueType": "bh.input",
-                "value": "files.newFile[0].path"
             }
         ],
         "bhVariables": [],
@@ -222,31 +182,96 @@
                 "localVar": "bh.local.result"
             }
         ],
-        "callService": "./createAppointmentService",
-        "startName": "appointmentService",
+        "callService": "./create_holiday_service",
+        "startName": "sd_TAeFqxHrdRVlnmzU",
         "inputParams": [
-            "bh.input.body",
-            "bh.input.files.newFile[0].path"
+            "bh.input.body"
         ],
         "accept_bh": false,
-        "functionName": "appointmentServiceCall",
+        "functionName": "sd_29pLPaCw9Dud3tax",
         "category": "General",
-        "x": 385,
+        "x": 445,
         "y": 120,
         "wires": [
             [
-                "sd_eocoa37MJR5UXYFq"
+                "sd_GQjmCrfr2H0ppgSk"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "createAppointmentApi",
+        "serviceName": "create_holiday_api",
         "generated": true
     },
     {
-        "id": "sd_e8y5i0BNMUVdo1Z6",
+        "id": "sd_GQjmCrfr2H0ppgSk",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.local?.result)\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.data\n}",
+        "functionName": "sd_GQjmCrfr2H0ppgSk",
+        "category": "Function",
+        "x": 585,
+        "y": 120,
+        "wires": [
+            [
+                "sd_sA4zfeLUQ9MdSmSw"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "create_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_eomYAbdxmEVLMt7N",
+        "type": "validate",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "erd": "_DM_c2fx0fitg",
+        "entityId": "_EN_6p5c4fcw8s",
+        "_UI_entityName": "holiday",
+        "dbConfigId": "",
+        "validateObject": "bh.input.body",
+        "checkboxThrowError": true,
+        "resultMapping": "",
+        "functionName": "sd_eomYAbdxmEVLMt7N",
+        "category": "Data Model",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "sd_P3n6xhNOwCqSZ5sY"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "validateObject": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {
+            "resultMapping": true
+        },
+        "generateNext": false,
+        "serviceName": "create_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_0IqfUpUEdHV0zWFg",
         "type": "Catch",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "viewType": "common",
         "nodeType": "start",
         "name": "exceptionHandling",
@@ -254,48 +279,48 @@
         "selectCatchType": "allnodes",
         "masternodeList": "",
         "ignoreList": [
-            "sd_1eMcUpnzHwdCinOP",
-            "sd_tnZP3aXhRnccU7RS"
+            "sd_1Ioy3hcNAnPcBCbr",
+            "sd_wfbNcxBHvRYJDppw"
         ],
         "functionName": "exceptionHandling",
         "category": "General",
-        "x": 325,
-        "y": 240,
+        "x": 265,
+        "y": 280,
         "wires": [
             [
-                "sd_1eMcUpnzHwdCinOP"
+                "sd_1Ioy3hcNAnPcBCbr"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "createAppointmentApi"
+        "serviceName": "create_holiday_api"
     },
     {
-        "id": "sd_1eMcUpnzHwdCinOP",
+        "id": "sd_1Ioy3hcNAnPcBCbr",
         "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "viewType": "common",
         "nodeType": "flow",
         "name": "errorInfo",
         "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
         "functionName": "errorInfo",
         "category": "Function",
-        "x": 485,
-        "y": 240,
+        "x": 425,
+        "y": 280,
         "wires": [
             [
-                "sd_tnZP3aXhRnccU7RS"
+                "sd_wfbNcxBHvRYJDppw"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "createAppointmentApi",
+        "serviceName": "create_holiday_api",
         "generated": true
     },
     {
-        "id": "sd_tnZP3aXhRnccU7RS",
+        "id": "sd_wfbNcxBHvRYJDppw",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
+        "z": "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j",
         "viewType": "server",
         "nodeType": "flow",
         "name": "exceptionResponse",
@@ -337,34 +362,12 @@
         },
         "functionName": "exceptionResponse",
         "category": "HTTP",
-        "x": 660,
-        "y": 240,
+        "x": 600,
+        "y": 280,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "createAppointmentApi",
-        "generated": true
-    },
-    {
-        "id": "sd_XmMdO6lY5WFL2DJ3",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_nEfu9avH1LHJF46k",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "script": "console.log('HI')\nconsole.log(bh.input.files.newFile[0].path)",
-        "functionName": "sd_XmMdO6lY5WFL2DJ3",
-        "category": "Function",
-        "x": 260,
-        "y": 120,
-        "wires": [
-            [
-                "sd_UiEHpKRKypWiLgqY"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "createAppointmentApi",
+        "serviceName": "create_holiday_api",
         "generated": true
     }
 ]
