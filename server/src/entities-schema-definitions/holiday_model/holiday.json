@@ -1,0 +1,92 @@
+{
+    "name": "holiday",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "id": "_EN_6p5c4fcw8s",
+    "y": 37,
+    "properties": {
+        "id": {
+            "name": "id",
+            "format": "",
+            "type": "number",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_mvqf33iyxw",
+                "nullable": true
+            }
+        },
+        "name": {
+            "name": "name",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_oqsvjd8mdf",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        },
+        "starting_date": {
+            "name": "starting_date",
+            "format": "date-time",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_jzxq96ez3j",
+                "nullable": false,
+                "constraints": {},
+                "subCategoryType": "date"
+            }
+        },
+        "end_date": {
+            "name": "end_date",
+            "format": "date-time",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_fxwqk95rq4",
+                "nullable": false,
+                "constraints": {},
+                "subCategoryType": "date"
+            }
+        },
+        "days": {
+            "name": "days",
+            "format": "",
+            "type": "number",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_mjrcb0ztgb",
+                "subCategoryType": null,
+                "nullable": false,
+                "constraints": {}
+            }
+        }
+    },
+    "required": [
+        "end_date",
+        "days",
+        "name",
+        "starting_date"
+    ],
+    "value": "",
+    "__attributeExpansion__": true,
+    "__operationExpansion__": false,
+    "x": 109,
+    "userList": {
+        "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j": [
+            "sd_eomYAbdxmEVLMt7N",
+            "sd_5sbIkjhxZcUejQFd"
+        ],
+        "SSD_SERVICE_ID_sd_G08q8PRQuuGgamh7": [
+            "sd_x7MqI0qPIURxS9ix",
+            "sd_avcn0KnvTDGJ9LV0"
+        ]
+    }
+}

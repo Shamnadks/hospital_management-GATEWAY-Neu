@@ -1,0 +1,156 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_Iburt0vKUtQzrLFz",
+        "type": "tab",
+        "createdDate": "2024-02-23T10:59:25.557Z",
+        "label": "edit_holiday_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "edit_holiday_service",
+        "relativeParentPath": "holiday/editHoliday"
+    },
+    {
+        "id": "sd_Vq7NZ4yOphwg3u91",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_Iburt0vKUtQzrLFz",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "editholiday",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "id",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            },
+            {
+                "key": "data",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [
+            {
+                "key": "response",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": true
+            }
+        ],
+        "accept_bh": false,
+        "functionName": "editholiday",
+        "category": "General",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "sd_FupueKfWBXbgu0eI"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "edit_holiday_service"
+    },
+    {
+        "id": "sd_FupueKfWBXbgu0eI",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_Iburt0vKUtQzrLFz",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.url = `${process.env.API_URL}/holiday/put`\nbh.local.body={\n    holidays:{\n        id:bh.input?.id,\n        name:bh.input.data.name,\n        starting_date:bh.input.data.starting_date,\n        end_date:bh.input.data.end_date,\n        days:bh.input.data.days\n        \n    }\n}",
+        "functionName": "sd_FupueKfWBXbgu0eI",
+        "category": "Function",
+        "x": 305,
+        "y": 120,
+        "wires": [
+            [
+                "sd_xtMWJpSBFwkQEyDT"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "edit_holiday_service",
+        "generated": true
+    },
+    {
+        "id": "sd_xtMWJpSBFwkQEyDT",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_Iburt0vKUtQzrLFz",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "method": "put",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBody": "bh.local.body",
+        "reqBodyObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "body"
+        },
+        "resultMapping": "bh.local.response",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "response"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "sd_xtMWJpSBFwkQEyDT",
+        "category": "HTTP",
+        "x": 460,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "edit_holiday_service",
+        "generated": true
+    }
+]

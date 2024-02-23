@@ -1,0 +1,32 @@
+{
+    "name": "holiday_id",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "id": "_EN_389im5nt94",
+    "y": 73,
+    "properties": {
+        "id": {
+            "name": "id",
+            "format": "",
+            "type": "number",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_1b9su2moja",
+                "nullable": false
+            }
+        }
+    },
+    "required": [],
+    "value": "",
+    "__attributeExpansion__": true,
+    "__operationExpansion__": false,
+    "x": 622,
+    "userList": {
+        "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8": [
+            "sd_N3FdaHAYtoRbfAhP",
+            "sd_kZGmgJLPuum1qo5w"
+        ]
+    }
+}

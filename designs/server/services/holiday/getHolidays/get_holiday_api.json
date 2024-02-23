@@ -1,24 +1,24 @@
 [
     {
-        "id": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "id": "SSD_SERVICE_ID_sd_ryqsbvJiple0ggjV",
         "type": "tab",
-        "createdDate": "2024-02-14T17:42:38.779Z",
-        "label": "appointmentStatusApi",
+        "createdDate": "2024-02-23T10:59:37.754Z",
+        "label": "get_holiday_api",
         "disabled": false,
         "info": "",
         "functionSeq": 0,
         "generateNext": true,
-        "serviceName": "appointmentStatusApi",
-        "relativeParentPath": "appointments/appointmentStatusUpdate"
+        "serviceName": "get_holiday_api",
+        "relativeParentPath": "holiday/getHolidays"
     },
     {
-        "id": "sd_Ne2NyjqBI7dSi2Fy",
+        "id": "sd_7ffTB4fpHocfVGuu",
         "type": "HttpIn",
-        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "z": "SSD_SERVICE_ID_sd_ryqsbvJiple0ggjV",
         "viewType": "server",
         "nodeType": "start",
-        "name": "appointmentStatusUpdation",
-        "path": "paymentverify/get",
+        "name": "",
+        "path": "holiday/get",
         "uploadpath": "",
         "summary": "",
         "description": "",
@@ -37,16 +37,7 @@
         "ref": "",
         "editableListData": {
             "responses": [],
-            "params": [
-                {
-                    "key": "session_id",
-                    "desc": "for updating status",
-                    "type": "query",
-                    "required": false,
-                    "rowId": "sd_WYLLBxcGZuFcNWJ5",
-                    "valid": true
-                }
-            ],
+            "params": [],
             "produces": [],
             "consumes": []
         },
@@ -54,11 +45,11 @@
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 180,
-        "y": 140,
+        "x": 105,
+        "y": 120,
         "wires": [
             [
-                "sd_8jIVTGtD5lOxdTRX"
+                "sd_0kSkyoqxEPYg7i38"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -72,13 +63,13 @@
         },
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "appointmentStatusApi",
-        "functionName": "sd_Ne2NyjqBI7dSi2Fy"
+        "serviceName": "get_holiday_api",
+        "functionName": "sd_7ffTB4fpHocfVGuu"
     },
     {
-        "id": "sd_CFVdykrsqHfFbeQ8",
+        "id": "sd_WKoTvfDyN7NHy7l7",
         "type": "HttpOut",
-        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "z": "SSD_SERVICE_ID_sd_ryqsbvJiple0ggjV",
         "viewType": "server",
         "nodeType": "flow",
         "name": "",
@@ -90,18 +81,17 @@
         },
         "httpcode": {
             "type": "bh.local",
-            "value": "response.status",
+            "value": "url",
             "ssd_typedInputField": true
         },
         "responseType": "obj",
         "swaggerResponse": {},
         "responseMapping": {
-            "status": "bh.local.response.status",
+            "status": "bh.local.url",
             "obj": "bh.local.response",
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
-        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -118,20 +108,42 @@
             "headers": "Map",
             "cookies": "Map"
         },
-        "functionName": "sd_CFVdykrsqHfFbeQ8",
+        "functionName": "sd_WKoTvfDyN7NHy7l7",
         "category": "HTTP",
-        "x": 685,
-        "y": 140,
+        "x": 645,
+        "y": 120,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "appointmentStatusApi",
+        "serviceName": "get_holiday_api",
         "generated": true
     },
     {
-        "id": "sd_8jIVTGtD5lOxdTRX",
+        "id": "sd_hXgTVh72OBdNJzEW",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_ryqsbvJiple0ggjV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.local?.result)\nbh.local.response = {\n    status:process.env.SUCCESS_STATUS_CODE,\n    response:bh.local?.result?.data\n}",
+        "functionName": "sd_hXgTVh72OBdNJzEW",
+        "category": "Function",
+        "x": 465,
+        "y": 120,
+        "wires": [
+            [
+                "sd_WKoTvfDyN7NHy7l7"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "get_holiday_api",
+        "generated": true
+    },
+    {
+        "id": "sd_0kSkyoqxEPYg7i38",
         "type": "CallService",
-        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
+        "z": "SSD_SERVICE_ID_sd_ryqsbvJiple0ggjV",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
@@ -139,26 +151,19 @@
         "isValidNode": true,
         "noerr": 0,
         "service": {
-            "id": "SSD_SERVICE_ID_sd_WnZ9t0oWHw4srDch",
+            "id": "SSD_SERVICE_ID_sd_cbdBH9TA3DDjglXD",
             "type": "tab",
-            "createdDate": "2024-02-14T17:42:48.597Z",
-            "label": "appointmentStatusService",
+            "createdDate": "2024-02-23T10:59:47.818Z",
+            "label": "get_holiday_service",
             "disabled": false,
             "info": "",
             "functionSeq": 0
         },
         "flow": {
-            "flowId": "sd_0yJa3W1Bj3oShiAr",
-            "flowName": "sd_0yJa3W1Bj3oShiAr"
+            "flowId": "sd_exBoamuJvMzY1feq",
+            "flowName": "getHolidayService"
         },
-        "inputVariables": [
-            {
-                "key": "query",
-                "map": true,
-                "valueType": "bh.input",
-                "value": "query"
-            }
-        ],
+        "inputVariables": [],
         "bhVariables": [],
         "outputMapping": [
             {
@@ -170,46 +175,22 @@
                 "localVar": "bh.local.result"
             }
         ],
-        "callService": "./appointmentStatusService",
-        "startName": "sd_0yJa3W1Bj3oShiAr",
-        "inputParams": [
-            "bh.input.query"
-        ],
+        "callService": "./get_holiday_service",
+        "startName": "getHolidayService",
+        "inputParams": [],
         "accept_bh": false,
-        "functionName": "sd_8jIVTGtD5lOxdTRX",
+        "functionName": "sd_0kSkyoqxEPYg7i38",
         "category": "General",
-        "x": 380,
-        "y": 140,
+        "x": 285,
+        "y": 120,
         "wires": [
             [
-                "sd_dI3t0sqwp7ypRk4W"
+                "sd_hXgTVh72OBdNJzEW"
             ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
-        "serviceName": "appointmentStatusApi",
-        "generated": true
-    },
-    {
-        "id": "sd_dI3t0sqwp7ypRk4W",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_kS4HW0aG2nmpaLhh",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "script": "bh.local.response = {\n    status:200,\n    message:'success'\n}",
-        "functionName": "sd_dI3t0sqwp7ypRk4W",
-        "category": "Function",
-        "x": 525,
-        "y": 140,
-        "wires": [
-            [
-                "sd_CFVdykrsqHfFbeQ8"
-            ]
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "appointmentStatusApi",
+        "serviceName": "get_holiday_api",
         "generated": true
     }
 ]
