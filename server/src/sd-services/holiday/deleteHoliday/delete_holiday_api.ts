@@ -157,6 +157,9 @@ export class delete_holiday_api {
     );
     try {
       console.log(bh.input.query.id, 'id reached to api');
+      if (bh.input.query.id) {
+        throw new Error('invalid id format');
+      }
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_Px5eEjOAnrFy3lE8(bh, parentSpanInst);
       //appendnew_next_sd_AAr07tRSrsfMQaP1
