@@ -64,8 +64,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "edit_holiday_api",
-        "functionName": "sd_x7MqI0qPIURxS9ix",
-        "generated": false
+        "functionName": "sd_x7MqI0qPIURxS9ix"
     },
     {
         "id": "sd_nKJ5EvDXxCQ0ivYY",
@@ -185,9 +184,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "edit_holiday_api"
+        "serviceName": "edit_holiday_api",
+        "generated": true
     },
     {
         "id": "sd_KFilNByKtBNlHtdR",
@@ -222,7 +221,7 @@
         "entityId": "_EN_6p5c4fcw8s",
         "_UI_entityName": "holiday",
         "dbConfigId": "",
-        "validateObject": "bh.input.body",
+        "validateObject": "bh.input.body.holiday",
         "checkboxThrowError": true,
         "resultMapping": "",
         "functionName": "sd_avcn0KnvTDGJ9LV0",
@@ -237,7 +236,7 @@
         "__ssdTypeInputs__": {
             "validateObject": {
                 "type": "bh.input",
-                "value": "body",
+                "value": "body.holiday",
                 "constant": false
             },
             "resultMapping": {

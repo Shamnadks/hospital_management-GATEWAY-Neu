@@ -127,7 +127,7 @@ export class edit_holiday_api {
       parentSpanInst
     );
     try {
-      validateNode('_EN_6p5c4fcw8s', bh.input.body, true);
+      validateNode('_EN_6p5c4fcw8s', bh.input.body.holiday, true);
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_adQF4BbMcrgqUGxs(bh, parentSpanInst);
