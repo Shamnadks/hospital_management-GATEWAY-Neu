@@ -127,7 +127,7 @@ export class edit_holiday_api {
       parentSpanInst
     );
     try {
-      validateNode('_EN_6p5c4fcw8s', bh.input.body, true);
+      validateNode('_EN_6p5c4fcw8s', bh.input.body.holiday, true);
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_adQF4BbMcrgqUGxs(bh, parentSpanInst);
@@ -155,8 +155,8 @@ export class edit_holiday_api {
       let outputVariables =
         await SSD_SERVICE_ID_sd_Iburt0vKUtQzrLFzInstance.editholiday(
           spanInst,
-          bh.input.body.id,
-          bh.input.body
+          bh.input.body.holiday.id,
+          bh.input.body.holiday
         );
       bh.local.result = outputVariables.local.response;
 
