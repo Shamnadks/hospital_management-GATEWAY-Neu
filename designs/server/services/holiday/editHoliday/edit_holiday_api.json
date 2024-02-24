@@ -93,6 +93,7 @@
             "send": "bh.local.response.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -147,13 +148,13 @@
                 "key": "id",
                 "map": true,
                 "valueType": "bh.input",
-                "value": "body.id"
+                "value": "body.holiday.id"
             },
             {
                 "key": "data",
                 "map": true,
                 "valueType": "bh.input",
-                "value": "body"
+                "value": "body.holiday"
             }
         ],
         "bhVariables": [],
@@ -170,8 +171,8 @@
         "callService": "./edit_holiday_service",
         "startName": "editholiday",
         "inputParams": [
-            "bh.input.body.id",
-            "bh.input.body"
+            "bh.input.body.holiday.id",
+            "bh.input.body.holiday"
         ],
         "accept_bh": false,
         "functionName": "sd_adQF4BbMcrgqUGxs",

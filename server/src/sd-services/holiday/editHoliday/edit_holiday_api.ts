@@ -155,8 +155,8 @@ export class edit_holiday_api {
       let outputVariables =
         await SSD_SERVICE_ID_sd_Iburt0vKUtQzrLFzInstance.editholiday(
           spanInst,
-          bh.input.body.id,
-          bh.input.body
+          bh.input.body.holiday.id,
+          bh.input.body.holiday
         );
       bh.local.result = outputVariables.local.response;
 
