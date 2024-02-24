@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "post",
-        "sequenceId": "IDSAuthroizedAPIs",
+        "sequenceId": "",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -125,7 +125,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.body)",
+        "script": "console.log(bh.input.body,\"verified\")",
         "functionName": "sd_P3n6xhNOwCqSZ5sY",
         "category": "Function",
         "x": 325,
@@ -235,7 +235,7 @@
         "entityId": "_EN_6p5c4fcw8s",
         "_UI_entityName": "holiday",
         "dbConfigId": "",
-        "validateObject": "bh.input.body",
+        "validateObject": "bh.input.body.holiday",
         "checkboxThrowError": true,
         "resultMapping": "",
         "functionName": "sd_eomYAbdxmEVLMt7N",
@@ -250,7 +250,7 @@
         "__ssdTypeInputs__": {
             "validateObject": {
                 "type": "bh.input",
-                "value": "body",
+                "value": "body.holiday",
                 "constant": false
             },
             "resultMapping": {
@@ -302,7 +302,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "errorInfo",
-        "script": "console.log(bh.error)\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
+        "script": "console.log(bh.error,\"validation\")\nbh.local.response = {\n    status:400,\n    message:bh.error.message\n}",
         "functionName": "errorInfo",
         "category": "Function",
         "x": 425,
@@ -343,7 +343,6 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
-        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",

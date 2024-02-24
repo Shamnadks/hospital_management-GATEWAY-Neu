@@ -4,19 +4,8 @@
     "description": "",
     "type": "object",
     "id": "_EN_6p5c4fcw8s",
-    "y": 37,
+    "y": 45,
     "properties": {
-        "id": {
-            "name": "id",
-            "format": "",
-            "type": "number",
-            "description": "",
-            "default": "",
-            "__n__metadata__": {
-                "id": "_Att_mvqf33iyxw",
-                "nullable": true
-            }
-        },
         "name": {
             "name": "name",
             "format": "",
@@ -78,7 +67,7 @@
     "value": "",
     "__attributeExpansion__": true,
     "__operationExpansion__": false,
-    "x": 109,
+    "x": 131,
     "userList": {
         "SSD_SERVICE_ID_sd_efpDQXi1qbm7WP0j": [
             "sd_eomYAbdxmEVLMt7N",

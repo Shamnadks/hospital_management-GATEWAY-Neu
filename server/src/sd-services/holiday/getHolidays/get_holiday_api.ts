@@ -84,7 +84,7 @@ export class get_holiday_api {
       `${this.serviceBasePath}/holiday/get`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class get_holiday_api {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'post',
         this.generatedMiddlewares
       )
@@ -152,10 +152,10 @@ export class get_holiday_api {
       parentSpanInst
     );
     try {
-      console.log(bh.local?.result);
+      console.log(bh.local?.result.payload, 'gotttttttttt');
       bh.local.response = {
-        status: process.env.SUCCESS_STATUS_CODE,
-        response: bh.local?.result?.data,
+        statusCode: 200,
+        response: bh.local?.result.payload?.data,
       };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_WKoTvfDyN7NHy7l7(bh, parentSpanInst);
@@ -174,7 +174,7 @@ export class get_holiday_api {
 
   async sd_WKoTvfDyN7NHy7l7(bh, parentSpanInst) {
     try {
-      bh.web.res.status(bh.local.url).send(bh.local.response);
+      bh.web.res.status(bh.local.response.statusCode).send(bh.local.response);
 
       return bh;
     } catch (e) {

@@ -60,7 +60,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "configureUrl",
-        "script": "bh.local.url = `${process.env.API_URL}/holiday/post`\nbh.local.body={\n     holidays: {\n    starting_date: bh.input.body.starting_date,\n    end_date: bh.input.body.starting_date,\n    name: bh.input.body.name,\n    days:bh.input.body.days\n  }\n}",
+        "script": "bh.local.url = `${process.env.API_URL}/holiday/post`\n\nbh.input.body = {\n    holidays:{\n    name:bh.input.body.holiday.name,\n    starting_date:bh.input.body.holiday.starting_date,\n    end_date:bh.input.body.holiday.end_date,\n    days: bh.input.body.holiday.days,\n    id:0\n    }\n}\nconsole.log(bh.input.body)\n\n",
         "functionName": "configureUrl",
         "category": "Function",
         "x": 285,
@@ -91,9 +91,9 @@
         },
         "ret": "json",
         "retMappingObj": {},
-        "reqBody": "bh.local.body",
+        "reqBody": "bh.input.body",
         "reqBodyObj": {
-            "mapVarType": "bh.local",
+            "mapVarType": "bh.input",
             "mapVarValue": "body"
         },
         "resultMapping": "bh.input.response",

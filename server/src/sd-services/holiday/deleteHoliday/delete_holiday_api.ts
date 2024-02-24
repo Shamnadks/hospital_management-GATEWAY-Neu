@@ -4,11 +4,9 @@ let instance = null;
 //append_imports_start
 
 import * as cookieParser from 'cookie-parser'; //_splitter_
-import { validateRequest } from '../../../middleware/SchemaValidator'; //_splitter_
 import { SDBaseService } from '../../../services/SDBaseService'; //_splitter_
 import { TracerService } from '../../../services/TracerService'; //_splitter_
 import log from '../../../utils/Logger'; //_splitter_
-import { validateNode } from '../../../utils/ndefault-datamodel/find/validateUtil'; //_splitter_
 import * as SSD_SERVICE_ID_sd_418prrgjKUiwBSGa from './delete_holiday_service'; //_splitter_
 //append_imports_end
 export class delete_holiday_api {
@@ -86,12 +84,11 @@ export class delete_holiday_api {
       `${this.serviceBasePath}/holiday/delete`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'pre',
         this.generatedMiddlewares
       ),
 
-      validateRequest(),
       async (req, res, next) => {
         let bh: any = {};
         try {
@@ -102,15 +99,14 @@ export class delete_holiday_api {
             next
           );
           let parentSpanInst = null;
-          this.sdService.addDMPropertiesToBh(bh, req, 'holiday_id');
-          bh = await this.sd_kZGmgJLPuum1qo5w(bh, parentSpanInst);
+          bh = await this.sd_AAr07tRSrsfMQaP1(bh, parentSpanInst);
           //appendnew_next_sd_N3FdaHAYtoRbfAhP
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_N3FdaHAYtoRbfAhP');
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'post',
         this.generatedMiddlewares
       )
@@ -151,29 +147,6 @@ export class delete_holiday_api {
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_nKg17sn6ZWFmgSaQ');
-    }
-  }
-
-  async sd_kZGmgJLPuum1qo5w(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_kZGmgJLPuum1qo5w',
-      parentSpanInst
-    );
-    try {
-      validateNode('_EN_389im5nt94', bh.input.query, true);
-
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_AAr07tRSrsfMQaP1(bh, parentSpanInst);
-      //appendnew_next_sd_kZGmgJLPuum1qo5w
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_kZGmgJLPuum1qo5w',
-        spanInst,
-        'sd_kZGmgJLPuum1qo5w'
-      );
     }
   }
 

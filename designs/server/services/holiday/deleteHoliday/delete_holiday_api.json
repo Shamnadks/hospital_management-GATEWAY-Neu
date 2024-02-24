@@ -125,12 +125,12 @@
         "summary": "",
         "description": "",
         "method": "delete",
-        "sequenceId": "IDSAuthroizedAPIs",
+        "sequenceId": "",
         "consumes": "",
         "produces": "",
         "filetype": "path",
         "acceptFileUpload": false,
-        "useDataModel": true,
+        "useDataModel": false,
         "dataModelIsArray": true,
         "erd": "_DM_c2fx0fitg",
         "erdName": "holiday_model",
@@ -144,8 +144,8 @@
                     "key": "id",
                     "desc": "id for delete",
                     "type": "query",
-                    "required": false,
-                    "rowId": "sd_grRcKDk1vYGmyrQB",
+                    "required": true,
+                    "rowId": "sd_IuDMbzN60KERCEcv",
                     "valid": true
                 }
             ],
@@ -160,7 +160,7 @@
         "y": 100,
         "wires": [
             [
-                "sd_kZGmgJLPuum1qo5w"
+                "sd_AAr07tRSrsfMQaP1"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -331,50 +331,6 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "delete_holiday_api",
-        "generated": true
-    },
-    {
-        "id": "sd_kZGmgJLPuum1qo5w",
-        "type": "validate",
-        "z": "SSD_SERVICE_ID_sd_GlekeHOGhf90XdM8",
-        "viewType": "server",
-        "nodeType": "flow",
-        "name": "",
-        "erd": "_DM_c2fx0fitg",
-        "entityId": "_EN_389im5nt94",
-        "_UI_entityName": "holiday_id",
-        "dbConfigId": "",
-        "validateObject": "bh.input.query",
-        "checkboxThrowError": true,
-        "resultMapping": "",
-        "functionName": "sd_kZGmgJLPuum1qo5w",
-        "category": "Data Model",
-        "x": 165,
-        "y": 100,
-        "wires": [
-            [
-                "sd_AAr07tRSrsfMQaP1"
-            ]
-        ],
-        "__ssdTypeInputs__": {
-            "validateObject": {
-                "type": "bh.input",
-                "value": "query",
-                "constant": false
-            },
-            "resultMapping": {
-                "type": "bh",
-                "value": "",
-                "nullable": "true",
-                "nullableValue": "",
-                "constant": false
-            }
-        },
-        "__n_excludedFromValidation__": {
-            "resultMapping": true
-        },
         "generateNext": false,
         "serviceName": "delete_holiday_api",
         "generated": true

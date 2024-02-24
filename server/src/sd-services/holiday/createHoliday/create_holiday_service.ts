@@ -127,14 +127,18 @@ export class create_holiday_service {
     );
     try {
       bh.local.url = `${process.env.API_URL}/holiday/post`;
-      bh.local.body = {
+
+      bh.input.body = {
         holidays: {
-          starting_date: bh.input.body.starting_date,
-          end_date: bh.input.body.starting_date,
-          name: bh.input.body.name,
-          days: bh.input.body.days,
+          name: bh.input.body.holiday.name,
+          starting_date: bh.input.body.holiday.starting_date,
+          end_date: bh.input.body.holiday.end_date,
+          days: bh.input.body.holiday.days,
+          id: 0,
         },
       };
+      console.log(bh.input.body);
+
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_0IeuJb89Z9VO5AJE(bh, parentSpanInst);
       //appendnew_next_configureUrl
@@ -160,7 +164,7 @@ export class create_holiday_service {
         followRedirects: true,
         cookies: undefined,
         authType: undefined,
-        body: bh.local.body,
+        body: bh.input.body,
         paytoqs: false,
         proxyConfig: undefined,
         tlsConfig: undefined,

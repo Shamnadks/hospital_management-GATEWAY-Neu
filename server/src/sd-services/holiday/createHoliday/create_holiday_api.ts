@@ -86,7 +86,7 @@ export class create_holiday_api {
       `${this.serviceBasePath}/holiday/post`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'pre',
         this.generatedMiddlewares
       ),
@@ -110,7 +110,7 @@ export class create_holiday_api {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        'IDSAuthroizedAPIs',
+        null,
         'post',
         this.generatedMiddlewares
       )
@@ -127,7 +127,7 @@ export class create_holiday_api {
       parentSpanInst
     );
     try {
-      validateNode('_EN_6p5c4fcw8s', bh.input.body, true);
+      validateNode('_EN_6p5c4fcw8s', bh.input.body.holiday, true);
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_P3n6xhNOwCqSZ5sY(bh, parentSpanInst);
@@ -150,7 +150,7 @@ export class create_holiday_api {
       parentSpanInst
     );
     try {
-      console.log(bh.input.body);
+      console.log(bh.input.body, 'verified');
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_29pLPaCw9Dud3tax(bh, parentSpanInst);
       //appendnew_next_sd_P3n6xhNOwCqSZ5sY
@@ -237,7 +237,7 @@ export class create_holiday_api {
   async errorInfo(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan('errorInfo', parentSpanInst);
     try {
-      console.log(bh.error);
+      console.log(bh.error, 'validation');
       bh.local.response = {
         status: 400,
         message: bh.error.message,
