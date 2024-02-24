@@ -130,6 +130,7 @@ export class delete_holiday_service {
       bh.local.query = {
         id: bh.input.id,
       };
+      console.log(bh.input.id);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_96ob6j4kkhdx7NBb(bh, parentSpanInst);
       //appendnew_next_sd_CdvmLL67plSmXlBN
@@ -160,7 +161,7 @@ export class delete_holiday_service {
         proxyConfig: undefined,
         tlsConfig: undefined,
         ret: 'json',
-        params: bh.input.id,
+        params: bh.local.query,
         username: undefined,
         password: undefined,
         token: undefined,

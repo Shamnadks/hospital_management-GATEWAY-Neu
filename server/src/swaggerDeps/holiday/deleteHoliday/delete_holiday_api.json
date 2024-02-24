@@ -7,25 +7,10 @@
             "produces": [],
             "parameters": [
                 {
-                    "in": "body",
-                    "name": "holiday_id",
-                    "required": true,
-                    "schema": {
-                        "type": "array",
-                        "properties": {
-                            "holiday_id": {
-                                "items": {
-                                    "$ref": "#/definitions/holiday_model ~ holiday_id"
-                                }
-                            }
-                        }
-                    }
-                },
-                {
                     "in": "query",
                     "name": "id",
                     "description": "id for delete",
-                    "required": false
+                    "required": true
                 }
             ],
             "responses": {},
