@@ -203,6 +203,7 @@
             "send": "bh.local.response.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -236,7 +237,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.query.id,\"id reached to api\")",
+        "script": "console.log(bh.input.query.id,\"id reached to api\")\nif(bh.input.query.id){\n    throw new Error(\"invalid id format\")\n}",
         "functionName": "sd_AAr07tRSrsfMQaP1",
         "category": "Function",
         "x": 265,
