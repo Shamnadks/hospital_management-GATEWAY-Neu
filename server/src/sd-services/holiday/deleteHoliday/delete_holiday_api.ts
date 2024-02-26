@@ -84,7 +84,7 @@ export class delete_holiday_api {
       `${this.serviceBasePath}/holiday/delete`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'pre',
         this.generatedMiddlewares
       ),
@@ -106,7 +106,7 @@ export class delete_holiday_api {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'IDSAuthroizedAPIs',
         'post',
         this.generatedMiddlewares
       )
@@ -157,7 +157,7 @@ export class delete_holiday_api {
     );
     try {
       console.log(bh.input.query.id, 'id reached to api');
-      if (bh.input.query.id) {
+      if (!bh.input?.query?.id) {
         throw new Error('invalid id format');
       }
       this.tracerService.sendData(spanInst, bh);
